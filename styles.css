@@ -17,7 +17,7 @@ nav a:hover, nav a:focus-visible, nav a[aria-current="page"] { opacity: 1; }
 .film-shade { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(0,0,0,.04), rgba(0,0,0,.28)), rgba(0,0,0,.08); }
 .hero-content { position: absolute; z-index: 2; top: 50%; left: 50%; width: min(88vw, 54rem); max-height: calc(100svh - 7rem); display: flex; flex-direction: column; align-items: center; gap: 3rem; transform: translate(-50%, -50%); }
 .hero h1 { margin: 0; font-size: clamp(4.2rem, 8.5vw, 8rem); font-weight: normal; font-synthesis: none; line-height: .8; letter-spacing: -.025em; text-align: center; }
-.manifesto { width: 100%; overflow: auto; font-size: clamp(1rem, 1.35vw, 1.22rem); line-height: 1.25; text-align: center; text-shadow: 0 1px 6px rgba(0,0,0,.55); scrollbar-width: none; }
+.manifesto { width: 100%; overflow: auto; font-size: clamp(1rem, 1.35vw, 1.22rem); line-height: 1.25; text-align: left; text-shadow: 0 1px 6px rgba(0,0,0,.55); scrollbar-width: none; }
 .manifesto::-webkit-scrollbar { display: none; }
 .manifesto p { break-inside: avoid; margin: 0; }
 .manifesto-lead { margin-bottom: 1.2em !important; font-size: inherit; line-height: inherit; }
@@ -57,9 +57,6 @@ nav a:hover, nav a:focus-visible, nav a[aria-current="page"] { opacity: 1; }
 .project-gallery-meta { display: flex; align-items: baseline; gap: 1.4rem; padding-top: .65rem; font-size: .8rem; }
 .project-counter { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .project-caption { color: #555; }
-.project-gallery-controls { margin-left: auto; display: flex; gap: 1rem; }
-.project-gallery-controls button { border: 0; padding: .1rem .3rem; background: transparent; color: inherit; font: 1.25rem "Times New Roman", Times, serif; cursor: pointer; }
-.project-gallery-controls button:hover, .project-gallery-controls button:focus-visible { text-decoration: underline; }
 .project-description { margin-top: 5rem; max-width: 52rem; font-size: clamp(1.05rem, 1.3vw, 1.3rem); line-height: 1.35; }
 .project-description p { margin: 0 0 1.2em; }
 @media (max-width: 780px) {
