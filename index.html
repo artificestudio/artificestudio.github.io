@@ -17,7 +17,7 @@
     />
   </head>
 
-  <body>
+  <body class="home-page">
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="ARTIFICE, home">
         <span>ARTIFICE</span>
@@ -84,7 +84,7 @@
           </div>
         </div>
         <p class="hero-caption">Architectural and artistic research practice</p>
-        <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="none" loop></audio>
+        <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="auto" autoplay loop></audio>
         <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play background music" aria-pressed="false">sound on</button>
       </section>
     </main>
@@ -128,12 +128,13 @@
           soundtrack.pause();
         }
       });
-      document.addEventListener("pointerdown", event => {
+      function startSoundAfterInteraction(event) {
         if (event.target !== soundToggle) playSoundtrack();
-      }, { once: true });
-      document.addEventListener("keydown", event => {
-        if (event.target !== soundToggle) playSoundtrack();
-      }, { once: true });
+      }
+      document.addEventListener("pointerdown", startSoundAfterInteraction);
+      document.addEventListener("touchend", startSoundAfterInteraction, { passive: true });
+      document.addEventListener("click", startSoundAfterInteraction);
+      document.addEventListener("keydown", startSoundAfterInteraction);
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) soundtrack.pause();
         else playSoundtrack();
