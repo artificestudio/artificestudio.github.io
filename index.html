@@ -21,7 +21,7 @@
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="ARTIFICE, home">ARTIFICE</a>
       <nav aria-label="Main navigation">
-        <a href="#manifesto">About</a>
+        <span aria-disabled="true">About</span>
         <span aria-disabled="true">Projects</span>
         <span aria-disabled="true">Contact</span>
       </nav>
@@ -42,24 +42,16 @@
           <source src="assets/home-film.mp4" type="video/mp4" />
         </video>
         <div class="film-shade" aria-hidden="true"></div>
-        <h1 id="hero-title">ARTIFICE</h1>
-        <p class="hero-caption">Architectural and artistic research practice</p>
-        <a class="scroll-link" href="#manifesto">Manifesto <span aria-hidden="true">↓</span></a>
-      </section>
-
-      <section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
-        <div class="manifesto-heading">
-          <p class="section-index">01 / Manifesto</p>
-          <h2 id="manifesto-title">
-            <strong>ARTIFICES studies the absurd world we have inherited.</strong>
-            <strong>
-              What remains when the image a society created of itself outlives the belief that
-              produced it.
-            </strong>
-          </h2>
-        </div>
-
-        <div class="manifesto-body">
+        <div class="hero-content">
+          <h1 id="hero-title">ARTIFICE</h1>
+          <div class="manifesto" id="manifesto">
+            <p class="manifesto-lead">
+              <strong>ARTIFICES studies the absurd world we have inherited.</strong>
+              <strong>
+                What remains when the image a society created of itself outlives the belief that
+                produced it.
+              </strong>
+            </p>
           <p>
             Through an architectural and artistic research practice, we work with spaces caught
             between two worlds, frozen in time, crystallizing a vision of prosperity in which
@@ -88,14 +80,14 @@
               ARTIFICES seeks to explore, reveal and extend the full complexity of this condition.
             </strong>
           </p>
+          </div>
         </div>
+        <p class="hero-caption">Architectural and artistic research practice</p>
       </section>
     </main>
-
-    <footer>
-      <p>ARTIFICE</p>
-      <p>Architecture · Research · Image · Film · Sound · Narrative</p>
-      <a href="#top">Back to top ↑</a>
-    </footer>
+    <script>
+      const film = document.querySelector(".hero-film");
+      film.playbackRate = 0.5;
+    </script>
   </body>
 </html>
