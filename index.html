@@ -132,9 +132,12 @@
         if (event.target !== soundToggle) playSoundtrack();
       }
       document.addEventListener("pointerdown", startSoundAfterInteraction);
+      document.addEventListener("mousedown", startSoundAfterInteraction);
+      document.addEventListener("touchstart", startSoundAfterInteraction, { passive: true });
       document.addEventListener("touchend", startSoundAfterInteraction, { passive: true });
       document.addEventListener("click", startSoundAfterInteraction);
       document.addEventListener("keydown", startSoundAfterInteraction);
+      window.addEventListener("pageshow", playSoundtrack);
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) soundtrack.pause();
         else playSoundtrack();
