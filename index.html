@@ -24,7 +24,7 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="about.html">about</a>
-        <span aria-disabled="true">projects</span>
+        <a href="projects.html">projects</a>
         <a href="contact.html">contact</a>
       </nav>
     </header>
@@ -84,6 +84,8 @@
           </div>
         </div>
         <p class="hero-caption">Architectural and artistic research practice</p>
+        <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="none" loop></audio>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play background music" aria-pressed="false">sound on</button>
       </section>
     </main>
     <script>
@@ -101,6 +103,42 @@
       }
       startDesktopFilm();
       desktopFilm.addEventListener("change", startDesktopFilm);
+
+      const soundtrack = document.getElementById("home-soundtrack");
+      const soundToggle = document.getElementById("sound-toggle");
+      let soundDisabled = false;
+      function updateSoundToggle() {
+        const playing = !soundtrack.paused;
+        soundToggle.textContent = playing ? "sound off" : "sound on";
+        soundToggle.setAttribute("aria-label", playing ? "Pause background music" : "Play background music");
+        soundToggle.setAttribute("aria-pressed", String(playing));
+      }
+      function playSoundtrack() {
+        if (soundDisabled || !soundtrack.paused) return;
+        soundtrack.play().catch(updateSoundToggle);
+      }
+      soundtrack.addEventListener("play", updateSoundToggle);
+      soundtrack.addEventListener("pause", updateSoundToggle);
+      soundToggle.addEventListener("click", () => {
+        if (soundtrack.paused) {
+          soundDisabled = false;
+          playSoundtrack();
+        } else {
+          soundDisabled = true;
+          soundtrack.pause();
+        }
+      });
+      document.addEventListener("pointerdown", event => {
+        if (event.target !== soundToggle) playSoundtrack();
+      }, { once: true });
+      document.addEventListener("keydown", event => {
+        if (event.target !== soundToggle) playSoundtrack();
+      }, { once: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) soundtrack.pause();
+        else playSoundtrack();
+      });
+      playSoundtrack();
     </script>
   </body>
 </html>
