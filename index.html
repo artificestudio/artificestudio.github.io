@@ -21,10 +21,9 @@
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="ARTIFICE, home">
         <span>ARTIFICE</span>
-        <span>Research / Creative Practice</span>
       </a>
       <nav aria-label="Main navigation">
-        <span aria-disabled="true">about</span>
+        <a href="about.html">about</a>
         <span aria-disabled="true">projects</span>
         <a href="contact.html">contact</a>
       </nav>
@@ -38,18 +37,19 @@
           muted
           loop
           playsinline
-          preload="auto"
+          preload="none"
           poster="assets/home-preview.jpg"
           aria-hidden="true"
         >
-          <source src="assets/home-film.mp4" type="video/mp4" />
+          <source data-src="assets/home-film.mp4" type="video/mp4" />
         </video>
+        <div class="hero-film-mobile" aria-hidden="true"></div>
         <div class="film-shade" aria-hidden="true"></div>
         <div class="hero-content">
           <h1 id="hero-title">ARTIFICE</h1>
           <div class="manifesto" id="manifesto">
             <p class="manifesto-lead">
-              <span>ARTIFICE studies the absurd world we have inherited.</span>
+              <span>ARTIFICES studies the absurd world we have inherited.</span>
               <span>
                 What remains when the image a society created of itself outlives the belief that
                 produced it.
@@ -79,16 +79,28 @@
           </p>
           <p>These places are mirrors of ourselves: we too inhabit the transition.</p>
           <p class="closing-statement">
-            ARTIFICE seeks to explore, reveal and extend the full complexity of this condition.
+            ARTIFICES seeks to explore, reveal and extend the full complexity of this condition.
           </p>
           </div>
         </div>
-        <p class="hero-caption">architectural and artistic research practice</p>
+        <p class="hero-caption">Architectural and artistic research practice</p>
       </section>
     </main>
     <script>
       const film = document.querySelector(".hero-film");
-      film.playbackRate = 0.5;
+      const desktopFilm = window.matchMedia("(min-width: 781px) and (prefers-reduced-motion: no-preference)");
+      function startDesktopFilm() {
+        if (!desktopFilm.matches) return;
+        const source = film.querySelector("source");
+        if (!source.src) {
+          source.src = source.dataset.src;
+          film.load();
+        }
+        film.playbackRate = 0.5;
+        film.play().catch(() => {});
+      }
+      startDesktopFilm();
+      desktopFilm.addEventListener("change", startDesktopFilm);
     </script>
   </body>
 </html>
