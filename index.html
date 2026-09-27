@@ -118,6 +118,7 @@
         soundtrack.play().catch(updateSoundToggle);
       }
       soundtrack.addEventListener("play", updateSoundToggle);
+      soundtrack.addEventListener("playing", updateSoundToggle);
       soundtrack.addEventListener("pause", updateSoundToggle);
       soundToggle.addEventListener("click", () => {
         if (soundtrack.paused) {
@@ -137,11 +138,15 @@
       document.addEventListener("touchend", startSoundAfterInteraction, { passive: true });
       document.addEventListener("click", startSoundAfterInteraction);
       document.addEventListener("keydown", startSoundAfterInteraction);
-      window.addEventListener("pageshow", playSoundtrack);
+      window.addEventListener("pageshow", () => {
+        updateSoundToggle();
+        playSoundtrack();
+      });
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) soundtrack.pause();
         else playSoundtrack();
       });
+      updateSoundToggle();
       playSoundtrack();
     </script>
   </body>
