@@ -21,6 +21,9 @@ const caption = document.getElementById("project-caption");
 let current = 0;
 let previousX = null;
 let distance = 0;
+let wheelDistance = 0;
+let touchStartX = null;
+let suppressClick = false;
 
 images.forEach(([number]) => {
   const preload = new Image();
@@ -48,7 +51,7 @@ frame.addEventListener("pointermove", event => {
   previousX = event.clientX;
   if (delta && Math.sign(delta) !== Math.sign(distance)) distance = 0;
   distance += delta;
-  const step = Math.max(35, frame.clientWidth / 16);
+  const step = Math.max(120, frame.clientWidth / 5);
   if (Math.abs(distance) >= step) {
     const direction = Math.sign(distance);
     showImage(current + direction);
@@ -59,9 +62,30 @@ frame.addEventListener("pointerleave", () => { previousX = null; distance = 0; }
 frame.addEventListener("wheel", event => {
   if (Math.abs(event.deltaX) < 2) return;
   event.preventDefault();
-  showImage(current + Math.sign(event.deltaX));
+  const delta = event.deltaX * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? frame.clientWidth : 1);
+  if (Math.sign(delta) !== Math.sign(wheelDistance)) wheelDistance = 0;
+  wheelDistance += delta;
+  if (Math.abs(wheelDistance) >= 160) {
+    const direction = Math.sign(wheelDistance);
+    showImage(current + direction);
+    wheelDistance -= direction * 160;
+  }
 }, { passive: false });
-frame.addEventListener("click", () => showImage(current + 1));
+frame.addEventListener("touchstart", event => {
+  touchStartX = event.changedTouches[0].clientX;
+}, { passive: true });
+frame.addEventListener("touchend", event => {
+  if (touchStartX === null) return;
+  const delta = event.changedTouches[0].clientX - touchStartX;
+  touchStartX = null;
+  if (Math.abs(delta) < 45) return;
+  showImage(current + Math.sign(delta));
+  suppressClick = true;
+  setTimeout(() => { suppressClick = false; }, 350);
+}, { passive: true });
+frame.addEventListener("click", () => {
+  if (!suppressClick) showImage(current + 1);
+});
 frame.addEventListener("keydown", event => {
   if (event.key === "ArrowLeft") { event.preventDefault(); showImage(current - 1); }
   if (event.key === "ArrowRight" || event.key === "Enter" || event.key === " ") {
