@@ -1,154 +1,146 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="ARTIFICE is an architectural and artistic research practice studying the absurd world we have inherited."
-    />
-    <meta name="theme-color" content="#111111" />
-    <title>ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111111'/%3E%3Cpath d='M10 53 27 11h10l17 42H43l-3-9H24l-3 9Zm17-18h10l-5-14Z' fill='%23f5f5f0'/%3E%3C/svg%3E"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARTIFICE is an independent architecture research and creative practice investigating the worlds we inherited, and what they become.">
+  <meta name="theme-color" content="#090909">
+  <meta property="og:title" content="ARTIFICE | The worlds we inherited">
+  <meta property="og:description" content="An independent research and creative practice. Architecture, memory, image, sound and transformation.">
+  <meta property="og:image" content="https://www.artificepractice.com/assets/home-preview.jpg">
+  <title>ARTIFICE | The worlds we inherited</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111111'/%3E%3Cpath d='M10 53 27 11h10l17 42H43l-3-9H24l-3 9Zm17-18h10l-5-14Z' fill='%23f5f5f0'/%3E%3C/svg%3E">
+</head>
+<body class="home-page editorial-home">
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="ARTIFICE, home"><span>ARTIFICE</span></a>
+    <nav aria-label="Main navigation">
+      <a href="atlas.html">atlas</a>
+      <a href="studies.html">studies</a>
+      <a href="works.html">works</a>
+      <a href="about.html">about</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <video class="hero-film" autoplay muted loop playsinline preload="none" poster="assets/home-preview.jpg" aria-hidden="true">
+        <source data-src="assets/home-film.mp4" type="video/mp4">
+      </video>
+      <div class="hero-film-mobile" aria-hidden="true"></div>
+      <div class="landing-shade" aria-hidden="true"></div>
+      <div class="landing-coordinate" aria-hidden="true"><span>ARTIFICE PRACTICE</span><span>PARIS / SEOUL / TOKYO</span></div>
+      <div class="landing-core">
+        <p class="landing-overline">A research and creative practice</p>
+        <h1 id="landing-title">ARTIFICE</h1>
+        <p class="landing-tagline">The worlds we inherited are still here.</p>
+      </div>
+      <div class="landing-actions">
+        <a class="landing-enter" href="atlas.html">Enter the atlas <span aria-hidden="true">↗</span></a>
+        <a class="landing-scroll" href="#signal">Scroll to explore <span aria-hidden="true">↓</span></a>
+      </div>
+      <button class="sound-toggle landing-sound" id="sound-toggle" type="button" aria-label="Play ambient audio" aria-pressed="false">sound on <span aria-hidden="true">◌</span></button>
+    </section>
 
-  <body class="home-page">
-    <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="ARTIFICE, home">
-        <span>ARTIFICE</span>
-      </a>
-      <nav aria-label="Main navigation">
-        <a href="about.html">about</a>
-        <a href="projects.html">projects</a>
-        <a href="atlas.html">atlas</a>
-        <a href="contact.html">contact</a>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <video
-          class="hero-film"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="none"
-          poster="assets/home-preview.jpg"
-          aria-hidden="true"
-        >
-          <source data-src="assets/home-film.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-film-mobile" aria-hidden="true"></div>
-        <div class="film-shade" aria-hidden="true"></div>
-        <div class="hero-content">
-          <h1 id="hero-title">ARTIFICE</h1>
-          <div class="manifesto" id="manifesto">
-            <p class="manifesto-lead">
-              <span>ARTIFICE studies the absurd world we have inherited.</span>
-              <span>
-                What remains when the image a society created of itself outlives the belief that
-                produced it.
-              </span>
-            </p>
-          <p>
-            Through an architectural and artistic research practice, we work with spaces caught
-            between two worlds, frozen in time, crystallizing a vision of prosperity in which
-            innovation was often mistaken for progress.
-          </p>
-          <p>
-            Shopping centres, hotels, airports, car parks and housing become places where the
-            Waiting that defines our time manifests itself most intensely, like
-            gateways into a distorted spacetime. These are spaces where the temporality imposed
-            by architecture comes into conflict with the constant fluctuations of consumerism,
-            where supply has solidified while demand has shifted or transformed.
-          </p>
-          <p>
-            Within these highly artificial environments, where kitsch prevails, we choose to work
-            with empathy and consideration. We document, catalogue and archive them before they
-            disappear or are transformed.
-          </p>
-          <p>
-            Our practice then seeks to inhabit and intervene within these gaps through
-            architectural projects. What we observe and collect becomes material for imagining
-            other uses, but also for producing images, films, sounds and narratives.
-          </p>
-          <p>These places are mirrors of ourselves: we too inhabit the transition.</p>
-          <p class="closing-statement">
-            ARTIFICE seeks to explore, reveal and extend the full complexity of this condition.
-          </p>
-          </div>
+    <section class="home-statement" id="signal" aria-labelledby="statement-title">
+      <div class="home-section-meta"><span>00 / THE QUESTION</span><span>ARCHITECTURES IN TRANSITION</span></div>
+      <div class="statement-grid">
+        <p class="statement-aside">Some places are so ordinary<br>we forget to look at them.</p>
+        <div>
+          <h2 id="statement-title">Yesterday's visions of tomorrow became <em>our everyday life.</em></h2>
+          <p>Shopping centres, new towns, towers, leisure complexes. Built to promise comfort, prosperity and progress. Still inhabited, repurposed, emptied or erased.</p>
+          <p>ARTIFICE studies how these worlds were made, what remains of them, and what other futures they might hold.</p>
+          <a class="text-arrow" href="about.html">Why ARTIFICE exists <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="hero-caption">Architectural and artistic research practice</p>
-        <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="auto" autoplay loop></audio>
-        <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play background music" aria-pressed="false">sound on</button>
-      </section>
-    </main>
-    <script>
-      const film = document.querySelector(".hero-film");
-      const desktopFilm = window.matchMedia("(min-width: 781px) and (prefers-reduced-motion: no-preference)");
-      function startDesktopFilm() {
-        if (!desktopFilm.matches) return;
-        const source = film.querySelector("source");
-        if (!source.src) {
-          source.src = source.dataset.src;
-          film.load();
-        }
-        film.playbackRate = 0.5;
-        film.play().catch(() => {});
-      }
-      startDesktopFilm();
-      desktopFilm.addEventListener("change", startDesktopFilm);
+      </div>
+    </section>
 
-      const soundtrack = document.getElementById("home-soundtrack");
-      const soundToggle = document.getElementById("sound-toggle");
-      let soundDisabled = false;
-      function updateSoundToggle() {
-        const playing = !soundtrack.paused;
-        soundToggle.textContent = playing ? "sound off" : "sound on";
-        soundToggle.setAttribute("aria-label", playing ? "Pause background music" : "Play background music");
-        soundToggle.setAttribute("aria-pressed", String(playing));
-      }
-      function playSoundtrack() {
-        if (soundDisabled || !soundtrack.paused) return;
-        soundtrack.play().catch(updateSoundToggle);
-      }
-      soundtrack.addEventListener("play", updateSoundToggle);
-      soundtrack.addEventListener("playing", updateSoundToggle);
-      soundtrack.addEventListener("pause", updateSoundToggle);
-      soundToggle.addEventListener("click", () => {
-        if (soundtrack.paused) {
-          soundDisabled = false;
-          playSoundtrack();
-        } else {
-          soundDisabled = true;
-          soundtrack.pause();
-        }
-      });
-      function startSoundAfterInteraction(event) {
-        if (event.target !== soundToggle) playSoundtrack();
-      }
-      document.addEventListener("pointerdown", startSoundAfterInteraction);
-      document.addEventListener("mousedown", startSoundAfterInteraction);
-      document.addEventListener("touchstart", startSoundAfterInteraction, { passive: true });
-      document.addEventListener("touchend", startSoundAfterInteraction, { passive: true });
-      document.addEventListener("click", startSoundAfterInteraction);
-      document.addEventListener("keydown", startSoundAfterInteraction);
-      window.addEventListener("pageshow", () => {
-        updateSoundToggle();
-        playSoundtrack();
-      });
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) soundtrack.pause();
-        else playSoundtrack();
-      });
-      updateSoundToggle();
-      playSoundtrack();
-    </script>
-  </body>
+    <section class="home-feature" aria-labelledby="field-heading">
+      <div class="home-section-meta"><span>01 / IN THE FIELD</span><span>RESEARCH IS A FORM OF ATTENTION</span></div>
+      <div class="feature-heading">
+        <h2 id="field-heading">Places worth<br><em>looking at twice.</em></h2>
+        <p>Not a catalogue of ruins. An evolving collection of architectures, whether thriving, changing or disappearing.</p>
+      </div>
+      <div class="feature-grid">
+        <a class="feature-large" href="projects.html?project=la-machine-du-dialogue" aria-label="Explore La machine du dialogue at Maine Montparnasse">
+          <img src="assets/maine-04.webp" alt="Vacant interior of Maine Montparnasse shopping centre in Paris" loading="lazy">
+          <span class="feature-photo-shade"></span>
+          <span class="feature-top">ARTIFICE / WORK 001 <span>PARIS, FRANCE</span></span>
+          <span class="feature-bottom"><strong>Maine–Montparnasse</strong><span>From a commercial interior to a civic possibility <span aria-hidden="true">↗</span></span></span>
+        </a>
+        <div class="feature-side">
+          <a class="feature-index-card" href="atlas-place.html?id=dongtan">
+            <span>ATLAS / SOUTH KOREA <span aria-hidden="true">↗</span></span>
+            <strong>Dongtan<br>New Town</strong>
+            <span>Growth as a built environment</span>
+            <span class="index-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          </a>
+          <a class="feature-index-card inverse" href="atlas-place.html?id=nakano-broadway">
+            <span>ATLAS / JAPAN <span aria-hidden="true">↗</span></span>
+            <strong>Nakano<br>Broadway</strong>
+            <span>Another life for a commercial world</span>
+            <span class="index-scan" aria-hidden="true">35°42′ N<br>139°40′ E</span>
+          </a>
+        </div>
+      </div>
+      <div class="feature-end"><span>THE INVENTORY IS OPEN AND GROWING</span><a class="text-arrow" href="atlas.html">Explore all places <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="home-transmissions" aria-labelledby="transmissions-title">
+      <div class="home-section-meta"><span>02 / TRANSMISSIONS</span><span>MORE THAN AN ARCHIVE</span></div>
+      <div class="transmissions-layout">
+        <div class="transmissions-lead">
+          <p class="tiny-label">FIELDWORK BECOMES MATERIAL</p>
+          <h2 id="transmissions-title">A place can become<br>a film.<br>a sound.<br>a book.<br><em>another place.</em></h2>
+        </div>
+        <div class="transmissions-side">
+          <figure class="transmission-image"><img src="assets/maine-07.webp" alt="Architectural section drawing for La machine du dialogue" loading="lazy"><figcaption>LA MACHINE DU DIALOGUE / PARIS / SECTION</figcaption></figure>
+          <p>We work through drawings, scans, archives, photography, moving images, sound and architectural experiments. Each medium makes a different part of a place visible.</p>
+          <a class="text-arrow" href="works.html">View selected works <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-invitation" aria-labelledby="invitation-title">
+      <div class="home-section-meta"><span>03 / THE PRACTICE</span><span>INDEPENDENT AND COLLABORATIVE</span></div>
+      <p>Research. Documentation. Images. Sound. Transformation.</p>
+      <h2 id="invitation-title">Let's look at what<br>everyone else<br><em>walks past.</em></h2>
+      <div class="invitation-actions"><a href="studies.html">Explore the research ↗</a><a href="mailto:contact@artificepractice.com">Work with us ↗</a></div>
+      <footer class="home-footer"><span>ARTIFICE © 2026</span><span>DORIANN DELAIVE &amp; YASMINE KACI CHAOUCHE</span><a href="https://www.instagram.com/artificepractice/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a></footer>
+    </section>
+  </main>
+  <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="none" loop></audio>
+  <script>
+    const film = document.querySelector(".hero-film");
+    const desktopFilm = window.matchMedia("(min-width: 781px) and (prefers-reduced-motion: no-preference)");
+    function startFilm() {
+      if (!desktopFilm.matches) { film.pause(); return; }
+      const source = film.querySelector("source");
+      if (!source.src) { source.src = source.dataset.src; film.load(); }
+      film.playbackRate = 0.7;
+      film.play().catch(() => {});
+    }
+    startFilm();
+    desktopFilm.addEventListener("change", startFilm);
+
+    const audio = document.getElementById("home-soundtrack");
+    const toggle = document.getElementById("sound-toggle");
+    function soundState() {
+      const playing = !audio.paused;
+      toggle.innerHTML = playing ? 'sound off <span aria-hidden="true">●</span>' : 'sound on <span aria-hidden="true">◌</span>';
+      toggle.setAttribute("aria-label", playing ? "Pause ambient audio" : "Play ambient audio");
+      toggle.setAttribute("aria-pressed", String(playing));
+    }
+    toggle.addEventListener("click", async () => {
+      if (audio.paused) { try { await audio.play(); } catch(e) { console.warn("Audio unavailable", e); } }
+      else audio.pause();
+      soundState();
+    });
+    audio.addEventListener("play", soundState);
+    audio.addEventListener("pause", soundState);
+    document.addEventListener("visibilitychange", () => { if (document.hidden) audio.pause(); });
+    soundState();
+  </script>
+</body>
 </html>
