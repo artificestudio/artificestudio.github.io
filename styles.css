@@ -186,7 +186,7 @@ html,body{background:#fff}
 .hero .sound-toggle { z-index: 4; }
 
 /* Full-screen title on the homepage; the film, Babel artwork and sound remain intact. */
-.home-page .site-header { justify-content: flex-end; }
+.home-page .site-header { justify-content: flex-start; }
 .home-page .site-header .wordmark { display: none; }
 .home-page .hero-content {
   top: 50%;
@@ -236,4 +236,35 @@ html,body{background:#fff}
     line-height: 1.38;
   }
   .about-manifesto p:first-child { font-size: clamp(1.35rem, 5vw, 1.85rem); }
+}
+
+/* Homepage navigation: upper left, legible over video and original PNG. */
+.home-page .site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(.9rem, 2vw, 1.8rem);
+  text-align: left;
+}
+.home-page .site-header nav a {
+  color: #fff;
+  opacity: 1;
+  font-size: .88rem;
+  text-shadow: 0 1px 6px rgba(0,0,0,.98), 0 0 18px rgba(0,0,0,.8);
+}
+.home-page .site-header nav a:hover,
+.home-page .site-header nav a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: .22em;
+}
+@media (max-width: 780px) {
+  .home-page .site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .65rem 1rem;
+    max-width: 100%;
+  }
+  .home-page .site-header nav a { font-size: .86rem; }
 }
