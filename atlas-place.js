@@ -1,1 +1,59 @@
-import {seedPlaces,categoryLabel,tagLabel} from "./atlas-data.js";import {SUPABASE_URL,SUPABASE_ANON_KEY} from "./atlas-config.js";const id=new URLSearchParams(location.search).get("id");let place=seedPlaces.find(p=>p.id===id);if(SUPABASE_URL&&SUPABASE_ANON_KEY&&id){try{const r=await fetch(SUPABASE_URL.replace(/\/$/,"")+"/rest/v1/atlas_places?id=eq."+encodeURIComponent(id)+"&status=eq.published&select=*",{headers:{apikey:SUPABASE_ANON_KEY}});if(r.ok){const x=await r.json();if(x.length)place={...x[0],coordinates:[x[0].longitude,x[0].latitude]}}}catch{}}if(!place){document.getElementById("place-title").textContent="Place not found"}else{document.title=place.name+" — ARTIFICE Atlas";document.getElementById("place-title").textContent=place.name;document.getElementById("place-location").textContent=place.city+", "+place.country;document.getElementById("place-year").textContent=place.year?"Construction / opening: "+place.year:"Construction date under review";document.getElementById("place-description").textContent=place.description||"";const category=document.getElementById("place-category");category.textContent=categoryLabel(place.category);const tags=document.getElementById("place-tags");for(const tag of (place.tags||[])){const a=document.createElement("a");a.className="atlas-detail-tag";a.href="atlas.html?tags="+encodeURIComponent(tag);a.textContent="#"+tagLabel(tag);tags.append(a)}if(place.source){const a=document.createElement("a");a.href=place.source;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Reference ↗";document.getElementById("place-source").append(a)}if(place.project){const a=document.createElement("a");a.href=place.project;a.textContent="Explore ARTIFICE's project →";document.getElementById("place-project").append(a)}const frame=document.getElementById("place-gallery");if(place.id==="maine-montparnasse"){const img=document.createElement("img");img.src="assets/maine-01.webp";img.alt="Architectural study of Maine Montparnasse";img.style.cssText="width:100%;max-height:60vh;object-fit:contain";frame.append(img)}else{const caption=document.createElement("p");caption.textContent="DOCUMENTATION IN PROGRESS — Photographs, drawings, scans and field notes will appear here.";caption.style.cssText="padding:6rem 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd";frame.append(caption)}}
+import {seedPlaces,categoryLabel,tagLabel} from "./content/places.js";
+
+const $=id=>document.getElementById(id);
+const id=new URLSearchParams(location.search).get("id");
+const place=seedPlaces.find(item=>item.id===id);
+if(!place){
+ $("place-title").textContent="Place not found";
+ $("place-description").textContent="The requested record does not exist.";
+}else{
+ document.title=place.name+" — ARTIFICE Atlas";
+ $("place-title").textContent=place.name;
+ $("place-location").textContent=place.city+", "+place.country;
+ $("place-year").textContent=place.year?"Construction / opening: "+place.year:"Construction date under review";
+ $("place-description").textContent=place.description||"";
+ $("place-category").textContent=categoryLabel(place.category);
+
+ for(const tag of place.tags||[]){
+  const link=document.createElement("a");
+  link.className="atlas-detail-tag";
+  link.href="atlas.html?tags="+encodeURIComponent(tag);
+  link.textContent="#"+tagLabel(tag);
+  $("place-tags").append(link);
+ }
+ if(place.source && /^https?:\/\//i.test(place.source)){
+  const link=document.createElement("a");link.href=place.source;link.target="_blank";
+  link.rel="noopener noreferrer";link.textContent="Reference ↗";$("place-source").append(link);
+ }
+ if(place.project && /^projects\.html(?:\?project=[a-z0-9-]+)?$/.test(place.project)){
+  const link=document.createElement("a");link.href=place.project;
+  link.textContent="Explore ARTIFICE's project →";$("place-project").append(link);
+ }
+
+ // Add images in content/places.js, e.g. images: [{src:"assets/places/my-place/01.webp",caption:"...",alt:"..."}].
+ const gallery=$("place-gallery");
+ const entries=Array.isArray(place.images)?place.images:[];
+ if(entries.length){
+  let current=0;
+  const viewer=document.createElement("figure");viewer.className="atlas-place-figure";
+  const img=document.createElement("img");
+  const cap=document.createElement("figcaption");
+  const nav=document.createElement("div");nav.className="atlas-place-image-nav";
+  const prev=document.createElement("button");prev.type="button";prev.textContent="← Previous";
+  const next=document.createElement("button");next.type="button";next.textContent="Next →";
+  const count=document.createElement("span");
+  const update=()=>{
+    const picture=entries[current];img.src=picture.src;img.alt=picture.alt||picture.caption||place.name;
+    cap.textContent=picture.caption||"";count.textContent=String(current+1).padStart(2,"0")+" / "+String(entries.length).padStart(2,"0");
+  };
+  prev.onclick=()=>{current=(current-1+entries.length)%entries.length;update();};
+  next.onclick=()=>{current=(current+1)%entries.length;update();};
+  nav.append(prev,count,next);viewer.append(img,cap,nav);gallery.append(viewer);
+  if(entries.length===1){prev.hidden=true;next.hidden=true;}
+  update();
+ }else{
+  const note=document.createElement("p");note.className="atlas-place-no-images";
+  note.textContent="DOCUMENTATION IN PROGRESS — Photographs, drawings, scans and field notes will appear here.";
+  gallery.append(note);
+ }
+}
