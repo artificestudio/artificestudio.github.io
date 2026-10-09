@@ -375,3 +375,44 @@ html,body{background:#fff}
 .radio-dock-status{display:block;font-size:9px;margin-top:.12rem;color:#555}
 @media(max-width:850px){.radio-dock{top:5.4rem;right:var(--page-pad);width:185px;padding:.45rem;background:#fff}}
 @media(min-width:851px){.contact-page .site-header{padding-right:250px}}
+
+/* Mobile: one horizontal navigation row and restrained radio placement. */
+.radio-control-icon{display:block;pointer-events:none}
+.artifice-radio .radio-skip{display:inline-grid;place-items:center;min-width:30px;min-height:32px;color:inherit;font-family:"Times New Roman",Times,serif}
+.radio-dock .radio-dock-button{display:inline-grid;place-items:center}
+@media(max-width:780px){
+  .site-header,.home-page .site-header{
+    display:flex;flex-direction:row;align-items:center;justify-content:space-between;
+    gap:8px;padding:.8rem var(--page-pad);min-height:44px;
+  }
+  .site-header .wordmark{display:flex;flex:0 0 auto;white-space:nowrap}
+  .home-page .site-header .wordmark{display:none}
+  .site-header nav,.home-page .site-header nav{
+    display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;
+    justify-content:flex-end;gap:clamp(7px,2.25vw,15px);
+    margin-left:auto;min-width:0;white-space:nowrap;text-align:right;
+  }
+  .site-header nav a,.home-page .site-header nav a{
+    font-size:clamp(10px,2.6vw,13px);letter-spacing:0;line-height:1.2;
+  }
+  .home-page .site-header nav{justify-content:flex-start;margin-left:0}
+  .radio-dock{
+    position:fixed;top:48px;right:var(--page-pad);
+    width:auto;max-width:calc(100vw - 2 * var(--page-pad));
+    min-width:176px;padding:.25rem .4rem;background:rgba(255,255,255,.97);
+    box-shadow:none;z-index:60;
+  }
+  .radio-dock-meta,.radio-dock-status,.radio-dock-bottom{display:none}
+  .radio-dock-row{gap:8px}
+  .radio-dock-track{font-size:11px}
+  .radio-dock-controls{gap:1px}
+  .radio-dock-button{min-width:26px;min-height:30px;padding:3px}
+  .radio-dock-play{min-width:34px}
+  .radio-dock .radio-control-icon{width:14px;height:14px}
+  .atlas-page .atlas-main{padding-top:clamp(7.5rem,15vh,9rem)}
+}
+@media(max-width:360px){
+ .site-header nav,.home-page .site-header nav{gap:6px}
+ .site-header nav a,.home-page .site-header nav a{font-size:10px}
+ .site-header .wordmark span,.site-header .wordmark{font-size:11px}
+}

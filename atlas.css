@@ -85,3 +85,10 @@
 .atlas-tooltip-info{padding:.75rem .85rem;line-height:1.35;}
 .atlas-tooltip-info strong{display:block;font-weight:normal;font-size:1.12rem;margin-bottom:.25rem;}
 @media(max-width:780px){.atlas-page .atlas-marker{width:15px!important;height:15px!important;min-width:15px!important}}
+
+/* Map control icons inherit ARTIFICE black instead of Safari's blue button tint. */
+.atlas-map-controls button{
+ color:#111;-webkit-appearance:none;appearance:none;
+ border-radius:0;-webkit-tap-highlight-color:transparent;
+}
+.atlas-map-controls button svg{color:inherit;stroke:currentColor}
