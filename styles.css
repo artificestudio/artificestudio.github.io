@@ -176,11 +176,11 @@ html,body{background:#fff}
 .hero-babel-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   background: url("assets/home/babel2%20transparent.png") center / cover no-repeat;
   opacity: 1;
 }
 .hero .film-shade { z-index: 1; pointer-events: none; }
-.hero .hero-content, .hero .hero-caption { z-index: 2; }
-.hero .sound-toggle { z-index: 3; }
+.hero .hero-content, .hero .hero-caption { z-index: 3; }
+.hero .sound-toggle { z-index: 4; }
