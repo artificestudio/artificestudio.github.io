@@ -13,6 +13,20 @@ if(!place){
  $("place-year").textContent=place.year?"Construction / opening: "+place.year:"Construction date under review";
  $("place-description").textContent=place.description||"";
  $("place-category").textContent=categoryLabel(place.category);
+ const research=$("place-research");
+ for(const [label,value] of [
+  ["Programme",place.program],
+  ["Floor area",place.area],
+  ["Condition / research notes",place.condition],
+  ["Location to verify",place.locationNote]
+ ]){
+  if(!value)continue;
+  const section=document.createElement("p");
+  const title=document.createElement("strong");title.textContent=label+" — ";
+  section.append(title,document.createTextNode(value));
+  research.append(section);
+ }
+
 
  for(const tag of place.tags||[]){
   const link=document.createElement("a");
