@@ -23,9 +23,6 @@ function rest(path,options={}){
 }
 function configureBlackWhite(style){
  const s=JSON.parse(JSON.stringify(style));
- // Draw labels using locally available Times New Roman, rather than OSM's font atlas.
- // Asian scripts fall back to the system's serif fonts where Times has no glyph.
- delete s.glyphs;
  for(const layer of s.layers){
    const id=(layer.id||"").toLowerCase(),sourceLayer=(layer["source-layer"]||"").toLowerCase();
    const water=/(water|ocean|lake|river|sea)/.test(id+" "+sourceLayer);
@@ -33,9 +30,6 @@ function configureBlackWhite(style){
    const road=/(road|street|transportation|highway|bridge|tunnel|rail)/.test(id+" "+sourceLayer);
    const building=/(building)/.test(id+" "+sourceLayer);
    const placeLabel=layer.type==="symbol";
-   if(placeLabel){
-     layer.layout={...(layer.layout||{}),"text-font":["Times New Roman","Times","Noto Serif CJK JP","Noto Serif CJK KR","serif"]};
-   }
    if(layer.type==="background"){layer.paint={"background-color":"#080808"};continue;}
    if(layer.type==="fill"){
      layer.paint={"fill-color":water?"#ffffff":building?"#252525":"#080808","fill-opacity":1};
