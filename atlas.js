@@ -22,7 +22,7 @@ $("atlas-home").onclick=()=>view.animate({center:homeCenter,zoom:1.4,duration:50
 $("atlas-zoom-in").onclick=()=>view.animate({zoom:Math.min(view.getZoom()+1,19),duration:250});
 $("atlas-zoom-out").onclick=()=>view.animate({zoom:Math.max(view.getZoom()-1,1),duration:250});
 const dialog=$("propose-dialog"),form=$("propose-form");
-$("propose-button").onclick=()=>{dialog.showModal();selectMode=true;$("proposal-status").textContent=configured?"":"Public submissions require the site's contribution service to be connected."};
+$("propose-button").onclick=()=>{dialog.show();selectMode=true;$("proposal-status").textContent=configured?"":"Public submissions require the site's contribution service to be connected."};
 dialog.querySelector("[data-close]").onclick=()=>dialog.close();
 dialog.addEventListener("close",()=>{selectMode=false;if(pin)map.removeOverlay(pin);pin=null});
 map.on("singleclick",e=>{if(!selectMode)return;chosen=ol.proj.transform(e.coordinate,projection,"EPSG:4326");if(pin)map.removeOverlay(pin);const el=document.createElement("span");el.className="atlas-proposal-pin";pin=new ol.Overlay({element:el,position:e.coordinate,positioning:"center-center"});map.addOverlay(pin);$("propose-coordinate").textContent=chosen[1].toFixed(5)+"° N / "+chosen[0].toFixed(5)+"° E"});
