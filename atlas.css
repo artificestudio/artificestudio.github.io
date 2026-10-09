@@ -17,3 +17,34 @@
 .atlas-stage .maplibregl-ctrl-attrib a{color:#111}
 .atlas-stage .maplibregl-ctrl-bottom-right{bottom:3rem}
 @media(max-width:780px){.atlas-marker{width:17px!important;height:17px!important;min-width:17px}}
+
+/* Atlas: header spacing, responsive map controls and taxonomy */
+.atlas-page .atlas-main{padding-top:clamp(5.5rem,9vh,7.5rem)}
+.atlas-page .atlas-heading{margin-bottom:1.25rem}
+.atlas-map-controls button{display:grid;place-items:center;line-height:1}
+.atlas-map-controls svg{display:block;pointer-events:none}
+.atlas-filters{margin-bottom:2rem}
+.atlas-filters-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 0 .65rem;font-size:.72rem;letter-spacing:.04em}
+.atlas-filter-options{display:flex;flex-wrap:wrap;gap:.38rem;margin-bottom:1.35rem}
+.atlas-filter-chip{font: .85rem "Times New Roman",Times,serif;border:1px solid #999;background:#fff;color:#111;padding:.36rem .64rem;cursor:pointer;transition:background .15s,color .15s}
+.atlas-filter-chip:hover,.atlas-filter-chip:focus-visible{background:#f3d32b;color:#111;border-color:#111}
+.atlas-filter-chip.is-active{background:#111;color:#fff;border-color:#111}
+.atlas-filter-chip.is-active:hover{background:#333;color:#fff}
+.atlas-filters-search{display:flex;align-items:center;gap:1rem;padding:0 0 1.4rem;border-bottom:1px solid #111}
+.atlas-filters-search label,.atlas-filters-search span{font-size:.72rem;white-space:nowrap;letter-spacing:.03em}
+.atlas-filters-search input{min-width:0;flex:1;border:0;border-bottom:1px solid #999;border-radius:0;padding:.45rem 0;background:#fff;color:#111;font:1rem "Times New Roman",Times,serif;outline-offset:3px}
+.atlas-list-item{grid-template-columns:minmax(0,1fr) auto auto}
+.atlas-entry-type{font-size:.78rem;color:#555}
+.atlas-no-results{padding:2rem 0;color:#555}
+.atlas-page .site-header{z-index:20}
+@media(max-width:780px){
+ .atlas-page .atlas-main{padding-top:6.5rem}
+ .atlas-filter-options{gap:.32rem}
+ .atlas-filter-chip{font-size:.8rem;padding:.45rem .55rem;min-height:36px}
+ .atlas-filters-search{display:grid;grid-template-columns:1fr auto;gap:.65rem}
+ .atlas-filters-search label{grid-column:1 / -1}
+ .atlas-list-item{grid-template-columns:minmax(0,1fr) auto}
+ .atlas-list-item .atlas-entry-type{grid-column:1 / -1;grid-row:2}
+ .atlas-list-item small{grid-column:2;grid-row:1}
+}
+.atlas-detail-tags{display:flex;gap:.6rem;flex-wrap:wrap}.atlas-detail-tag{font-size:.87rem;color:#111;text-decoration:underline;text-underline-offset:.2rem}
