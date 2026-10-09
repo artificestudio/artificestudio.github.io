@@ -63,3 +63,7 @@
 .atlas-copy-proposal:hover,.atlas-copy-proposal:focus-visible{background:#f3d32b}
 .atlas-proposal-status{min-height:2.2em;font-size:.85rem;line-height:1.3}
 @media(max-width:780px){.atlas-proposal-actions button{min-height:44px}}
+
+.atlas-editorial-intro{font-size:clamp(1.15rem,1.6vw,1.55rem);line-height:1.3;max-width:800px;margin:0 0 2.5rem}
+.atlas-editorial-intro a{color:inherit;text-decoration:underline;text-underline-offset:.2em}
+.atlas-editorial-intro a:hover{background:#f3d32b}
