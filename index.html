@@ -154,7 +154,7 @@
       // Nine decimals ensure that the time visibly changes in real time.
       import("./content/places.js").then(({ seedPlaces }) => {
         const candidates = seedPlaces.filter(place =>
-          /^\\d{4}$/.test(String(place.year || "").trim()) &&
+          /^\d{4}$/.test(String(place.year || "").trim()) &&
           Number(place.year) <= new Date().getFullYear() &&
           Number(place.year) >= 1800 &&
           place.id && place.name
