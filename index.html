@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#111111" />
     <title>ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css?v=20261010-menu-left" />
+    <link rel="stylesheet" href="styles.css?v=20261010-radio-time" />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -50,8 +50,24 @@
         <div class="hero-content">
           <h1 id="hero-title">ARTIFICE</h1>
         </div>
-        <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="auto" autoplay loop></audio>
-        <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play background music" aria-pressed="false">sound on</button>
+        <aside class="artifice-time" aria-label="ARTIFICE time archive">
+          <p class="time-small">ARTIFICE TIME <span class="time-sequence" id="time-sequence">01</span></p>
+          <p class="time-elapsed" id="time-elapsed">Loading archive…</p>
+          <p class="time-place" id="time-place">Architecture, time and memory</p>
+          <a class="time-link" id="time-link" href="atlas.html">View in atlas</a>
+          <p class="time-method">Approximate years since recorded opening or construction</p>
+        </aside>
+        <div class="artifice-radio" aria-label="ARTIFICE radio">
+          <p class="radio-small">ARTIFICE RADIO <span>001</span></p>
+          <p class="radio-track">TECHNO MART</p>
+          <div class="radio-controls">
+            <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play Techno Mart recording" aria-pressed="false">PLAY</button>
+            <span class="radio-status" id="radio-status" role="status">PRESS PLAY TO LISTEN</span>
+          </div>
+          <div class="radio-progress" aria-hidden="true"><div id="radio-progress-fill"></div></div>
+          <p class="radio-clock" id="radio-clock">00:00 / 00:00</p>
+        </div>
+        <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="metadata" autoplay loop></audio>
       </section>
     </main>
     <script>
@@ -70,50 +86,91 @@
       startDesktopFilm();
       desktopFilm.addEventListener("change", startDesktopFilm);
 
+      // Existing Techno Mart audio, presented as ARTIFICE Radio.
       const soundtrack = document.getElementById("home-soundtrack");
       const soundToggle = document.getElementById("sound-toggle");
-      let soundDisabled = false;
-      function updateSoundToggle() {
-        const playing = !soundtrack.paused;
-        soundToggle.textContent = playing ? "sound off" : "sound on";
-        soundToggle.setAttribute("aria-label", playing ? "Pause background music" : "Play background music");
+      const radioStatus = document.getElementById("radio-status");
+      const radioProgress = document.getElementById("radio-progress-fill");
+      const radioClock = document.getElementById("radio-clock");
+      let userPaused = false;
+      let triedAutoplay = false;
+      const twoDigits = value => String(Math.floor(value)).padStart(2, "0");
+      const timecode = seconds => Number.isFinite(seconds) ? `${twoDigits(seconds / 60)}:${twoDigits(seconds % 60)}` : "00:00";
+
+      function renderRadio() {
+        const playing = !soundtrack.paused && !soundtrack.ended;
+        soundToggle.textContent = playing ? "PAUSE" : "PLAY";
+        soundToggle.setAttribute("aria-label", playing ? "Pause Techno Mart recording" : "Play Techno Mart recording");
         soundToggle.setAttribute("aria-pressed", String(playing));
+        radioStatus.textContent = playing ? "NOW PLAYING" : "PRESS PLAY TO LISTEN";
+        const duration = soundtrack.duration;
+        radioClock.textContent = timecode(soundtrack.currentTime) + " / " + timecode(duration);
+        radioProgress.style.width = Number.isFinite(duration) && duration > 0 ? Math.min(100, soundtrack.currentTime / duration * 100) + "%" : "0%";
       }
-      function playSoundtrack() {
-        if (soundDisabled || !soundtrack.paused) return;
-        soundtrack.play().catch(updateSoundToggle);
+      async function playRadio() {
+        try { await soundtrack.play(); } catch (_) { renderRadio(); }
       }
-      soundtrack.addEventListener("play", updateSoundToggle);
-      soundtrack.addEventListener("playing", updateSoundToggle);
-      soundtrack.addEventListener("pause", updateSoundToggle);
       soundToggle.addEventListener("click", () => {
-        if (soundtrack.paused) {
-          soundDisabled = false;
-          playSoundtrack();
-        } else {
-          soundDisabled = true;
-          soundtrack.pause();
-        }
+        if (!soundtrack.paused) { userPaused = true; soundtrack.pause(); }
+        else { userPaused = false; playRadio(); }
       });
-      function startSoundAfterInteraction(event) {
-        if (event.target !== soundToggle) playSoundtrack();
+      ["play", "pause", "timeupdate", "loadedmetadata", "ended"].forEach(event => soundtrack.addEventListener(event, renderRadio));
+      // Browser autoplay policies vary. Retry only on the visitor's first interaction.
+      function unlockRadio(event) {
+        if (userPaused || !soundtrack.paused || event.target === soundToggle) return;
+        playRadio();
+        document.removeEventListener("pointerdown", unlockRadio);
+        document.removeEventListener("keydown", unlockRadio);
       }
-      document.addEventListener("pointerdown", startSoundAfterInteraction);
-      document.addEventListener("mousedown", startSoundAfterInteraction);
-      document.addEventListener("touchstart", startSoundAfterInteraction, { passive: true });
-      document.addEventListener("touchend", startSoundAfterInteraction, { passive: true });
-      document.addEventListener("click", startSoundAfterInteraction);
-      document.addEventListener("keydown", startSoundAfterInteraction);
-      window.addEventListener("pageshow", () => {
-        updateSoundToggle();
-        playSoundtrack();
-      });
+      document.addEventListener("pointerdown", unlockRadio);
+      document.addEventListener("keydown", unlockRadio);
       document.addEventListener("visibilitychange", () => {
-        if (document.hidden) soundtrack.pause();
-        else playSoundtrack();
+        if (document.hidden && !soundtrack.paused) soundtrack.pause();
+        else if (!document.hidden && !userPaused && triedAutoplay) playRadio();
       });
-      updateSoundToggle();
-      playSoundtrack();
+      triedAutoplay = true;
+      playRadio();
+      renderRadio();
+
+      // Only dated Atlas records qualify. Exact construction day is not
+      // known, so we display approximate full years, never fake day counts.
+      import("./content/places.js").then(({ seedPlaces }) => {
+        const candidates = seedPlaces.filter(place =>
+          /^\d{4}$/.test(String(place.year || "").trim()) &&
+          Number(place.year) <= new Date().getFullYear() &&
+          Number(place.year) >= 1800 &&
+          place.id && place.name
+        );
+        const timeElapsed = document.getElementById("time-elapsed");
+        const timePlace = document.getElementById("time-place");
+        const timeLink = document.getElementById("time-link");
+        const sequence = document.getElementById("time-sequence");
+        if (!candidates.length) {
+          timeElapsed.textContent = "ARCHIVE IN PROGRESS";
+          return;
+        }
+        let queue = [];
+        let number = 0;
+        function nextPlace() {
+          if (!queue.length) {
+            queue = [...candidates];
+            for (let i = queue.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [queue[i], queue[j]] = [queue[j], queue[i]];
+            }
+          }
+          const place = queue.pop();
+          const years = new Date().getFullYear() - Number(place.year);
+          timeElapsed.textContent = years + " YEARS";
+          timePlace.textContent = place.name.toUpperCase() + " / " + place.city.toUpperCase() + " / " + place.year;
+          timeLink.href = "atlas-place.html?id=" + encodeURIComponent(place.id);
+          sequence.textContent = String(++number).padStart(2, "0");
+        }
+        nextPlace();
+        setInterval(nextPlace, 5000);
+      }).catch(() => {
+        document.getElementById("time-elapsed").textContent = "ATLAS UNAVAILABLE";
+      });
     </script>
   </body>
 </html>
