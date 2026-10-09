@@ -9,7 +9,7 @@ const images=project.images.map((picture,index)=>[
 if(!images.length)throw Error("Project must include at least one image");
 
 // All display information comes from content/projects.js.
-document.title=project.title+" — ARTIFICE";
+document.title=project.title+" | ARTIFICE";
 const pageDescription=document.querySelector('meta[name="description"]');
 if(pageDescription)pageDescription.content=(project.description?.[0]||project.title).slice(0,220);
 
@@ -35,7 +35,7 @@ const index=document.getElementById("projects-index");
 index.replaceChildren();
 for(const entry of projects){
  const a=document.createElement("a");a.href="projects.html?project="+encodeURIComponent(entry.id);
- a.textContent=entry.title+" — "+entry.city+", "+entry.country;
+ a.textContent=entry.title;
  if(entry.id===project.id)a.setAttribute("aria-current","page");
  index.append(a);
 }
