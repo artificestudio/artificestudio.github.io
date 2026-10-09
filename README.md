@@ -7,6 +7,17 @@ This website is hosted for free on **GitHub Pages**. You can add places, project
 
 > **Start here:** Nearly all day-to-day editing happens in the **`content/`** folder, plus image uploads to **`assets/`**. The `scripts/` folder is for website behavior; do not modify it to add content.
 
+
+## Homepage: ARTIFICE Radio and ARTIFICE Time
+
+The homepage (index.html) has two minimalist modules rendered above the existing film and original Babel drawing.
+
+**ARTIFICE Radio** plays the existing Techno Mart recording at `assets/artifice-ambient.mp3` on repeat. Browsers commonly block unmuted audio autoplay. The site tries playing on arrival, then waits for a user interaction if blocked. Visitors can always press PLAY or PAUSE. To swap the track, replace the audio source in `index.html` and update the displayed `TECHNO MART` title. Do not rename the existing audio asset accidentally.
+
+**ARTIFICE Time** draws a random place from `content/places.js` every five seconds. It includes only entries whose `year` is precisely four digits such as `"1966"`; descriptive or provisional dates like `"1970s"`, `"2007 (first phase)"` or `"2022 (renovated and renamed)"` are excluded on purpose. It displays approximate **calendar years**, not made-up exact elapsed days, because the inventory usually lacks construction months and days. Each clock entry links to the place's Atlas record.
+
+The homepage player and time layouts are defined near the bottom of `styles.css` and use Times New Roman. No external services or database are needed.
+
 ## 1. Where everything is
 
 ```text
