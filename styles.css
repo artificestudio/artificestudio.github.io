@@ -92,3 +92,19 @@ nav a:hover, nav a:focus-visible, nav a[aria-current="page"] { opacity: 1; }
 .project-atlas-link:hover,.project-atlas-link:focus-visible{border-bottom-color:currentColor}
 .project-atlas-dot{display:inline-block;width:8px;height:8px;flex:none;background:#ce231a;border-radius:50%}
 @media(max-width:780px){.projects-page .project-content{padding-top:clamp(7rem,16svh,9rem)}}
+
+/* Automatic ARTIFICE projects index (edit content/projects.js, not this markup) */
+.project-index-section{padding-top:5rem;max-width:62rem}
+.project-index-section h2{margin:0 0 1rem;font-size:.85rem;font-weight:normal;text-transform:uppercase;letter-spacing:.05em}
+.project-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem 2.5rem}
+.project-index a{display:block;padding:.9rem 0;border-top:1px solid #ccc;text-decoration:none;color:inherit;font-size:1.05rem}
+.project-index a[aria-current="page"]{color:#666}
+.project-index a:hover,.project-index a:focus-visible{background:#f8ed9a}
+.atlas-place-figure{margin:0;max-width:100%}
+.atlas-place-figure img{display:block;width:100%;height:auto;max-height:65svh;object-fit:contain}
+.atlas-place-figure figcaption{margin-top:.6rem;font-size:.85rem}
+.atlas-place-image-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:1rem 0}
+.atlas-place-image-nav button{background:#fff;border:0;border-bottom:1px solid #111;color:inherit;font:inherit;cursor:pointer}
+.atlas-place-image-nav button[hidden]{display:none}
+.atlas-place-no-images{padding:6rem 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd}
+@media(max-width:780px){.project-index{grid-template-columns:1fr}.project-index-section{padding-top:3rem}}
