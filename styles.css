@@ -268,3 +268,72 @@ html,body{background:#fff}
   }
   .home-page .site-header nav a { font-size: .86rem; }
 }
+
+/* ARTIFICE Time and Radio, minimalist Times New Roman homepage instruments. */
+.artifice-time, .artifice-radio {
+  position: absolute;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  z-index: 5;
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  text-shadow: 0 1px 5px #000, 0 1px 20px rgba(0,0,0,.75);
+}
+.artifice-time { left: var(--page-pad); width: min(43vw, 25rem); }
+.artifice-radio { right: var(--page-pad); width: min(30vw, 16rem); text-align: left; }
+.time-small, .radio-small {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 .7rem;
+  font-size: .67rem;
+  line-height: 1.2;
+  letter-spacing: .06em;
+}
+.time-elapsed {
+  font-size: clamp(1.6rem, 3.15vw, 3.8rem);
+  line-height: .95;
+  letter-spacing: -.02em;
+  margin: 0 0 .5rem;
+  font-variant-numeric: tabular-nums;
+}
+.time-place { margin: 0 0 .4rem; font-size: clamp(.73rem, 1vw, .9rem); line-height: 1.25; }
+.time-link { color: inherit; font-size: .73rem; text-decoration: underline; text-underline-offset: .2em; }
+.time-link:hover, .time-link:focus-visible { color: #f5e15a; }
+.time-method { font-size: .64rem; line-height: 1.25; opacity: .78; margin: .65rem 0 0; }
+.radio-track { font-size: clamp(1.1rem, 1.7vw, 1.65rem); margin: 0 0 .75rem; letter-spacing: -.01em; }
+.radio-controls { display: flex; align-items: center; gap: .85rem; }
+.artifice-radio .sound-toggle {
+  position: static;
+  z-index: auto;
+  flex: none;
+  font: inherit;
+  border: 1px solid rgba(255,255,255,.7);
+  padding: .45rem .6rem;
+  font-size: .75rem;
+  line-height: 1;
+  min-width: 3.6rem;
+  background: rgba(0,0,0,.25);
+  color: #fff;
+}
+.artifice-radio .sound-toggle:hover, .artifice-radio .sound-toggle:focus-visible { background: #fff; color: #111; text-decoration: none; }
+.radio-status { font-size: .63rem; letter-spacing: .02em; }
+.radio-progress { margin-top: .9rem; height: 1px; width: 100%; background: rgba(255,255,255,.5); overflow: hidden; }
+#radio-progress-fill { height: 100%; width: 0; background: #fff; transition: width .2s linear; }
+.radio-clock { margin: .4rem 0 0; font-size: .67rem; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 780px) {
+  .artifice-time, .artifice-radio { bottom: calc(1.25rem + env(safe-area-inset-bottom)); }
+  .artifice-time { width: 53%; }
+  .artifice-radio { width: 38%; }
+  .time-elapsed { font-size: clamp(1.25rem, 6vw, 2.5rem); }
+  .time-place { font-size: .7rem; }
+  .time-small, .radio-small { font-size: .59rem; }
+  .time-method { font-size: .55rem; }
+  .radio-track { font-size: .96rem; }
+  .radio-status { font-size: .57rem; }
+}
+@media (max-width: 390px) {
+  .artifice-time { width: 52%; }
+  .artifice-radio { width: 41%; }
+  .time-method { display: none; }
+  .radio-controls { gap: .3rem; flex-wrap: wrap; }
+}
