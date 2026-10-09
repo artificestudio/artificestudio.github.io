@@ -1,0 +1,59 @@
+/* ARTIFICE mobile layout, isolated from legacy mobile styles. */
+@media (max-width: 850px) {
+ html,body { overflow-x:hidden; }
+ .site-header,.home-page .site-header {
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  display:flex!important;flex-flow:row nowrap!important;align-items:center!important;
+  justify-content:space-between!important;gap:8px!important;
+  min-height:48px!important;padding:10px 14px!important;width:100%!important;
+  background:#fff!important;color:#111!important;z-index:90!important;
+ }
+ .site-header .wordmark { display:inline-flex!important;flex:0 0 auto!important;white-space:nowrap!important; }
+ .home-page .site-header { background:transparent!important;color:#fff!important; }
+ .home-page .site-header .wordmark { display:none!important; }
+ .site-header nav,.home-page .site-header nav {
+  display:flex!important;flex-flow:row nowrap!important;align-items:center!important;
+  justify-content:flex-end!important;text-align:right!important;gap:clamp(7px,2.4vw,13px)!important;
+  margin:0 0 0 auto!important;min-width:0!important;white-space:nowrap!important;
+ }
+ .site-header nav a,.home-page .site-header nav a {
+  display:inline-block!important;white-space:nowrap!important;
+  font:clamp(10px,2.6vw,13px)/1.2 "Times New Roman",Times,serif!important;
+  letter-spacing:0!important;opacity:1!important;
+ }
+ body:not(.home-page) .site-header nav a { color:#111!important; }
+ .projects-page .project-content { padding-top:112px!important; }
+ .projects-page .project-heading { margin-bottom:18px!important; }
+ .projects-page .project-gallery { margin-top:0!important; }
+ .projects-page .project-frame {
+  height:auto!important;min-height:0!important;max-height:none!important;
+  overflow:visible!important;display:flex!important;align-items:center!important;
+  justify-content:center!important;
+ }
+ .projects-page .project-frame img {
+  display:block!important;width:auto!important;height:auto!important;
+  max-width:100%!important;max-height:65svh!important;object-fit:contain!important;
+ }
+ .atlas-page .atlas-main { padding-top:116px!important; }
+ .about-poem-page .about-poem,.contact-page:not(.projects-page):not(.atlas-page) .contact-content {padding-top:max(120px,16vh)!important;}
+ .radio-dock {
+  position:fixed!important;top:48px!important;right:0!important;left:0!important;
+  width:100%!important;min-width:0!important;max-width:none!important;
+  padding:5px 14px!important;z-index:89!important;
+  background:#fff!important;box-shadow:none!important;
+  border:0!important;min-height:36px!important;
+  color:#111!important;text-shadow:none!important;
+ }
+ .radio-dock-row {display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important}
+ .radio-dock-track {font:11px/1.2 "Times New Roman",Times,serif!important;white-space:nowrap!important}
+ .radio-dock-controls {display:flex!important;align-items:center!important;gap:2px!important}
+ .radio-dock-button {min-width:31px!important;min-height:28px!important;display:grid!important;place-items:center!important;font:11px "Times New Roman",Times,serif!important;color:#111!important;background:none!important;border:0!important}
+ .radio-dock-meta,.radio-dock-status,.radio-dock-bottom {display:none!important}
+ .radio-dock .radio-control-icon{display:block!important;width:16px!important;height:16px!important;fill:none!important;stroke:#111!important}
+}
+@media(max-width:365px){
+ .site-header,.home-page .site-header{padding-left:9px!important;padding-right:9px!important}
+ .site-header nav,.home-page .site-header nav{gap:6px!important}
+ .site-header nav a,.home-page .site-header nav a{font-size:10px!important}
+ .wordmark,.wordmark span{font-size:10px!important}
+}
