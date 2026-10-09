@@ -171,3 +171,16 @@ html,body{background:#fff}
  .research-sites article:nth-child(3){margin-left:5%}
  .research-footnote{margin:7rem 0 0}
 }
+
+/* Original transparent Babel drawing layered over the homepage film. */
+.hero-babel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url("assets/home/babel2-transparent.png") center / cover no-repeat;
+  opacity: .20;
+}
+.hero .film-shade { z-index: 1; pointer-events: none; }
+.hero .hero-content, .hero .hero-caption { z-index: 2; }
+.hero .sound-toggle { z-index: 3; }
