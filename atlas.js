@@ -1,8 +1,9 @@
 import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "./atlas-data.js";
-import {SUPABASE_URL,SUPABASE_ANON_KEY} from "./atlas-config.js";
+import {SUPABASE_URL,SUPABASE_ANON_KEY,TURNSTILE_SITE_KEY} from "./atlas-config.js";
 
 const $=id=>document.getElementById(id);
 const configured=Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+const contributionsReady=configured&&Boolean(TURNSTILE_SITE_KEY);
 const tooltip=$("atlas-tooltip"),list=$("atlas-list"),mapStatus=$("atlas-map-status");
 let places=[...seedPlaces], selectMode=false, chosen=null, selectedMarker=null;
 const markers=[];
@@ -150,7 +151,7 @@ function renderList(){
 async function loadPlaces(){
  if(configured){
   try{
-   const r=await rest("atlas_places?status=eq.published&select=id,name,city,country,year,longitude,latitude,description,project,source&order=name.asc");
+   const r=await rest("atlas_places?status=eq.published&select=id,name,city,country,year,longitude,latitude,description,project,source,category,tags&order=name.asc");
    if(r.ok){
     for(const p of await r.json()){
       const converted={...p,coordinates:[p.longitude,p.latitude],tags:Array.isArray(p.tags)?p.tags:[],category:p.category||"other"};
@@ -172,9 +173,26 @@ $("atlas-home").onclick=()=>map.easeTo({...HOME,duration:500});
 $("atlas-zoom-in").onclick=()=>map.zoomIn({duration:300});
 $("atlas-zoom-out").onclick=()=>map.zoomOut({duration:300});
 const dialog=$("propose-dialog"),form=$("propose-form");
+for(const category of CATEGORIES){
+ const option=document.createElement("option");
+ option.value=category.id;option.textContent=category.label;
+ $("propose-category").append(option);
+}
+let captchaWidget=null;
+function initCaptcha(){
+ if(!contributionsReady||captchaWidget!==null||!window.turnstile?.render)return;
+ captchaWidget=window.turnstile.render("#atlas-turnstile",{
+  sitekey:TURNSTILE_SITE_KEY,
+  theme:"light",
+  appearance:"always"
+ });
+}
 $("propose-button").onclick=()=>{
  dialog.show();selectMode=true;
- $("proposal-status").textContent=configured?"":"Public submissions will be enabled after the editorial service is connected.";
+ $("proposal-status").textContent=contributionsReady?
+   "Click on the map to choose the location, then complete your proposal.":
+   "Contributions are not enabled yet. ARTIFICE is setting up moderation.";
+ initCaptcha();
 };
 dialog.querySelector("[data-close]").onclick=()=>dialog.close();
 dialog.addEventListener("close",()=>{selectMode=false;selectedMarker?.remove();selectedMarker=null});
@@ -188,15 +206,44 @@ map.on("click",e=>{
 });
 form.onsubmit=async e=>{
  e.preventDefault();
- if(!chosen){$("proposal-status").textContent="Click or tap the map to choose a point first.";return;}
- if(!configured){$("proposal-status").textContent="Contributions are not enabled yet.";return;}
+ const status=$("proposal-status");
+ if(!chosen){status.textContent="Click or tap the map to choose the location first.";return;}
+ if(!contributionsReady){status.textContent="Contributions are not enabled yet.";return;}
+ initCaptcha();
+ const captcha=window.turnstile?.getResponse(captchaWidget);
+ if(!captcha){status.textContent="Complete the spam verification before submitting.";return;}
  const d=new FormData(form);
- const body={name:String(d.get("name")).trim(),city:String(d.get("city")).trim(),country:String(d.get("country")).trim(),year:String(d.get("year")).trim(),description:String(d.get("description")).trim(),source:String(d.get("source")).trim()||null,longitude:chosen[0],latitude:chosen[1],status:"pending"};
+ const button=form.querySelector('[type="submit"]');
+ button.disabled=true;status.textContent="Submitting…";
+ const tags=String(d.get("tags")||"").split(",").map(tag=>tag.trim().toLowerCase()).filter(tag=>/^[a-z0-9]+(-[a-z0-9]+)*$/.test(tag)).slice(0,12);
+ const body={
+  name:String(d.get("name")||"").trim(),
+  city:String(d.get("city")||"").trim(),
+  country:String(d.get("country")||"").trim(),
+  year:String(d.get("year")||"").trim(),
+  description:String(d.get("description")||"").trim(),
+  source:String(d.get("source")||"").trim(),
+  category:String(d.get("category")||"other"),
+  tags,
+  longitude:chosen[0],latitude:chosen[1],
+  website:String(d.get("website")||""),
+  turnstileToken:captcha
+ };
  try{
-  const r=await rest("atlas_places",{method:"POST",headers:{"Prefer":"return=minimal"},body:JSON.stringify(body)});
-  $("proposal-status").textContent=r.ok?"Thank you. Your proposal will be reviewed.":"Unable to submit ("+r.status+").";
-  if(r.ok){form.reset();chosen=null;}
- }catch{$("proposal-status").textContent="Network unavailable. Please retry.";}
+  const url=SUPABASE_URL.replace(/\/$/,"")+"/functions/v1/atlas-submit";
+  const response=await fetch(url,{
+   method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_ANON_KEY},
+   body:JSON.stringify(body)
+  });
+  let result={};try{result=await response.json()}catch{}
+  if(!response.ok)throw Error(result.message||"Submission could not be saved.");
+  status.textContent="Thank you! Your proposal is awaiting review by ARTIFICE.";
+  form.reset();chosen=null;selectedMarker?.remove();selectedMarker=null;
+  if(captchaWidget!==null)window.turnstile?.reset(captchaWidget);
+ }catch(error){
+  status.textContent=error.message||"Could not submit. Please try again.";
+  if(captchaWidget!==null)window.turnstile?.reset(captchaWidget);
+ }finally{button.disabled=false;}
 };
 loadVectorBasemap();
 loadPlaces();
