@@ -151,7 +151,7 @@ function renderList(){
 async function loadPlaces(){
  if(configured){
   try{
-   const r=await rest("atlas_places?status=eq.published&select=id,name,city,country,year,longitude,latitude,description,project,source&order=name.asc");
+   const r=await rest("atlas_places?status=eq.published&select=id,name,city,country,year,longitude,latitude,description,project,source,category,tags&order=name.asc");
    if(r.ok){
     for(const p of await r.json()){
       const converted={...p,coordinates:[p.longitude,p.latitude],tags:Array.isArray(p.tags)?p.tags:[],category:p.category||"other"};

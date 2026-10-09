@@ -51,3 +51,9 @@
 
 /* MapLibre's .maplibregl-marker must retain position:absolute and JS transforms.
    Overriding with position:relative shifts coordinates when zooming and panning. */
+
+/* Moderated public submission form */
+.atlas-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+#atlas-turnstile{margin:1rem 0;min-height:0}
+.atlas-dialog select{width:100%;padding:.55rem;border:1px solid #999;background:#fff;color:#111;border-radius:0;font:inherit}
+.atlas-dialog button:disabled{opacity:.45;cursor:wait}
