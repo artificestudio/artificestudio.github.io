@@ -10,6 +10,9 @@ if(!images.length)throw Error("Project must include at least one image");
 
 // All display information comes from content/projects.js.
 document.title=project.title+" — ARTIFICE";
+const pageDescription=document.querySelector('meta[name="description"]');
+if(pageDescription)pageDescription.content=(project.description?.[0]||project.title).slice(0,220);
+
 document.getElementById("project-title").textContent=project.title;
 const locationNode=document.getElementById("project-location");
 locationNode.replaceChildren();
@@ -49,9 +52,9 @@ let wheelDistance = 0;
 let touchStartX = null;
 let suppressClick = false;
 
-images.forEach(([number]) => {
+images.forEach(([, , ,src]) => {
   const preload = new Image();
-  preload.src = images.find(item => item[0] === number)[3];
+  preload.src = src;
 });
 
 function showImage(index) {
