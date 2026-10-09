@@ -75,3 +75,11 @@ Example:
 Use a new Git branch for major changes and a GitHub Pull Request to review them. GitHub Pages publishes the `main` branch. You can see deployment status under **Actions → pages build and deployment**. If you see an outdated page after a deploy, try a hard refresh (Cmd + Shift + R).
 
 Never edit generated Git blobs manually, upload private credentials, or copy experimental changes over the stable live map without testing.
+
+## Project ↔ Atlas connection
+
+The small red pin and **Paris, France** in `projects.html` links to `atlas.html?place=maine-montparnasse`. The Atlas checks the `place` URL parameter and centers the map on the matching `id` in `atlas-data.js`. To use this for future projects, change the ID in the link to a different Atlas record.
+
+**Important marker alignment:** CSS must not override MapLibre's `position:absolute` on the `.maplibregl-marker` elements. The marker styling in `atlas.css` intentionally avoids `position:relative`. Keep coordinates in `atlas-data.js` as `[longitude, latitude]`.
+
+The reduced project-page top spacing is defined by `.projects-page .project-content` in `styles.css`, including its mobile override.
