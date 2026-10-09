@@ -337,3 +337,25 @@ html,body{background:#fff}
   .time-method { display: none; }
   .radio-controls { gap: .3rem; flex-wrap: wrap; }
 }
+
+/* Live years counter and recording transport. */
+.time-elapsed { display: flex; align-items: baseline; flex-wrap: wrap; gap: .35em; font-size: clamp(1.3rem,2.4vw,2.8rem); }
+#time-elapsed { font-variant-numeric: tabular-nums; letter-spacing: -.035em; }
+.time-unit { font-size: .5em; letter-spacing: .03em; }
+.radio-controls { gap: .45rem; }
+.artifice-radio .radio-skip {
+  padding: .4rem .25rem;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: 1rem "Times New Roman",Times,serif;
+  cursor: pointer;
+  text-shadow: inherit;
+}
+.artifice-radio .radio-skip:hover,.artifice-radio .radio-skip:focus-visible { color: #f5e15a; }
+.artifice-radio .radio-status { display: block; margin: .6rem 0 0; }
+@media(max-width:780px){
+ .time-elapsed { font-size: clamp(.99rem,3.9vw,1.7rem); gap: .2em; }
+ .radio-controls { flex-wrap: nowrap; justify-content: space-between; }
+ .artifice-radio .radio-skip { font-size: 1rem; min-width: 28px; min-height: 34px; }
+}
