@@ -85,3 +85,10 @@ nav a:hover, nav a:focus-visible, nav a[aria-current="page"] { opacity: 1; }
   .project-description { margin-top: 3rem; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-film { display: none; } .hero-film-mobile { display: block; background-image: url("assets/home-preview.jpg"); } }
+
+/* Dialogue Machine project: compact top spacing and Atlas place link */
+.projects-page .project-content{padding-top:clamp(5.8rem,9vh,7.8rem)}
+.project-atlas-link{display:inline-flex;align-items:center;gap:.4rem;color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+.project-atlas-link:hover,.project-atlas-link:focus-visible{border-bottom-color:currentColor}
+.project-atlas-dot{display:inline-block;width:8px;height:8px;flex:none;background:#ce231a;border-radius:50%}
+@media(max-width:780px){.projects-page .project-content{padding-top:clamp(7rem,16svh,9rem)}}

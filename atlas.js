@@ -161,6 +161,12 @@ async function loadPlaces(){
   }catch(e){console.warn("Atlas records unavailable",e);}
  }
  renderFilters();renderList();resetMarkers();
+ const selectedId=urlState.get("place");
+ const selectedPlace=places.find(p=>p.id===selectedId);
+ if(selectedPlace?.coordinates) {
+   // A project-to-atlas URL centers precisely on the associated building.
+   map.jumpTo({center:selectedPlace.coordinates,zoom:13});
+ }
 }
 $("atlas-home").onclick=()=>map.easeTo({...HOME,duration:500});
 $("atlas-zoom-in").onclick=()=>map.zoomIn({duration:300});
