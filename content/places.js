@@ -40,7 +40,9 @@ export const TAG_LABELS = {
   "mixed-program": "Mixed programme",
   "cultural-program": "Cultural programme",
   "transit-oriented": "Transit-oriented",
-  "1970s": "1970s"
+  "1970s": "1970s",
+  "commercial-obsolescence": "Commercial obsolescence",
+  "urban-memory": "Urban memory"
 };
 
 export const seedPlaces = [
@@ -175,6 +177,59 @@ export const seedPlaces = [
     locationNote: "The inventory only says 'Wangsimni'. Mapped provisionally to the Bitplex / Enter-6 complex at Wangsimni Station.",
     category: "mixed-use-complex", tags: ["retail", "mixed-program", "transit-oriented"],
     description: "Shopping and entertainment complex integrated with Wangsimni Station."
+  },
+
+  // FOUR ADDITIONAL SITES IN JAPAN, SOUTH KOREA, HONG KONG AND TAIWAN.
+  {
+    id: "aeon-sanda-woody-town",
+    name: "AEON Sanda Woody Town",
+    city: "Sanda", country: "Japan", year: "",
+    coordinates: [135.18746, 34.90853],
+    coordinateSource: "https://mapcarta.com/W506631400",
+    category: "shopping-mall",
+    tags: ["retail", "cultural-program"],
+    program: "Shopping, restaurants and cinema",
+    description: "Shopping complex in Sanda Woody Town, Hyogo Prefecture, with a multi-screen cinema. It forms part of the commercial centre of a planned suburban community."
+  },
+  {
+    id: "time-terrace-dongtan",
+    name: "Time Terrace Dongtan",
+    city: "Hwaseong", country: "South Korea", year: "2022 (renovated and renamed)",
+    coordinates: [127.069312, 37.204856],
+    coordinateSource: "https://bim.purpleo.kr/article/1297",
+    locationNote: "Interpreted from 'Times Square in Dongtan'. This is the Time Terrace mall inside Metapolis, operated by the company behind Seoul Times Square. It is not the unrelated SH Times Square industrial building.",
+    category: "shopping-mall",
+    tags: ["retail", "consumerism", "mixed-program", "commercial-obsolescence"],
+    program: "Retail, restaurants, cinema and leisure",
+    condition: "Time Terrace opened after a renovation in April 2022. A change of management was reported in May 2026.",
+    description: "Shopping centre within Dongtan's Metapolis residential and commercial complex. Formerly Center Point Mall, the retail spaces were relaunched as Time Terrace in 2022.",
+    source: "https://view.asiae.co.kr/en/article/2022031709305224800"
+  },
+  {
+    id: "moko-mong-kok-east",
+    name: "MOKO (Grand Century Place)",
+    city: "Hong Kong", country: "Hong Kong", year: "1997",
+    coordinates: [114.17238, 22.32318],
+    coordinateSource: "https://mapcarta.com/W37517528",
+    locationNote: "Interpreted from 'Mong Kok East'. This is MOKO, the shopping mall beside Mong Kok East station.",
+    category: "shopping-mall",
+    tags: ["retail", "mixed-program", "transit-oriented"],
+    program: "Retail, restaurants, offices and hotel",
+    description: "Multi-level shopping complex connected to Mong Kok East station, integrated with offices and the Royal Plaza Hotel.",
+    source: "https://www.wikidata.org/wiki/Q11080935"
+  },
+  {
+    id: "qianyue-building",
+    name: "Qianyue Building (千越大樓)",
+    city: "Taichung", country: "Taiwan", year: "1970s",
+    coordinates: [120.68314, 24.13827],
+    coordinateSource: "https://explander.com/east-central-asia/taiwan/taichung/qianyue-building-taichung-taiwan/",
+    category: "mixed-use-complex",
+    tags: ["retail", "commercial-obsolescence", "urban-memory", "adaptive-reuse", "1970s"],
+    program: "Former department store, retail, dining, nightlife and residential uses",
+    condition: "Much of the building has been vacant since the decline of its commercial activities and a fire in 2005. Artists occupied parts of it between 2017 and 2021. Its present access and remaining uses require verification.",
+    description: "An ageing mixed-use commercial building near Taichung Station, known for its former rooftop restaurant and its partial reuse by artists during the Escape Plan X initiative.",
+    source: "https://www.taipeitimes.com/News/feat/archives/2025/05/13/2003836777"
   },
 
   // ADDITIONAL ARTIFICE RESEARCH PLACES (already on the Atlas; preserved)
