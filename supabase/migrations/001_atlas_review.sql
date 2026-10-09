@@ -140,10 +140,52 @@ begin
   if jsonb_typeof(coalesce(p_record->'tags','[]'::jsonb)) <> 'array' then
     raise exception 'Tags must be an array';
   end if;
-  select coalesce(array_agg(value), '{}'::text[]) into record_tags
-    from jsonb_array_elements_text(coalesce(p_record->'tags','[]'::jsonb)) as value;
+  select coalesce(array_agg(tags.value), '{}'::text[]) into record_tags
+    from jsonb_array_elements_text(coalesce(p_record->'tags','[]'::jsonb)) AS tags(value);
   if cardinality(record_tags) > 12 or
-     exists(select 1 from unnest(record_tags) as tag where tag !~ '^[a-z0-9]+(-[a-z0-9]+)*$' or length(tag)>50)
+     exists(select 1 from unnest(record_tags) AS t(value) where t.value !~ '^[a-z0-9]+(-[a-z0-9]+)*
+  then raise exception 'Invalid tags'; end if;
+
+  -- INSERT + UPDATE are one transaction. On any error, neither happens.
+  insert into public.atlas_places (
+    id,name,city,country,year,longitude,latitude,category,tags,
+    description,source,project,status
+  ) values (
+    place_id,
+    btrim(p_record->>'name'),
+    btrim(p_record->>'city'),
+    btrim(p_record->>'country'),
+    coalesce(p_record->>'year',''),
+    (p_record->>'longitude')::double precision,
+    (p_record->>'latitude')::double precision,
+    coalesce(p_record->>'category','other'),
+    record_tags,
+    coalesce(p_record->>'description',''),
+    nullif(p_record->>'source',''),
+    nullif(p_record->>'project',''),
+    place_status
+  );
+
+  update public.atlas_submissions set
+    status='approved', published_place_id=place_id,
+    editor_note=nullif(left(btrim(coalesce(p_note,'')),2000),''),
+    reviewed_at=now(),reviewed_by=auth.uid()
+  where id=p_id;
+  return place_id;
+end;
+$$;
+revoke all on function public.atlas_review_submission(uuid,text,jsonb,text) from public, anon;
+grant execute on function public.atlas_review_submission(uuid,text,jsonb,text) to authenticated;
+
+commit;
+
+-- AFTER you have set up Supabase Auth email OTP, replace the placeholders
+-- below with the two editorial email addresses, then RUN THIS ONE QUERY.
+-- insert into public.atlas_editors(email) values
+--   ('editor-one@example.com'),
+--   ('editor-two@example.com')
+-- on conflict (email) do nothing;
+ or length(t.value)>50)
   then raise exception 'Invalid tags'; end if;
 
   -- INSERT + UPDATE are one transaction. On any error, neither happens.
