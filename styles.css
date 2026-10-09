@@ -359,3 +359,19 @@ html,body{background:#fff}
  .radio-controls { flex-wrap: nowrap; justify-content: space-between; }
  .artifice-radio .radio-skip { font-size: 1rem; min-width: 28px; min-height: 34px; }
 }
+
+/* Small ARTIFICE Radio dock, fixed above interior white pages. */
+.radio-dock{position:fixed;z-index:60;right:var(--page-pad);top:.8rem;width:210px;color:#111;background:rgba(255,255,255,.97);font:12px/1.2 "Times New Roman",Times,serif;padding:.4rem 0 .55rem}
+.radio-dock-meta,.radio-dock-row,.radio-dock-bottom{display:flex;justify-content:space-between;align-items:center;gap:.35rem}
+.radio-dock-meta{font-size:10px;letter-spacing:.04em;margin-bottom:.3rem}
+.radio-dock-track{font-size:13px;white-space:nowrap}
+.radio-dock-controls{display:flex;gap:.1rem;align-items:center}
+.radio-dock-button{background:none;color:#111;border:0;padding:.2rem .3rem;font:12px "Times New Roman",Times,serif;cursor:pointer;min-height:24px}
+.radio-dock-button:hover,.radio-dock-button:focus-visible{text-decoration:underline;text-underline-offset:2px}
+.radio-dock-play{min-width:40px}
+.radio-dock-bottom{margin-top:.25rem;font-size:10px;font-variant-numeric:tabular-nums}
+.radio-dock-progress{height:1px;background:#aaa;flex:1}
+.radio-dock-progress span{display:block;height:1px;width:0;background:#111}
+.radio-dock-status{display:block;font-size:9px;margin-top:.12rem;color:#555}
+@media(max-width:850px){.radio-dock{top:5.4rem;right:var(--page-pad);width:185px;padding:.45rem;background:#fff}}
+@media(min-width:851px){.contact-page .site-header{padding-right:250px}}
