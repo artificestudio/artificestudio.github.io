@@ -1,4 +1,4 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-19";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-photos";
 import { PROPOSAL_EMAIL } from "../content/email.js";
 
 const $=id=>document.getElementById(id);
@@ -65,15 +65,30 @@ map.on("error",e=>{console.warn("Map tile/render issue:",e.error);});
 
 function showTip(p,el){
  tooltip.replaceChildren();
+ const firstPhoto=Array.isArray(p.images)?p.images.find(photo=>photo && photo.src):null;
+ if(firstPhoto){
+  const photo=document.createElement("img");
+  photo.className="atlas-tooltip-photo";
+  photo.src=firstPhoto.src;
+  photo.alt=firstPhoto.alt||("Photograph of "+p.name);
+  photo.loading="eager";
+  photo.addEventListener("error",()=>photo.remove(),{once:true});
+  tooltip.append(photo);
+ }
+ const information=document.createElement("div");
+ information.className="atlas-tooltip-info";
  const heading=document.createElement("strong");heading.textContent=p.name;
  const city=document.createElement("div");city.textContent=p.city+", "+p.country;
  const date=document.createElement("div");date.textContent=p.year?"Construction / opening: "+p.year:"Date under review";
  const type=document.createElement("div");type.textContent=categoryLabel(p.category);
- tooltip.append(heading,city,type,date);
- const container=$("atlas-map").getBoundingClientRect(),rect=el.getBoundingClientRect();
- tooltip.style.left=Math.max(8,Math.min(rect.left-container.left+18,container.width-255))+"px";
- tooltip.style.top=Math.max(8,rect.top-container.top-80)+"px";
+ information.append(heading,city,type,date);
+ tooltip.append(information);
  tooltip.hidden=false;
+ const container=$("atlas-map").getBoundingClientRect(),rect=el.getBoundingClientRect();
+ const tooltipWidth=tooltip.offsetWidth;
+ const tooltipHeight=tooltip.offsetHeight;
+ tooltip.style.left=Math.max(8,Math.min(rect.left-container.left+18,container.width-tooltipWidth-8))+"px";
+ tooltip.style.top=Math.max(8,Math.min(rect.top-container.top-tooltipHeight-10,container.height-tooltipHeight-8))+"px";
  el.classList.add("is-selected");
 }
 function openPlace(p){location.href="atlas-place.html?id="+encodeURIComponent(p.id);}

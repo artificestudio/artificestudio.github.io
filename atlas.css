@@ -63,3 +63,25 @@
 .atlas-copy-proposal:hover,.atlas-copy-proposal:focus-visible{background:#f3d32b}
 .atlas-proposal-status{min-height:2.2em;font-size:.85rem;line-height:1.3}
 @media(max-width:780px){.atlas-proposal-actions button{min-height:44px}}
+
+/* Atlas markers: simple solid red dots, no strokes, shadows or halo. */
+.atlas-page .atlas-marker{
+ width:12px!important;height:12px!important;min-width:12px!important;
+ border:0!important;border-radius:50%!important;background:#ce231a!important;
+ box-shadow:none!important;outline:0;cursor:pointer;
+}
+.atlas-page .atlas-marker:hover,.atlas-page .atlas-marker.is-selected{
+ background:#f3d32b!important;border:0!important;box-shadow:none!important;
+}
+.atlas-page .atlas-marker:focus-visible{
+ background:#f3d32b!important;outline:2px solid #111;outline-offset:3px;
+}
+.atlas-page .atlas-tooltip{
+ width:min(275px,calc(100% - 16px));max-width:275px;
+ padding:0;background:#fff;border:0;box-shadow:0 2px 16px rgba(0,0,0,.17);
+ overflow:hidden;z-index:6;font-family:"Times New Roman",Times,serif;
+}
+.atlas-tooltip-photo{display:block;width:100%;height:155px;object-fit:cover;}
+.atlas-tooltip-info{padding:.75rem .85rem;line-height:1.35;}
+.atlas-tooltip-info strong{display:block;font-weight:normal;font-size:1.12rem;margin-bottom:.25rem;}
+@media(max-width:780px){.atlas-page .atlas-marker{width:15px!important;height:15px!important;min-width:15px!important}}
