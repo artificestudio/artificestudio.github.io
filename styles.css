@@ -184,3 +184,56 @@ html,body{background:#fff}
 .hero .film-shade { z-index: 1; pointer-events: none; }
 .hero .hero-content, .hero .hero-caption { z-index: 3; }
 .hero .sound-toggle { z-index: 4; }
+
+/* Full-screen title on the homepage; the film, Babel artwork and sound remain intact. */
+.home-page .site-header { justify-content: flex-end; }
+.home-page .site-header .wordmark { display: none; }
+.home-page .hero-content {
+  top: 50%;
+  bottom: auto;
+  left: 50%;
+  width: 100%;
+  max-height: none;
+  padding: 0 1vw;
+  gap: 0;
+  transform: translate(-50%, -50%);
+}
+.home-page .hero h1 {
+  font-size: clamp(3rem, 21vw, 42rem);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .76;
+  white-space: nowrap;
+  margin: 0;
+}
+/* Relocated original manifesto on the white About page. */
+.about-poem-title { margin-bottom: clamp(3rem, 6vh, 5rem); }
+.about-manifesto {
+  width: min(53rem, 83%);
+  margin: 0 0 clamp(8rem, 19vh, 15rem) clamp(1rem, 9vw, 12rem);
+  font-size: clamp(1.1rem, 1.55vw, 1.55rem);
+  line-height: 1.33;
+}
+.about-manifesto p { margin: 0 0 1.25em; }
+.about-manifesto p:first-child {
+  font-size: clamp(1.3rem, 2.2vw, 2.25rem);
+  line-height: 1.16;
+  margin-bottom: 1.3em;
+}
+.about-manifesto p:first-child span { display: block; }
+@media (max-width: 780px) {
+  .home-page .hero-content {
+    top: 50%;
+    bottom: auto;
+    padding: 0 1vw;
+    transform: translate(-50%, -50%);
+  }
+  .home-page .hero h1 { font-size: 21vw; }
+  .about-manifesto {
+    width: 100%;
+    margin: 0 0 8rem;
+    font-size: 1.12rem;
+    line-height: 1.38;
+  }
+  .about-manifesto p:first-child { font-size: clamp(1.35rem, 5vw, 1.85rem); }
+}
