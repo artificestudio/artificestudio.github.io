@@ -1,28 +1,3 @@
-# Editorial redesign / October 2026
-
-This branch introduces a cinematic landing page, a research section (**studies.html**) and a creative output section (**works.html**). The original Atlas, its 19 records, email proposal workflow, project gallery and media files are preserved.
-
-## How the public site is organised
-
-- **index.html**: cinematic landing page; edit its short headings and editorial feature links here. Media files live in `assets/home-film.mp4`, `assets/home-film-mobile.webp` and `assets/artifice-ambient.mp3`.
-- **atlas.html**: interactive world map and browsable inventory. Add records through `content/places.js`, not this page.
-- **studies.html**: editorial selection of research territories. Entries are *research directions or Atlas records*, not falsely announced completed studies. Update its cards when published research is available.
-- **works.html**: curated creative projects, linked to the existing reusable `projects.html` galleries.
-- **about.html**: short research and practice statement, collaborators and public podcast.
-- **contact.html**: general studio email.
-
-The site deliberately distinguishes **places indexed**, **studies actually carried out** and **works actually produced**. Do not label a planned field investigation as a published study.
-
-## Design conventions
-
-Times New Roman, black, warm off-white, small labels, a restrained yellow hover accent, and the existing muted home film. Visitors choose whether to play the ambient soundtrack; audio never starts automatically. Most new page layouts are at the end of `styles.css`.
-
-The landing page editorial cards currently point to existing places and **La machine du dialogue**. When real photos or field studies are ready, replace placeholder-style typographic cards with *your own* photography, credited and stored in the matching place folder.
-
-Do not upload copyrighted photographs taken from third-party sites without a licence or permission.
-
----
-
 # ARTIFICE — how to edit the website
 
 **Live website:** https://www.artificepractice.com  
@@ -38,8 +13,8 @@ This website is hosted for free on **GitHub Pages**. You can add places, project
 artificestudio.github.io/
 │
 ├── README.md                      ← YOU ARE HERE. Editing manual
-├── index.html                     ← Home page / manifesto
-├── about.html                     ← About page
+├── index.html                     ← Original video home / manifesto
+├── about.html                     ← White, free-flowing About page
 ├── contact.html                   ← Contact page
 ├── projects.html                  ← Reusable project page + automatic index
 ├── atlas.html                     ← Map and filters
