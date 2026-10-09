@@ -179,7 +179,7 @@ html,body{background:#fff}
   z-index: 1;
   pointer-events: none;
   background: url("assets/home/babel2%20transparent.png") center / cover no-repeat;
-  opacity: .20;
+  opacity: 1;
 }
 .hero .film-shade { z-index: 1; pointer-events: none; }
 .hero .hero-content, .hero .hero-caption { z-index: 2; }
