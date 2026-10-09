@@ -1,5 +1,3 @@
-/* Public configuration only. Never put a Supabase service-role / secret key here. */
-window.ARTIFICE_ATLAS_CONFIG = {
-  supabaseUrl: "",
-  supabasePublishableKey: ""
-};
+// Supabase public project settings only. Never commit a service-role key.
+export const SUPABASE_URL = "";
+export const SUPABASE_ANON_KEY = "";
