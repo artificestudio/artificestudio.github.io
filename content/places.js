@@ -245,7 +245,8 @@ export const seedPlaces = [
     name: "Nakano Broadway", city: "Tokyo", country: "Japan", year: "1966",
     coordinates: [139.6658, 35.7092],
     category: "mixed-use-complex", tags: ["retail", "subculture"],
-    description: "A multi-storey shopping complex that evolved into a dense ecosystem of specialist retail and subcultures."
+    description: "A multi-storey shopping complex that evolved into a dense ecosystem of specialist retail and subcultures.",
+    images: [{ src: "assets/places/nakano-broadway/DSC01831.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" }]
   }
 ];
 
