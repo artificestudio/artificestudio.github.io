@@ -30,9 +30,9 @@
       '<div class="radio-dock-row">' +
         '<span class="radio-dock-track">TECHNO MART</span>' +
         '<div class="radio-dock-controls">' +
-          '<button type="button" id="radio-previous" class="radio-dock-button" aria-label="Back 15 seconds" title="Back 15 seconds">⏮</button>' +
+          '<button type="button" id="radio-previous" class="radio-dock-button" aria-label="Back 15 seconds" title="Back 15 seconds"><svg class="radio-control-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M11 6 4 12l7 6V6Zm9 0-7 6 7 6V6Z"/></svg></button>' +
           '<button type="button" id="sound-toggle" class="radio-dock-button radio-dock-play" aria-label="Play Techno Mart recording" aria-pressed="false">PLAY</button>' +
-          '<button type="button" id="radio-next" class="radio-dock-button" aria-label="Forward 15 seconds" title="Forward 15 seconds">⏭</button>' +
+          '<button type="button" id="radio-next" class="radio-dock-button" aria-label="Forward 15 seconds" title="Forward 15 seconds"><svg class="radio-control-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 7 6-7 6V6Zm9 0 7 6-7 6V6Z"/></svg></button>' +
         '</div>' +
       '</div>' +
       '<div class="radio-dock-bottom">' +
