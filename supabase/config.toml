@@ -1,5 +1,0 @@
-# Run with: supabase functions deploy atlas-submit --no-verify-jwt
-# This endpoint is public to allow visitors without accounts to propose places.
-# It verifies Cloudflare Turnstile server-side before writing anything.
-[functions.atlas-submit]
-verify_jwt = false
