@@ -1,9 +1,7 @@
 import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "./atlas-data.js";
-import {SUPABASE_URL,SUPABASE_ANON_KEY,TURNSTILE_SITE_KEY} from "./atlas-config.js";
+import { PROPOSAL_EMAIL } from "./atlas-email.js";
 
 const $=id=>document.getElementById(id);
-const configured=Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
-const contributionsReady=configured&&Boolean(TURNSTILE_SITE_KEY);
 const tooltip=$("atlas-tooltip"),list=$("atlas-list"),mapStatus=$("atlas-map-status");
 let places=[...seedPlaces], selectMode=false, chosen=null, selectedMarker=null;
 const markers=[];
@@ -22,9 +20,6 @@ map.addControl(new maplibregl.AttributionControl({compact:true}),"bottom-right")
 map.touchZoomRotate.disableRotation();
 const HOME={center:[62,25],zoom:1.65};
 
-function rest(path,options={}){
- return fetch(SUPABASE_URL+"/rest/v1/"+path,{...options,headers:{apikey:SUPABASE_ANON_KEY,"Content-Type":"application/json",...options.headers}});
-}
 function configureBlackWhite(style){
  const s=JSON.parse(JSON.stringify(style));
  for(const layer of s.layers){
@@ -94,7 +89,7 @@ function resetMarkers(){
    el.addEventListener("mouseleave",()=>{tooltip.hidden=true;el.classList.remove("is-selected")});
    el.addEventListener("focus",()=>showTip(p,el));
    el.addEventListener("blur",()=>{tooltip.hidden=true;el.classList.remove("is-selected")});
-   el.addEventListener("click",()=>openPlace(p));
+   el.addEventListener("click",()=>{if(!selectMode)openPlace(p);});
  }
 }
 function makeChip(label,selected,onclick,disabled=false){
@@ -148,102 +143,103 @@ function renderList(){
  }
  $("atlas-count").textContent=String(places.length).padStart(2,"0");
 }
-async function loadPlaces(){
- if(configured){
-  try{
-   const r=await rest("atlas_places?status=eq.published&select=id,name,city,country,year,longitude,latitude,description,project,source,category,tags&order=name.asc");
-   if(r.ok){
-    for(const p of await r.json()){
-      const converted={...p,coordinates:[p.longitude,p.latitude],tags:Array.isArray(p.tags)?p.tags:[],category:p.category||"other"};
-      const idx=places.findIndex(x=>x.id===p.id);
-      if(idx<0)places.push(converted);else places[idx]=converted;
-    }
-   }
-  }catch(e){console.warn("Atlas records unavailable",e);}
- }
- renderFilters();renderList();resetMarkers();
- const selectedId=urlState.get("place");
- const selectedPlace=places.find(p=>p.id===selectedId);
- if(selectedPlace?.coordinates) {
-   // A project-to-atlas URL centers precisely on the associated building.
-   map.jumpTo({center:selectedPlace.coordinates,zoom:13});
- }
+// Curated Atlas catalogue: published records live in atlas-data.js.
+// Email suggestions never appear here until editors add them to GitHub.
+function loadPlaces(){
+ renderFilters();
+ renderList();
+ resetMarkers();
+ const selected=places.find(p=>p.id===urlState.get("place"));
+ if(selected?.coordinates)map.jumpTo({center:selected.coordinates,zoom:13});
 }
 $("atlas-home").onclick=()=>map.easeTo({...HOME,duration:500});
 $("atlas-zoom-in").onclick=()=>map.zoomIn({duration:300});
 $("atlas-zoom-out").onclick=()=>map.zoomOut({duration:300});
+// Email proposals require no external backend: the visitor sends the draft.
 const dialog=$("propose-dialog"),form=$("propose-form");
+const proposalStatus=$("proposal-status");
 for(const category of CATEGORIES){
  const option=document.createElement("option");
  option.value=category.id;option.textContent=category.label;
  $("propose-category").append(option);
 }
-let captchaWidget=null;
-function initCaptcha(){
- if(!contributionsReady||captchaWidget!==null||!window.turnstile?.render)return;
- captchaWidget=window.turnstile.render("#atlas-turnstile",{
-  sitekey:TURNSTILE_SITE_KEY,
-  theme:"light",
-  appearance:"always"
- });
-}
 $("propose-button").onclick=()=>{
- dialog.show();selectMode=true;
- $("proposal-status").textContent=contributionsReady?
-   "Click on the map to choose the location, then complete your proposal.":
-   "Contributions are not enabled yet. ARTIFICE is setting up moderation.";
- initCaptcha();
+ dialog.show();
+ selectMode=true;
+ proposalStatus.textContent="Click the map to select a location, then fill in the form.";
 };
 dialog.querySelector("[data-close]").onclick=()=>dialog.close();
-dialog.addEventListener("close",()=>{selectMode=false;selectedMarker?.remove();selectedMarker=null});
-map.on("click",e=>{
- if(!selectMode)return;
- chosen=[e.lngLat.lng,e.lngLat.lat];
+dialog.addEventListener("close",()=>{
+ selectMode=false;
+ chosen=null;
  selectedMarker?.remove();
- const el=document.createElement("span");el.className="atlas-proposal-pin";
- selectedMarker=new maplibregl.Marker({element:el}).setLngLat(chosen).addTo(map);
- $("propose-coordinate").textContent=chosen[1].toFixed(5)+"° N / "+chosen[0].toFixed(5)+"° E";
+ selectedMarker=null;
+ $("propose-coordinate").textContent="No position selected — click the map";
 });
-form.onsubmit=async e=>{
- e.preventDefault();
- const status=$("proposal-status");
- if(!chosen){status.textContent="Click or tap the map to choose the location first.";return;}
- if(!contributionsReady){status.textContent="Contributions are not enabled yet.";return;}
- initCaptcha();
- const captcha=window.turnstile?.getResponse(captchaWidget);
- if(!captcha){status.textContent="Complete the spam verification before submitting.";return;}
- const d=new FormData(form);
- const button=form.querySelector('[type="submit"]');
- button.disabled=true;status.textContent="Submitting…";
- const tags=String(d.get("tags")||"").split(",").map(tag=>tag.trim().toLowerCase()).filter(tag=>/^[a-z0-9]+(-[a-z0-9]+)*$/.test(tag)).slice(0,12);
- const body={
-  name:String(d.get("name")||"").trim(),
-  city:String(d.get("city")||"").trim(),
-  country:String(d.get("country")||"").trim(),
-  year:String(d.get("year")||"").trim(),
-  description:String(d.get("description")||"").trim(),
-  source:String(d.get("source")||"").trim(),
-  category:String(d.get("category")||"other"),
-  tags,
-  longitude:chosen[0],latitude:chosen[1],
-  website:String(d.get("website")||""),
-  turnstileToken:captcha
- };
+map.on("click",event=>{
+ if(!selectMode)return;
+ chosen=[event.lngLat.lng,event.lngLat.lat];
+ selectedMarker?.remove();
+ const element=document.createElement("span");
+ element.className="atlas-proposal-pin";
+ selectedMarker=new maplibregl.Marker({element}).setLngLat(chosen).addTo(map);
+ $("propose-coordinate").textContent=chosen[1].toFixed(6)+"°, "+chosen[0].toFixed(6)+"° (WGS84)";
+ proposalStatus.textContent="Location selected. Finish the form to prepare your email.";
+});
+function composeProposal(){
+ if(!form.reportValidity())return null;
+ if(!chosen){proposalStatus.textContent="Select a point on the map before preparing your email.";return null;}
+ const formData=new FormData(form);
+ const string=key=>String(formData.get(key)||"").trim();
+ const name=string("name"),city=string("city");
+ const lat=chosen[1].toFixed(6),lon=chosen[0].toFixed(6);
+ const mapLink="https://www.openstreetmap.org/?mlat="+lat+"&mlon="+lon+"#map=17/"+lat+"/"+lon;
+ const subject="[ARTIFICE ATLAS] Place proposal — "+name+" / "+city;
+ const body=[
+  "ARTIFICE ATLAS — NEW PLACE PROPOSAL",
+  "",
+  "Place: "+name,
+  "City: "+city,
+  "Country: "+string("country"),
+  "Construction / opening date: "+(string("year")||"Unknown"),
+  "Typology: "+categoryLabel(string("category")),
+  "Tags: "+(string("tags")||"None"),
+  "",
+  "LOCATION — WGS84",
+  "Latitude: "+lat,
+  "Longitude: "+lon,
+  "OpenStreetMap: "+mapLink,
+  "",
+  "DESCRIPTION",
+  string("description"),
+  "",
+  "SOURCE",
+  string("source")||"Not supplied",
+  "",
+  "This place is proposed for ARTIFICE editorial review. Nothing is published automatically."
+ ].join("\n");
+ return {subject,body};
+}
+form.addEventListener("submit",event=>{
+ event.preventDefault();
+ const message=composeProposal();
+ if(!message)return;
+ if(!PROPOSAL_EMAIL){proposalStatus.textContent="ARTIFICE contact email is not configured.";return;}
+ const url="mailto:"+PROPOSAL_EMAIL+
+  "?subject="+encodeURIComponent(message.subject)+
+  "&body="+encodeURIComponent(message.body);
+ proposalStatus.textContent="Your email app should open with the prepared proposal. Press Send there; we have not sent anything automatically. If no app opens, click Copy proposal.";
+ window.location.href=url;
+});
+$("atlas-copy-proposal").addEventListener("click",async()=>{
+ const message=composeProposal();
+ if(!message)return;
  try{
-  const url=SUPABASE_URL.replace(/\/$/,"")+"/functions/v1/atlas-submit";
-  const response=await fetch(url,{
-   method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_ANON_KEY},
-   body:JSON.stringify(body)
-  });
-  let result={};try{result=await response.json()}catch{}
-  if(!response.ok)throw Error(result.message||"Submission could not be saved.");
-  status.textContent="Thank you! Your proposal is awaiting review by ARTIFICE.";
-  form.reset();chosen=null;selectedMarker?.remove();selectedMarker=null;
-  if(captchaWidget!==null)window.turnstile?.reset(captchaWidget);
- }catch(error){
-  status.textContent=error.message||"Could not submit. Please try again.";
-  if(captchaWidget!==null)window.turnstile?.reset(captchaWidget);
- }finally{button.disabled=false;}
-};
+  await navigator.clipboard.writeText("To: "+PROPOSAL_EMAIL+"\nSubject: "+message.subject+"\n\n"+message.body);
+  proposalStatus.textContent="Proposal copied. Paste it into an email addressed to "+PROPOSAL_EMAIL+" and send it.";
+ }catch{
+  proposalStatus.textContent="Copying was blocked by your browser. Try Open email to send instead.";
+ }
+});
 loadVectorBasemap();
 loadPlaces();

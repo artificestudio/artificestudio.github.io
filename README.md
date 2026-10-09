@@ -84,53 +84,26 @@ The small red pin and **Paris, France** in `projects.html` links to `atlas.html?
 
 The reduced project-page top spacing is defined by `.projects-page .project-content` in `styles.css`, including its mobile override.
 
-## Atlas moderation: public proposals and private editorial dashboard
+## Email-based Atlas proposals (active workflow)
 
-This workflow is prepared in `atlas-admin.html`, `atlas-admin.js`,
-`supabase/migrations/001_atlas_review.sql`, and
-`supabase/functions/atlas-submit/index.ts`.
+Visitors can propose a place directly from `atlas.html`. Clicking **Propose a place** opens a form; selecting a position on the map provides WGS84 latitude and longitude. The visitor completes the record and clicks **Open email to send**.
 
-**The database is NOT created automatically by pushing GitHub code.**
-To activate submissions safely, follow the steps below. Until then the
-public Atlas continues to work with its existing six static records and
-the submission form explicitly says contributions are not enabled.
+The website opens a prepared email draft addressed to **contact@artificepractice.com**, including place name, city, country, year, category, tags, description, reference and a link to the exact point in OpenStreetMap.
 
-### Installation (one-time)
+**Important:** A `mailto:` link prepares an email in the visitor's configured email application. It does **not** automatically send an email, store the proposal or confirm that ARTIFICE received anything. The visitor must press **Send**. If their device has no email client configured, the form offers a **Copy proposal** fallback.
 
-1. Create an ARTIFICE Supabase project (the Free plan can be sufficient at low traffic). In **SQL Editor**, execute `supabase/migrations/001_atlas_review.sql`. This creates three tables (`atlas_editors`, `atlas_submissions`, `atlas_places`) and their access policies, plus the secure approve/reject RPC.
-2. In Supabase **Authentication → Providers → Email**, enable email OTP/magic-link sign-ins. Add `https://www.artificepractice.com/atlas-admin.html` to the list of allowed redirect URLs. You may restrict sign-ups to known users and manually invite your two editor accounts.
-3. In Supabase **SQL Editor**, add the two ARTIFICE editorial email addresses to the `atlas_editors` whitelist using the commented INSERT statement at the bottom of the migration. Never add these emails to public JavaScript.
-4. Create a **Cloudflare Turnstile** widget for `artificepractice.com` and `www.artificepractice.com`. Copy its public **site key**. Keep its **secret key** private.
-5. Set the private `TURNSTILE_SECRET_KEY` in Supabase Edge Function secrets. Deploy `atlas-submit` from `supabase/functions/atlas-submit/index.ts` with JWT verification disabled **for that function only** (visitors do not have an account). The function checks Turnstile before inserting a pending submission. Supabase manages `SUPABASE_URL` and the server-side service-role credential.
-6. Enter the Supabase Project URL, **public** anon/publishable key and the public Turnstile site key in `atlas-config.js`, commit to GitHub. **NEVER commit service-role keys, passwords, JWT signing secrets or Turnstile secret keys.** Configure abuse-rate monitoring and edge-level rate limits for production.
-7. Open `https://www.artificepractice.com/atlas-admin.html` and log in by email link. Only editors whitelisted in the database can see submissions or save/reject them.
+### How ARTIFICE reviews and publishes a proposal
 
-### Editorial workflow
+1. Receive the proposal in the inbox of `contact@artificepractice.com`.
+2. Verify the building identity, coordinates, dates and original sources.
+3. Open **`atlas-data.js`** on GitHub, copy an existing place object and edit the fields.
+4. Commit changes to the `main` branch (ideally through a pull request for review).
+5. After GitHub Pages redeploys, the new place appears on the map, in the index and in the tag/category filters.
 
-- **Visitor:** Click *Propose a place*, then choose a map location, add the name, city, country, construction date, architectural category, optional tags, description and reference. Pass anti-spam verification. The server stores the suggestion in `atlas_submissions` with status **pending**; no public user can read this table.
-- **Editor:** Sign in to the private dashboard and open **Pending**. Check the proposal; edit the coordinates, category, tags, year, text, citation, slug and optional project link.
-- **Approve & publish:** A database function atomically creates the publication in `atlas_places` and marks the submitted proposal **approved**. It then appears in the public Atlas and gets a detail page (`atlas-place.html?id=slug`).
-- **Approve as draft:** Move it into the editorial catalogue but keep the public map unchanged.
-- **Reject:** Retain the proposal in the private Reviewed history with an optional editorial note, without publishing.
-- **Published & drafts:** Edit or hide places previously created through the dashboard. To edit one of the six initial hard-coded places, import it as a database record with its existing ID (the database overrides the static record on public pages); direct editing of static records via the dashboard has not been implemented yet. You can also edit static records in `atlas-data.js`.
+The recipients are kept in one file: **`atlas-email.js`**. Change `PROPOSAL_EMAIL` there to update the recipient. Do not insert an email address in `atlas.js` or `atlas.html`.
 
-**Security:** Access is enforced by PostgreSQL Row Level Security and the
-`atlas_is_editor()` function, not by hiding the admin page. The public
-form never receives administrative credentials. The approval function
-does not permit a proposal to be approved or rejected twice.
+### Security and limitations
 
-### Finding and editing the relevant code
+No Supabase account, database, dashboard, CAPTCHA, third-party submission service or API key is required. Suggestions are **not automatically published**. Email content is untrusted: verify URLs and facts before adding them to the Atlas.
 
-- Visitor fields: `atlas.html`; submission request: `atlas.js`.
-- Private dashboard layout: `atlas-admin.html`; styles: `atlas-admin.css`.
-- Dashboard login, review, approval and editing: `atlas-admin.js`.
-- Database schema and access rules: `supabase/migrations/001_atlas_review.sql`.
-- Spam-verified public API: `supabase/functions/atlas-submit/index.ts`.
-- Public site settings: `atlas-config.js`.
-- Base-map, tags and catalogue: `atlas-data.js`, `atlas.css`, `atlas.js`.
-
-#### Important notes
-
-- Keep `atlas-preview/` as a historical read-only prototype. It is not the source of the public Atlas.
-- User-contributed content is editorial input, not trusted instructions or HTML. Display descriptions as plain text, and validate any outgoing links before publishing them.
-- This design includes CAPTCHA and a private inbox but not a guaranteed global abuse quota. Add a per-IP/session rate limit at the edge before promoting the form broadly.
+The obsolete experimental files `atlas-admin.*`, `atlas-config.js` and `supabase/` belong to the abandoned database-based prototype and are not needed by the active email workflow.
