@@ -37,6 +37,7 @@ for(const entry of projects){
  index.append(a);
 }
 
+// Use the first photo immediately, including when opening a different project.
 const frame = document.getElementById("project-frame");
 const image = document.getElementById("project-image");
 const counter = document.getElementById("project-counter");
@@ -115,3 +116,6 @@ frame.addEventListener("keydown", event => {
     event.preventDefault(); showImage(current + 1);
   }
 });
+
+// Initial frame must match the selected project, not the HTML placeholder.
+showImage(0);
