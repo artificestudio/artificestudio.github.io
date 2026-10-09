@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#111111" />
     <title>ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css?v=20261010-radio-time" />
+    <link rel="stylesheet" href="styles.css?v=20261010-clock-live" />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -52,18 +52,20 @@
         </div>
         <aside class="artifice-time" aria-label="ARTIFICE time archive">
           <p class="time-small">ARTIFICE TIME <span class="time-sequence" id="time-sequence">01</span></p>
-          <p class="time-elapsed" id="time-elapsed">Loading archive…</p>
+          <p class="time-elapsed"><span id="time-elapsed">00,000000000</span><span class="time-unit"> YEARS</span></p>
           <p class="time-place" id="time-place">Architecture, time and memory</p>
           <a class="time-link" id="time-link" href="atlas.html">View in atlas</a>
-          <p class="time-method">Approximate years since recorded opening or construction</p>
+          <p class="time-method">Counted from 1 January of the recorded year. Exact date unknown.</p>
         </aside>
         <div class="artifice-radio" aria-label="ARTIFICE radio">
           <p class="radio-small">ARTIFICE RADIO <span>001</span></p>
           <p class="radio-track">TECHNO MART</p>
           <div class="radio-controls">
+            <button class="radio-skip" id="radio-previous" type="button" aria-label="Back 15 seconds" title="Back 15 seconds">⏮</button>
             <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play Techno Mart recording" aria-pressed="false">PLAY</button>
-            <span class="radio-status" id="radio-status" role="status">PRESS PLAY TO LISTEN</span>
+            <button class="radio-skip" id="radio-next" type="button" aria-label="Forward 15 seconds" title="Forward 15 seconds">⏭</button>
           </div>
+          <p class="radio-status" id="radio-status" role="status">PRESS PLAY TO LISTEN</p>
           <div class="radio-progress" aria-hidden="true"><div id="radio-progress-fill"></div></div>
           <p class="radio-clock" id="radio-clock">00:00 / 00:00</p>
         </div>
@@ -115,6 +117,21 @@
         else { userPaused = false; playRadio(); }
       });
       ["play", "pause", "timeupdate", "loadedmetadata", "ended"].forEach(event => soundtrack.addEventListener(event, renderRadio));
+      const radioPrevious = document.getElementById("radio-previous");
+      const radioNext = document.getElementById("radio-next");
+      // There is one genuine audio file in the repository. The back/next
+      // controls seek 15 seconds rather than pretending other tracks exist.
+      function seekRecording(offset) {
+        const current = Number.isFinite(soundtrack.currentTime) ? soundtrack.currentTime : 0;
+        const duration = soundtrack.duration;
+        const upperBound = Number.isFinite(duration) && duration > 0 ? Math.max(0, duration - .1) : Infinity;
+        try { soundtrack.currentTime = Math.max(0, Math.min(upperBound, current + offset)); }
+        catch (_) { /* Seek becomes available after metadata loads. */ }
+        renderRadio();
+      }
+      radioPrevious.addEventListener("click", () => seekRecording(-15));
+      radioNext.addEventListener("click", () => seekRecording(15));
+
       // Browser autoplay policies vary. Retry only on the visitor's first interaction.
       function unlockRadio(event) {
         if (userPaused || !soundtrack.paused || event.target === soundToggle) return;
@@ -132,11 +149,12 @@
       playRadio();
       renderRadio();
 
-      // Only dated Atlas records qualify. Exact construction day is not
-      // known, so we display approximate full years, never fake day counts.
+      // The Atlas records years, not complete construction dates. Count
+      // from January 1 of the recorded year as an explicit convention.
+      // Nine decimals ensure that the time visibly changes in real time.
       import("./content/places.js").then(({ seedPlaces }) => {
         const candidates = seedPlaces.filter(place =>
-          /^\d{4}$/.test(String(place.year || "").trim()) &&
+          /^\\d{4}$/.test(String(place.year || "").trim()) &&
           Number(place.year) <= new Date().getFullYear() &&
           Number(place.year) >= 1800 &&
           place.id && place.name
@@ -147,10 +165,20 @@
         const sequence = document.getElementById("time-sequence");
         if (!candidates.length) {
           timeElapsed.textContent = "ARCHIVE IN PROGRESS";
+          document.querySelector(".time-unit").hidden = true;
           return;
         }
+
+        const averageYearMilliseconds = 365.2425 * 24 * 60 * 60 * 1000;
         let queue = [];
-        let number = 0;
+        let activePlace = null;
+        let counter = 0;
+        function updateElapsed() {
+          if (!activePlace || document.hidden) return;
+          const startingPoint = Date.UTC(Number(activePlace.year), 0, 1);
+          const years = Math.max(0, (Date.now() - startingPoint) / averageYearMilliseconds);
+          timeElapsed.textContent = years.toFixed(9).replace(".", ",");
+        }
         function nextPlace() {
           if (!queue.length) {
             queue = [...candidates];
@@ -159,17 +187,22 @@
               [queue[i], queue[j]] = [queue[j], queue[i]];
             }
           }
-          const place = queue.pop();
-          const years = new Date().getFullYear() - Number(place.year);
-          timeElapsed.textContent = years + " YEARS";
-          timePlace.textContent = place.name.toUpperCase() + " / " + place.city.toUpperCase() + " / " + place.year;
-          timeLink.href = "atlas-place.html?id=" + encodeURIComponent(place.id);
-          sequence.textContent = String(++number).padStart(2, "0");
+          if (queue.length > 1 && activePlace && queue[queue.length - 1].id === activePlace.id) {
+            [queue[0], queue[queue.length - 1]] = [queue[queue.length - 1], queue[0]];
+          }
+          activePlace = queue.pop();
+          timePlace.textContent = activePlace.name.toUpperCase() + " / " + activePlace.city.toUpperCase() + " / " + activePlace.year;
+          timeLink.href = "atlas-place.html?id=" + encodeURIComponent(activePlace.id);
+          sequence.textContent = String(++counter).padStart(2, "0");
+          updateElapsed();
         }
         nextPlace();
+        setInterval(updateElapsed, 50);
         setInterval(nextPlace, 5000);
+        document.addEventListener("visibilitychange", updateElapsed);
       }).catch(() => {
         document.getElementById("time-elapsed").textContent = "ATLAS UNAVAILABLE";
+        document.querySelector(".time-unit").hidden = true;
       });
     </script>
   </body>
