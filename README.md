@@ -309,3 +309,18 @@ The inventory now includes **13 locations** (5 in France, 1 in Algeria, 7 in Sou
 - The original photo files for the other sites have **not** yet been uploaded. Upload them via GitHub so they can be attached and captioned later.
 
 The date, `program`, `area`, `condition` and `locationNote` fields are edited in [content/places.js](content/places.js), and the place details render them as research notes.
+
+## Four additional Atlas sites in East Asia, October 2026
+
+The Atlas now includes:
+
+| Atlas place | Place ID | Image folder |
+| --- | --- | --- |
+| AEON Sanda Woody Town, Japan | `aeon-sanda-woody-town` | [Upload images](assets/places/aeon-sanda-woody-town/) |
+| Time Terrace Dongtan, South Korea | `time-terrace-dongtan` | [Upload images](assets/places/time-terrace-dongtan/) |
+| MOKO at Mong Kok East, Hong Kong | `moko-mong-kok-east` | [Upload images](assets/places/moko-mong-kok-east/) |
+| Qianyue Building, Taichung, Taiwan | `qianyue-building` | [Upload images](assets/places/qianyue-building/) |
+
+**Name checks:** The user-supplied name *Times Square at Dongtan* is provisionally interpreted as *Time Terrace Dongtan*, the former Center Point mall in Metapolis. *Mong Kok East* is provisionally interpreted as MOKO, Grand Century Place. Update these if the reference buildings are different.
+
+To display original photographs, upload them into the matching folder and add their paths in the relevant `images` list inside [content/places.js](content/places.js). Files are not automatically inserted into the public gallery, so editorial selection and ordering remain under ARTIFICE's control.
