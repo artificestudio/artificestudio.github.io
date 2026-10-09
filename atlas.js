@@ -1,4 +1,4 @@
-import {seedPlaces} from "./atlas-data.js";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "./atlas-data.js";
 import {SUPABASE_URL,SUPABASE_ANON_KEY} from "./atlas-config.js";
 
 const $=id=>document.getElementById(id);
@@ -6,6 +6,9 @@ const configured=Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 const tooltip=$("atlas-tooltip"),list=$("atlas-list"),mapStatus=$("atlas-map-status");
 let places=[...seedPlaces], selectMode=false, chosen=null, selectedMarker=null;
 const markers=[];
+let activeCategory="all", activeTags=[],searchTerm="";
+const categoryControls=$("atlas-categories"),tagControls=$("atlas-tags"),searchInput=$("atlas-search"),clearFilters=$("atlas-clear-filters"),filterCount=$("atlas-filter-count");
+
 const map=new maplibregl.Map({
   container:"atlas-map",
   style:{version:8,sources:{},layers:[{id:"initial-white",type:"background",paint:{"background-color":"#ffffff"}}]},
@@ -69,7 +72,8 @@ function showTip(p,el){
  const heading=document.createElement("strong");heading.textContent=p.name;
  const city=document.createElement("div");city.textContent=p.city+", "+p.country;
  const date=document.createElement("div");date.textContent=p.year?"Construction / opening: "+p.year:"Date under review";
- tooltip.append(heading,city,date);
+ const type=document.createElement("div");type.textContent=categoryLabel(p.category);
+ tooltip.append(heading,city,type,date);
  const container=$("atlas-map").getBoundingClientRect(),rect=el.getBoundingClientRect();
  tooltip.style.left=Math.max(8,Math.min(rect.left-container.left+18,container.width-255))+"px";
  tooltip.style.top=Math.max(8,rect.top-container.top-80)+"px";
@@ -77,9 +81,10 @@ function showTip(p,el){
  el.classList.add("is-selected");
 }
 function openPlace(p){location.href="atlas-place.html?id="+encodeURIComponent(p.id);}
+function visiblePlaces(){return places.filter(place=>matchesFilters(place,activeCategory,activeTags,searchTerm));}
 function resetMarkers(){
  markers.forEach(marker=>marker.remove());markers.length=0;
- for(const p of places){
+ for(const p of visiblePlaces()){
    const el=document.createElement("button");
    el.type="button";el.className="atlas-marker";el.setAttribute("aria-label",p.name+", "+p.city);
    const marker=new maplibregl.Marker({element:el,anchor:"center"}).setLngLat(p.coordinates).addTo(map);
@@ -91,13 +96,54 @@ function resetMarkers(){
    el.addEventListener("click",()=>openPlace(p));
  }
 }
+function makeChip(label,selected,onclick,disabled=false){
+ const b=document.createElement("button");b.type="button";b.className="atlas-filter-chip"+(selected?" is-active":"");
+ b.textContent=label;b.disabled=disabled;b.setAttribute("aria-pressed",String(selected));b.addEventListener("click",onclick);return b;
+}
+function syncFilters(){
+ renderFilters();renderList();resetMarkers();
+ const url=new URL(window.location.href);
+ if(activeCategory==="all")url.searchParams.delete("category");else url.searchParams.set("category",activeCategory);
+ if(activeTags.length)url.searchParams.set("tags",activeTags.join(","));else url.searchParams.delete("tags");
+ if(searchTerm)url.searchParams.set("q",searchTerm);else url.searchParams.delete("q");
+ history.replaceState(null,"",url);
+}
+function renderFilters(){
+ categoryControls.replaceChildren();
+ const counts=new Map(CATEGORIES.map(category=>[category.id,places.filter(p=>p.category===category.id).length]));
+ categoryControls.append(makeChip("All / "+places.length,activeCategory==="all",()=>{activeCategory="all";syncFilters();}));
+ for(const category of CATEGORIES){
+   const count=counts.get(category.id);
+   if(!count)continue;
+   categoryControls.append(makeChip(category.label+" / "+count,activeCategory===category.id,()=>{activeCategory=activeCategory===category.id?"all":category.id;syncFilters();}));
+ }
+ tagControls.replaceChildren();
+ const tags=[...new Set(places.flatMap(p=>Array.isArray(p.tags)?p.tags:[]))].sort();
+ for(const tag of tags)tagControls.append(makeChip("#"+tagLabel(tag),activeTags.includes(tag),()=>{
+   activeTags=activeTags.includes(tag)?activeTags.filter(t=>t!==tag):[...activeTags,tag];syncFilters();
+ }));
+ clearFilters.hidden=activeCategory==="all"&&!activeTags.length&&!searchTerm;
+}
+const urlState=new URLSearchParams(location.search);
+const initialCategory=urlState.get("category");
+if(CATEGORIES.some(c=>c.id===initialCategory))activeCategory=initialCategory;
+activeTags=(urlState.get("tags")||"").split(",").filter(Boolean);
+searchTerm=urlState.get("q")||"";
+searchInput.value=searchTerm;
+searchInput.addEventListener("input",()=>{searchTerm=searchInput.value;syncFilters();});
+clearFilters.addEventListener("click",()=>{activeCategory="all";activeTags=[];searchTerm="";searchInput.value="";syncFilters();});
+
 function renderList(){
  list.replaceChildren();
- for(const p of places){
+ const shown=visiblePlaces();
+ filterCount.textContent=String(shown.length).padStart(2,"0")+" / "+String(places.length).padStart(2,"0")+" PLACES";
+ if(!shown.length){const msg=document.createElement("p");msg.className="atlas-no-results";msg.textContent="No places match these filters.";list.append(msg);}
+ for(const p of shown){
    const b=document.createElement("button");b.className="atlas-list-item";b.type="button";
    const n=document.createElement("span");n.textContent=p.name+" — "+p.city+", "+p.country;
+   const typ=document.createElement("span");typ.className="atlas-entry-type";typ.textContent=categoryLabel(p.category);
    const y=document.createElement("small");y.textContent=p.year||"date unknown";
-   b.append(n,y);b.onclick=()=>openPlace(p);list.append(b);
+   b.append(n,typ,y);b.onclick=()=>openPlace(p);list.append(b);
  }
  $("atlas-count").textContent=String(places.length).padStart(2,"0");
 }
@@ -107,14 +153,14 @@ async function loadPlaces(){
    const r=await rest("atlas_places?status=eq.published&select=id,name,city,country,year,longitude,latitude,description,project,source&order=name.asc");
    if(r.ok){
     for(const p of await r.json()){
-      const converted={...p,coordinates:[p.longitude,p.latitude]};
+      const converted={...p,coordinates:[p.longitude,p.latitude],tags:Array.isArray(p.tags)?p.tags:[],category:p.category||"other"};
       const idx=places.findIndex(x=>x.id===p.id);
       if(idx<0)places.push(converted);else places[idx]=converted;
     }
    }
   }catch(e){console.warn("Atlas records unavailable",e);}
  }
- renderList();resetMarkers();
+ renderFilters();renderList();resetMarkers();
 }
 $("atlas-home").onclick=()=>map.easeTo({...HOME,duration:500});
 $("atlas-zoom-in").onclick=()=>map.zoomIn({duration:300});
