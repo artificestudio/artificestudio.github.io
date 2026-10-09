@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#111111" />
     <title>ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css?v=20261010-clock-live" />
+    <link rel="stylesheet" href="styles.css?v=20261010-shared-radio" />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -88,67 +88,6 @@
       startDesktopFilm();
       desktopFilm.addEventListener("change", startDesktopFilm);
 
-      // Existing Techno Mart audio, presented as ARTIFICE Radio.
-      const soundtrack = document.getElementById("home-soundtrack");
-      const soundToggle = document.getElementById("sound-toggle");
-      const radioStatus = document.getElementById("radio-status");
-      const radioProgress = document.getElementById("radio-progress-fill");
-      const radioClock = document.getElementById("radio-clock");
-      let userPaused = false;
-      let triedAutoplay = false;
-      const twoDigits = value => String(Math.floor(value)).padStart(2, "0");
-      const timecode = seconds => Number.isFinite(seconds) ? `${twoDigits(seconds / 60)}:${twoDigits(seconds % 60)}` : "00:00";
-
-      function renderRadio() {
-        const playing = !soundtrack.paused && !soundtrack.ended;
-        soundToggle.textContent = playing ? "PAUSE" : "PLAY";
-        soundToggle.setAttribute("aria-label", playing ? "Pause Techno Mart recording" : "Play Techno Mart recording");
-        soundToggle.setAttribute("aria-pressed", String(playing));
-        radioStatus.textContent = playing ? "NOW PLAYING" : "PRESS PLAY TO LISTEN";
-        const duration = soundtrack.duration;
-        radioClock.textContent = timecode(soundtrack.currentTime) + " / " + timecode(duration);
-        radioProgress.style.width = Number.isFinite(duration) && duration > 0 ? Math.min(100, soundtrack.currentTime / duration * 100) + "%" : "0%";
-      }
-      async function playRadio() {
-        try { await soundtrack.play(); } catch (_) { renderRadio(); }
-      }
-      soundToggle.addEventListener("click", () => {
-        if (!soundtrack.paused) { userPaused = true; soundtrack.pause(); }
-        else { userPaused = false; playRadio(); }
-      });
-      ["play", "pause", "timeupdate", "loadedmetadata", "ended"].forEach(event => soundtrack.addEventListener(event, renderRadio));
-      const radioPrevious = document.getElementById("radio-previous");
-      const radioNext = document.getElementById("radio-next");
-      // There is one genuine audio file in the repository. The back/next
-      // controls seek 15 seconds rather than pretending other tracks exist.
-      function seekRecording(offset) {
-        const current = Number.isFinite(soundtrack.currentTime) ? soundtrack.currentTime : 0;
-        const duration = soundtrack.duration;
-        const upperBound = Number.isFinite(duration) && duration > 0 ? Math.max(0, duration - .1) : Infinity;
-        try { soundtrack.currentTime = Math.max(0, Math.min(upperBound, current + offset)); }
-        catch (_) { /* Seek becomes available after metadata loads. */ }
-        renderRadio();
-      }
-      radioPrevious.addEventListener("click", () => seekRecording(-15));
-      radioNext.addEventListener("click", () => seekRecording(15));
-
-      // Browser autoplay policies vary. Retry only on the visitor's first interaction.
-      function unlockRadio(event) {
-        if (userPaused || !soundtrack.paused || event.target === soundToggle) return;
-        playRadio();
-        document.removeEventListener("pointerdown", unlockRadio);
-        document.removeEventListener("keydown", unlockRadio);
-      }
-      document.addEventListener("pointerdown", unlockRadio);
-      document.addEventListener("keydown", unlockRadio);
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden && !soundtrack.paused) soundtrack.pause();
-        else if (!document.hidden && !userPaused && triedAutoplay) playRadio();
-      });
-      triedAutoplay = true;
-      playRadio();
-      renderRadio();
-
       // The Atlas records years, not complete construction dates. Count
       // from January 1 of the recorded year as an explicit convention.
       // Nine decimals ensure that the time visibly changes in real time.
@@ -205,5 +144,6 @@
         document.querySelector(".time-unit").hidden = true;
       });
     </script>
+  <script defer src="scripts/radio.js?v=20261010-shared"></script>
   </body>
 </html>
