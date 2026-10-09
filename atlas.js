@@ -1,5 +1,5 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "./atlas-data.js";
-import { PROPOSAL_EMAIL } from "./atlas-email.js";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "./content/places.js";
+import { PROPOSAL_EMAIL } from "./content/email.js";
 
 const $=id=>document.getElementById(id);
 const tooltip=$("atlas-tooltip"),list=$("atlas-list"),mapStatus=$("atlas-map-status");
