@@ -266,3 +266,46 @@ If a page stops working after your edit:
 ---
 
 **Editing summary:** `content/places.js` = Atlas • `content/projects.js` = Projects • `assets/` = Pictures • `content/email.js` = Proposal inbox.
+
+## 10. Uploading photographs for Yasmine's inventory (October 2026)
+
+The inventory now includes **13 locations** (5 in France, 1 in Algeria, 7 in South Korea), plus two existing Atlas research locations, **Dongtan** and **Nakano Broadway**. Every place already has its **own image folder** under [assets/places/](assets/places/).
+
+### The quick procedure
+
+1. Open [assets/places/](assets/places/), click the folder of the location, for example [la-vache-noire](assets/places/la-vache-noire/).
+2. Choose **Add file → Upload files** and drag your photos into that exact folder. Commit the uploads. You can upload multiple photographs in one batch.
+3. Give the files simple unique names, preferably `01.webp`, `02.webp`, etc. Photographs, drawings and scanned plans are all welcome. Use original images, not the small previews embedded in the table screenshot.
+4. **To publish the gallery**, open [content/places.js](content/places.js), find the place by `id` and add `images: [{src:"assets/places/la-vache-noire/01.webp",caption:"Atrium",alt:"Interior of the shopping centre"}]`. Multiple entries create a browsable gallery.
+5. Or **ask ChatGPT to attach all photos you have uploaded**, and specify which places. It can inspect the GitHub folders and update `content/places.js` to link the files. You do *not* have to hand-write the gallery entries.
+
+**Uploading a file is not the same as publishing it on the page.** Keeping original media separate from the gallery list allows ARTIFICE to curate, order, caption and omit photos independently.
+
+### Place folders
+
+| Country | Place | Photo folder |
+| --- | --- | --- |
+| France | Centre commercial Maine–Montparnasse | [maine-montparnasse](assets/places/maine-montparnasse/) |
+| France | Le Millénaire | [le-millenaire](assets/places/le-millenaire/) |
+| France | Bercy 2 | [bercy-2](assets/places/bercy-2/) |
+| France | La Vache Noire | [la-vache-noire](assets/places/la-vache-noire/) |
+| France | Belle Épine | [belle-epine](assets/places/belle-epine/) |
+| Algeria | Riadh El Feth | [riadh-el-feth](assets/places/riadh-el-feth/) |
+| South Korea | Gangbyeon Techno Mart | [techno-mart](assets/places/techno-mart/) |
+| South Korea | Venezia Mega Mall | [venezia-mega-mall](assets/places/venezia-mega-mall/) |
+| South Korea | Migliore Dongdaemun | [migliore-dongdaemun](assets/places/migliore-dongdaemun/) |
+| South Korea | apM PLACE | [apm-place](assets/places/apm-place/) |
+| South Korea | Hapjeong Mall (provisional Mecenatpolis) | [hapjeong-mall](assets/places/hapjeong-mall/) |
+| South Korea | Goodmorning City | [goodmorning-city](assets/places/goodmorning-city/) |
+| South Korea | Wangsimni (provisional Bitplex) | [wangsimni-bitplex](assets/places/wangsimni-bitplex/) |
+| South Korea | Dongtan New Town (existing) | [dongtan](assets/places/dongtan/) |
+| Japan | Nakano Broadway (existing) | [nakano-broadway](assets/places/nakano-broadway/) |
+
+### Facts that still need checking
+
+- This first import follows Yasmine's working inventory, not a fully verified publication. Surfaces, shop occupancy statistics, operational condition and future demolition/closure dates require primary-source verification. The record notes explicitly mark these as provisional.
+- Coordinates are checked against a map where possible, but some Seoul sites are provisional matches. The spreadsheet only gives *Hapjeong mall* and *Wangsimni*, so these have been provisionally matched to **Mecenatpolis** and **Bitplex / Enter-6** respectively. Confirm these before treating the point locations as authoritative.
+- The *Migliore* record is mapped to **Migliore Dongdaemun**. Confirm the branch.
+- The original photo files for the other sites have **not** yet been uploaded. Upload them via GitHub so they can be attached and captioned later.
+
+The date, `program`, `area`, `condition` and `locationNote` fields are edited in [content/places.js](content/places.js), and the place details render them as research notes.
