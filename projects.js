@@ -1,18 +1,41 @@
-const images = [
-  ["01", "The architectural model", "Architectural model showing the open stacked levels of the project"],
-  ["02", "Spaces for discussion", "Frontal view of the model, with public spaces across the levels"],
-  ["03", "The existing passage", "Dark interior of the existing Maine Montparnasse shopping centre"],
-  ["04", "The existing centre", "Vacant interior of the shopping centre"],
-  ["05", "Maine Montparnasse in its urban setting", "Site model seen from above"],
-  ["06", "The model in progress", "Hands at work on a physical model of the project"],
-  ["07", "Longitudinal section", "Long architectural section of the existing building and intervention"],
-  ["08", "The citizens’ assembly", "Drawing of the assembly chamber and surrounding public spaces"],
-  ["09", "Public circulation", "Architectural drawing showing movement through the project"],
-  ["10", "Thematic pavilions", "Architectural drawing of a pavilion within the building"],
-  ["11", "Section and programmes", "Architectural section showing the relationship between uses"],
-  ["12", "Ground floor plan", "Plan of the ground floor and public approaches"],
-  ["13", "Upper floor plan", "Plan of the second floor of the proposed building"]
-];
+import {projects,findProject} from "./content/projects.js";
+
+// projects.html?project=<id> selects a project; bare projects.html shows the first.
+const requested=new URLSearchParams(location.search).get("project");
+const project=findProject(requested)||projects[0];
+const images=project.images.map((picture,index)=>[
+ String(index+1).padStart(2,"0"),picture.caption||"",picture.alt||picture.caption||project.title,picture.src
+]);
+if(!images.length)throw Error("Project must include at least one image");
+
+// All display information comes from content/projects.js.
+document.title=project.title+" — ARTIFICE";
+document.getElementById("project-title").textContent=project.title;
+const locationNode=document.getElementById("project-location");
+locationNode.replaceChildren();
+locationNode.append(document.createTextNode(project.site+" · "));
+if(project.atlasPlaceId){
+ const a=document.createElement("a");a.className="project-atlas-link";
+ a.href="atlas.html?place="+encodeURIComponent(project.atlasPlaceId);
+ a.setAttribute("aria-label","Locate "+project.site+" in the ARTIFICE Atlas");
+ const dot=document.createElement("span");dot.className="project-atlas-dot";dot.setAttribute("aria-hidden","true");
+ a.append(dot,document.createTextNode(project.city+", "+project.country));
+ locationNode.append(a);
+}else locationNode.append(document.createTextNode(project.city+", "+project.country));
+if(project.years)locationNode.append(document.createTextNode(" · "+project.years));
+const description=document.getElementById("project-description");
+description.replaceChildren();
+for(const paragraph of (project.description||[])){
+ const element=document.createElement("p");element.textContent=paragraph;description.append(element);
+}
+const index=document.getElementById("projects-index");
+index.replaceChildren();
+for(const entry of projects){
+ const a=document.createElement("a");a.href="projects.html?project="+encodeURIComponent(entry.id);
+ a.textContent=entry.title+" — "+entry.city+", "+entry.country;
+ if(entry.id===project.id)a.setAttribute("aria-current","page");
+ index.append(a);
+}
 
 const frame = document.getElementById("project-frame");
 const image = document.getElementById("project-image");
@@ -27,12 +50,12 @@ let suppressClick = false;
 
 images.forEach(([number]) => {
   const preload = new Image();
-  preload.src = `assets/maine-${number}.webp`;
+  preload.src = images.find(item => item[0] === number)[3];
 });
 
 function showImage(index) {
   current = (index + images.length) % images.length;
-  image.src = `assets/maine-${images[current][0]}.webp`;
+  image.src = images[current][3];
   image.alt = images[current][2];
   counter.textContent = `${images[current][0]} / ${images.length}`;
   caption.textContent = images[current][1];
