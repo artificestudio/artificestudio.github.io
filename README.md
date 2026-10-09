@@ -1,109 +1,268 @@
-# ARTIFICE — website editing guide
+# ARTIFICE — how to edit the website
 
-Live website: https://www.artificepractice.com/
+**Live website:** https://www.artificepractice.com  
+**Repository:** https://github.com/artificestudio/artificestudio.github.io
 
-Built as static HTML, CSS and JavaScript, hosted on GitHub Pages. **No build command, Node, React, account or Supabase installation is required to edit the existing Atlas records.**
+This website is hosted for free on **GitHub Pages**. You can add places, projects and pictures **without programming, installing software or using Supabase**.
 
-## Where to change things
+> **Start here:** Nearly all day-to-day editing happens in the **`content/`** folder, plus image uploads to **`assets/`**. The `scripts/` folder is for website behavior; do not modify it to add content.
 
-| File | What you can change |
+## 1. Where everything is
+
+```text
+artificestudio.github.io/
+│
+├── README.md                      ← YOU ARE HERE. Editing manual
+├── index.html                     ← Home page / manifesto
+├── about.html                     ← About page
+├── contact.html                   ← Contact page
+├── projects.html                  ← Reusable project page + automatic index
+├── atlas.html                     ← Map and filters
+├── atlas-place.html               ← Reusable Atlas place page
+│
+├── content/                       ★ EDIT THIS FOLDER
+│   ├── projects.js                ★ Add projects, descriptions and images
+│   ├── places.js                  ★ Add Atlas places, coordinates and images
+│   ├── email.js                   ★ Atlas proposal email address
+│   └── README.md                  ← Short reminder
+│
+├── assets/                        ★ UPLOAD PICTURES HERE
+│   ├── maine-01.webp ... 13.webp  ← Existing project images (kept unchanged)
+│   ├── projects/                  ← New project photo folders
+│   ├── places/                    ← New Atlas photo folders
+│   └── ...                        ← Home video/audio and contact photo
+│
+├── scripts/                       ← Site programming (normally leave alone)
+│   ├── projects.js                ← Image gallery + projects listing
+│   ├── atlas.js                   ← Map, filters and email form
+│   └── atlas-place.js             ← Individual place gallery
+│
+├── styles.css                     ← Shared site design + project page design
+├── atlas.css                      ← Map colors, pins, filters, mobile design
+└── CNAME                          ← Domain configuration: DO NOT EDIT
+```
+
+### Quick reference: what do I want to change?
+
+| I want to… | Edit |
 | --- | --- |
-| `index.html` | Homepage and manifesto |
-| `about.html` | People, location and podcast |
-| `projects.html`, `projects.js` | Maine–Montparnasse project and its image captions |
-| `contact.html` | Contact details |
-| `styles.css` | Global site style, menus, homepage, project layouts |
-| **`atlas-data.js`** | **All initial Atlas places, coordinates, categories and tags** |
-| **`atlas.html`** | **Atlas title, layout, filter labels and map controls** |
-| `atlas.js` | MapLibre map initialization, filtering, UI and submission logic |
-| `atlas.css` | Map visual details, page spacing, markers, filters, mobile rules |
-| `atlas-place.html`, `atlas-place.js` | Place detail pages |
-| `atlas-config.js` | Optional public backend configuration only |
-| `assets/` | Images, videos and audio |
+| Add an Atlas pin | [content/places.js](content/places.js) |
+| Change location, date or tags of a pin | [content/places.js](content/places.js) |
+| Add/change pictures on an Atlas place page | [assets/](assets/) + [content/places.js](content/places.js) |
+| Add a new architectural/artistic project | [content/projects.js](content/projects.js) |
+| Add/change a project's gallery pictures/captions | [assets/](assets/) + [content/projects.js](content/projects.js) |
+| Edit a project's name, location or description | [content/projects.js](content/projects.js) |
+| Change the Atlas proposal email | [content/email.js](content/email.js) |
+| Edit the homepage text | [index.html](index.html) |
+| Edit team/contact info | [about.html](about.html) / [contact.html](contact.html) |
+| Adjust fonts, title spacing, project gallery size | [styles.css](styles.css) |
+| Adjust map height, marker colors and filters | [atlas.css](atlas.css) |
 
-The `atlas-preview/` directory is an **older testing copy**, not the current live Atlas. Do not edit it to change the main site.
+## 2. Edit a file in GitHub (no terminal required)
 
-## Add a place
+1. Open the repository on GitHub and make sure the branch selector says **main**.
+2. Click the file (for example `content/places.js`).
+3. Click the **pencil icon** (“Edit this file”).
+4. Change the text **carefully, keeping commas `,`, quotation marks `"` and brackets `{}`**.
+5. Click **Commit changes…**, enter a brief description such as “Add Nakano place photos”, and confirm.
+6. Visit **Actions → pages build and deployment**. When the build finishes, refresh the website (on Mac: **Cmd + Shift + R**).
 
-1. Open `atlas-data.js` on GitHub and click the pencil icon.
-2. Add an object inside `seedPlaces` and separate it with a comma.
-3. Copy the fields from another entry. Use a unique **id** (lowercase, hyphenated), and `coordinates: [longitude, latitude]`, not latitude/longitude.
-4. Give it exactly **one category** from `CATEGORIES`, and multiple tags in `tags: ["retail", "subculture"]` as appropriate. Dates should be verified, or left as an empty string.
-5. Add a description and optionally `project: "projects.html"` for a related ARTIFICE project.
-6. Commit the change, then wait for GitHub Pages deployment. The index, map, filters and record page update automatically.
+**Safer option:** GitHub can offer “Create a new branch and start a pull request”; this lets the other editor review the changes before merging into `main`. Use this for large edits.
 
-Example:
+Do **not** rename or delete `index.html`, `CNAME`, `scripts/` or the existing picture files without also updating all references.
+
+## 3. Add a NEW PLACE to the Atlas
+
+**Edit:** [content/places.js](content/places.js) → `seedPlaces`.
+
+Each `{ ... }` is one location. Copy an existing entry, add a comma between records, and replace its contents.
+
 ```js
 {
-  id: "example-place",
-  name: "Example Place",
+  id: "example-cinema",
+  name: "Example Cinema",
   city: "Tokyo",
   country: "Japan",
   year: "1985",
-  coordinates: [139.70, 35.68],
+  coordinates: [139.7000, 35.6800],
   category: "cinema-complex",
-  tags: ["retail", "subculture"],
-  description: "A short factual description."
-}
+  tags: ["subculture", "retail"],
+  description: "An example space to be documented by ARTIFICE.",
+  images: [
+    {
+      src: "assets/places/example-cinema/exterior.webp",
+      caption: "Exterior view",
+      alt: "Main entrance of the cinema"
+    }
+  ]
+},
 ```
 
-## Categories vs. tags
+**Important rules:**
 
-**Category** = architectural typology, **one per place**. Use `shopping-mall` for multi-tenant shopping centres, `department-store` for a department store, `electronics-complex` for an electronics-market building, and `mixed-use-complex` for buildings combining uses. Extend `CATEGORIES` if necessary.
+- `id` must be **unique**, lowercase and hyphenated (`example-cinema`). Never change the ID after publishing unless you also update all links.
+- `coordinates` means **[LONGITUDE, LATITUDE]** (not the other way around), in decimal degrees / WGS84. To find these, right-click a place in OpenStreetMap and read its coordinates.
+- `year` is the opening or construction date **only when verified**. Unknown? Use `year: ""`.
+- `category` is **one architectural typology**, selected from the `CATEGORIES` list at the top of the same file.
+- `tags` can contain multiple research themes. The available public filters update automatically.
+- `description` is plain text between quotation marks. If your description includes double quotes, escape them or use a backtick string.
+- `images` is optional. See section 5 below.
+- `project` is optional. Link to a separate ARTIFICE project when relevant (see section 6).
 
-**Tags** = research themes, **multiple per place**, e.g. `consumerism`, `adaptive-reuse`, `retail`. To add a pretty display name, edit `TAG_LABELS`. Tags automatically appear in the filters when at least one place uses them. Filter selections are encoded in the URL for sharing.
+**What happens next?** The place appears automatically as a red pin, in the Atlas index, in the filters, and on its own page:
 
-## Adjust the appearance
+`https://www.artificepractice.com/atlas-place.html?id=example-cinema`
 
-- Large gap beneath the top menu: `.atlas-page .atlas-main` in `atlas.css`.
-- Map height: `.atlas-stage` in `atlas.css`.
-- Marker circle colour/size: `.atlas-marker` and `.atlas-proposal-pin` in `atlas.css`.
-- Category/tag chip styles: `.atlas-filter-chip`.
-- Mobile layout: `@media(max-width:780px)` at the end of `atlas.css`.
-- Black-and-white map layers: `configureBlackWhite()` in `atlas.js`. The map uses MapLibre GL JS 5.6.0 and OpenFreeMap OSM-derived vector tiles. Keep map glyphs/style settings intact: font experiments have previously caused rendering failures.
+**To edit an existing place**, find the entry with its `id`, change the relevant fields, and commit.
 
-## What is / is not active
+### Create a new category or tag
 
-- The six curated places are stored in `atlas-data.js` and are public.
-- The **Propose a place** form is an interface mock-up unless a moderated backend is configured in `atlas-config.js`. Do not put private Supabase keys in GitHub.
-- Adding places through an authenticated in-site admin panel still requires backend integration. Public suggestions need moderation and anti-spam protections.
-- Coordinates and dates in the initial records need individual source verification.
-- Avoid using copyrighted map fonts or assets without permission.
+- To add a **typology**, add `{ id: "water-park", label: "Water park" }` to `CATEGORIES` in `content/places.js`. Then use `category: "water-park"` on a place.
+- To add a **research tag**, add (if you want its display label) `"artificial-nature": "Artificial nature"` to `TAG_LABELS`, then add `"artificial-nature"` to any place's `tags` array.
+- Category and tag filters appear once at least one place uses that value.
 
-## Publish safely
+## 4. Add a NEW PROJECT (with a new page)
 
-Use a new Git branch for major changes and a GitHub Pull Request to review them. GitHub Pages publishes the `main` branch. You can see deployment status under **Actions → pages build and deployment**. If you see an outdated page after a deploy, try a hard refresh (Cmd + Shift + R).
+**Edit:** [content/projects.js](content/projects.js).
 
-Never edit generated Git blobs manually, upload private credentials, or copy experimental changes over the stable live map without testing.
+Copy the existing project object inside the `projects` array, add a comma between objects, then change its `id`, `title`, location, description and images.
 
-## Project ↔ Atlas connection
+```js
+{
+  id: "tokyo-workshop",
+  title: "Tokyo Workshop",
+  site: "Nakano",
+  city: "Tokyo",
+  country: "Japan",
+  years: "2026",
+  atlasPlaceId: "nakano-broadway",
+  description: [
+    "A first paragraph explaining the context and research.",
+    "A second paragraph explaining the methods and proposals."
+  ],
+  images: [
+    {
+      src: "assets/projects/tokyo-workshop/01.webp",
+      caption: "The surveyed building",
+      alt: "Street view of the building in Tokyo"
+    },
+    {
+      src: "assets/projects/tokyo-workshop/02.webp",
+      caption: "Point cloud survey",
+      alt: "LiDAR point cloud of the building"
+    }
+  ]
+},
+```
 
-The small red pin and **Paris, France** in `projects.html` links to `atlas.html?place=maine-montparnasse`. The Atlas checks the `place` URL parameter and centers the map on the matching `id` in `atlas-data.js`. To use this for future projects, change the ID in the link to a different Atlas record.
+**No HTML or gallery coding is needed.** A link to your project automatically appears in the **Projects** index on the main project page. Its own address will be:
 
-**Important marker alignment:** CSS must not override MapLibre's `position:absolute` on the `.maplibregl-marker` elements. The marker styling in `atlas.css` intentionally avoids `position:relative`. Keep coordinates in `atlas-data.js` as `[longitude, latitude]`.
+`https://www.artificepractice.com/projects.html?project=tokyo-workshop`
 
-The reduced project-page top spacing is defined by `.projects-page .project-content` in `styles.css`, including its mobile override.
+If someone visits `projects.html` without a `?project=` parameter, it opens the first project in the array (currently **La machine du dialogue**).
 
-## Email-based Atlas proposals (active workflow)
+- `description` is an array of paragraphs; each quoted line becomes one paragraph.
+- `images` is an ordered list: move an entry up/down to rearrange the gallery.
+- Each image needs `src`, a visible `caption`, and descriptive `alt` text for accessibility.
+- Use `atlasPlaceId` to make “City, Country” link to a real Atlas pin. **The value must exactly match a place's `id` in `content/places.js`**.
+- If the project has no Atlas location yet, omit the `atlasPlaceId` line.
 
-Visitors can propose a place directly from `atlas.html`. Clicking **Propose a place** opens a form; selecting a position on the map provides WGS84 latitude and longitude. The visitor completes the record and clicks **Open email to send**.
+**Change an existing project** by finding its `id` in `content/projects.js`. Updating its text or image list automatically updates the page; you do not need to edit `projects.html` or `scripts/projects.js`.
 
-The website opens a prepared email draft addressed to **contact@artificepractice.com**, including place name, city, country, year, category, tags, description, reference and a link to the exact point in OpenStreetMap.
+## 5. HOW TO UPLOAD PICTURES
 
-**Important:** A `mailto:` link prepares an email in the visitor's configured email application. It does **not** automatically send an email, store the proposal or confirm that ARTIFICE received anything. The visitor must press **Send**. If their device has no email client configured, the form offers a **Copy proposal** fallback.
+Images live in the `assets/` folder. **Do not paste large image data or HTML inside your content file** — upload the actual image first, then refer to it with `src`.
 
-### How ARTIFICE reviews and publishes a proposal
+### A. Upload the file to GitHub
 
-1. Receive the proposal in the inbox of `contact@artificepractice.com`.
-2. Verify the building identity, coordinates, dates and original sources.
-3. Open **`atlas-data.js`** on GitHub, copy an existing place object and edit the fields.
-4. Commit changes to the `main` branch (ideally through a pull request for review).
-5. After GitHub Pages redeploys, the new place appears on the map, in the index and in the tag/category filters.
+1. Prepare the picture: use `.webp` (recommended), `.jpg` or `.png`. Prefer around **1600–2400 px** along the long edge for photographic documentation, and compress files before uploading. Keep images reasonably small for mobile.
+2. Name it simply: `01.webp`, `02.webp`, `site-plan.webp`, etc. Avoid spaces, accents and special characters in filenames.
+3. Go to GitHub → the repository → **assets**. For a project, put the images in `assets/projects/YOUR-PROJECT-ID/`; for a place, use `assets/places/YOUR-PLACE-ID/`.
+4. To create a new folder, use **Add file → Create new file**, type a path like `assets/projects/tokyo-workshop/README.md`, add a short line, and commit. GitHub creates the nested path.
+5. Navigate into that folder and click **Add file → Upload files**; select the actual images, then **Commit changes**.
+6. Click an image in GitHub and double-check its filename and folder. You can now refer to it in the project's or place's `images` array.
 
-The recipients are kept in one file: **`atlas-email.js`**. Change `PROPOSAL_EMAIL` there to update the recipient. Do not insert an email address in `atlas.js` or `atlas.html`.
+### B. Add the picture to the website
 
-### Security and limitations
+Example **project photo** in `content/projects.js`:
 
-No Supabase account, database, dashboard, CAPTCHA, third-party submission service or API key is required. Suggestions are **not automatically published**. Email content is untrusted: verify URLs and facts before adding them to the Atlas.
+```js
+images: [
+  { src: "assets/projects/tokyo-workshop/01.webp", caption: "Outside", alt: "Street facade" },
+  { src: "assets/projects/tokyo-workshop/02.webp", caption: "Interior", alt: "Interior staircase" }
+]
+```
 
-The obsolete experimental files `atlas-admin.*`, `atlas-config.js` and `supabase/` belong to the abandoned database-based prototype and are not needed by the active email workflow.
+Example **Atlas place photo** in `content/places.js`:
+
+```js
+images: [
+  { src: "assets/places/example-cinema/exterior.webp", caption: "Exterior, 2026", alt: "Cinema entrance" },
+  { src: "assets/places/example-cinema/interior.webp", caption: "Interior, 2026", alt: "View of the atrium" }
+]
+```
+
+Save the content file. Once GitHub Pages deploys, you can browse photos using the gallery controls.
+
+**Existing Maine–Montparnasse images** currently live at `assets/maine-01.webp` through `assets/maine-13.webp`; they have been preserved to avoid broken links. Their visible captions are now edited inside `content/projects.js`.
+
+### C. Common image problems
+
+- **Broken picture / empty frame:** check spelling, capitalization and path. GitHub is case-sensitive. `01.webp` ≠ `01.WEBP`.
+- **Image is not updating:** hard-refresh your browser and verify the GitHub Pages deployment finished.
+- **Wrong orientation or huge image:** prepare and resize it on your computer, then re-upload/replace it in GitHub.
+- **No picture on a place page:** add an `images` array to that place's record (empty places show “Documentation in progress”).
+- **Copyright:** only upload photographs, scans, renderings and other materials you have permission to publish.
+
+## 6. Link a PROJECT and an ATLAS PLACE in both directions
+
+For example, “La machine du dialogue” is a **project**, and “Maine–Montparnasse” is an **Atlas place**.
+
+In `content/projects.js`:
+
+```js
+atlasPlaceId: "maine-montparnasse",
+```
+
+This makes the red-dot “Paris, France” location line open the Atlas centered on that site.
+
+In the corresponding `content/places.js` record:
+
+```js
+project: "projects.html?project=la-machine-du-dialogue",
+```
+
+This adds a “Explore ARTIFICE's project →” link on the Atlas place page. Linking is optional in either direction.
+
+## 7. Changing the overall look
+
+- **Whole site font / header / project page layout:** `styles.css`
+- **Atlas dimensions / point colors / tag filters:** `atlas.css`
+- **Landing page text and video:** `index.html`
+- **Atlas map rendering engine and zoom logic:** `scripts/atlas.js` (**advanced; do not edit casually**)
+
+MapLibre and the OpenFreeMap black/white map style have been intentionally left unchanged. Do **not** override MapLibre's marker positioning with `position:relative` or you may shift map pins as you zoom.
+
+## 8. Visitor proposals arrive by EMAIL
+
+Clicking “Propose a place” on the Atlas opens a prepared email addressed to **contact@artificepractice.com**. Visitors must press **Send** in their mail application. You review the email, verify the place, then add it to `content/places.js`.
+
+To change the recipient, edit `PROPOSAL_EMAIL` in `content/email.js`. There is **no Supabase account or database** connected to the active site.
+
+## 9. Save changes, verify, and undo if needed
+
+After committing to `main`, GitHub Pages normally builds the live site automatically. See the repository **Actions** tab for the deployment status.
+
+If a page stops working after your edit:
+
+1. Check for a missing comma or quotation mark in the edited `.js` content.
+2. Verify the new picture file exists at the exact `src` path.
+3. Check the browser developer console for errors if comfortable.
+4. On GitHub, open the file → **History**, select the last working commit and restore the old version; or revert the change through a pull request.
+5. Ask ChatGPT to review the specific GitHub file or error and explain the fix.
+
+**Never put passwords, private API keys, or personal documents in this public repository.** You do not need to modify `CNAME`, install anything, or write code to add catalogue content.
+
+---
+
+**Editing summary:** `content/places.js` = Atlas • `content/projects.js` = Projects • `assets/` = Pictures • `content/email.js` = Proposal inbox.
