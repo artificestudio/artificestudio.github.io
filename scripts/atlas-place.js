@@ -1,4 +1,4 @@
-import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-yongsan-etland";
+import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-find-makuhari";
 
 const $=id=>document.getElementById(id);
 const id=new URLSearchParams(location.search).get("id");
@@ -13,6 +13,13 @@ if(!place){
  $("place-year").textContent=place.year?"Construction / opening: "+place.year:"Construction date under review";
  $("place-description").textContent=place.description||"";
  $("place-category").textContent=categoryLabel(place.category);
+ if(Array.isArray(place.coordinates) && place.coordinates.length===2){
+  const link=document.createElement("a");
+  link.href="atlas.html?place="+encodeURIComponent(place.id);
+  link.textContent="Locate on Atlas map ↗";
+  const p=document.createElement("p");p.append(link);
+  $("place-research").append(p);
+ }
  const research=$("place-research");
  for(const [label,value] of [
   ["Programme",place.program],

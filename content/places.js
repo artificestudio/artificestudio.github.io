@@ -524,15 +524,18 @@ export const seedPlaces = [
     country: "Japan",
     coordinates: [140.02873,35.65469],
     coordinateSource: "https://mapcarta.com/W695894961",
+    year: "2013",
     category: "shopping-mall",
     tags: ["retail"],
     program: "Large interconnected shopping centre",
+    searchTerms: ["Makuhari Shintoshin", "AEON Mall Makuhari", "イオンモール幕張新都心", "AEON Mall Maluhari New City"],
     condition: "Yasmine field inventory (Oct 2026): Field observation: oversized facilities and areas with low use",
     areaReliability: "High",
     description: "Large interconnected shopping centre in Chiba",
     area: "≈402,000 m² total GFA; 128,000 m² leasable",
     areaSource: "https://www.aeonmall.com/facility/detail/1529/",
     areaNote: "GFA includes parking",
+    source: "https://www.aeonmall.com/facility/detail/1529/1000/",
   },
   {
     id: "hatoya-hotel",
@@ -858,7 +861,8 @@ export function matchesFilters(place, category, selectedTags, searchTerm = "") {
   const tagsMatch = selectedTags.every(tag => tags.includes(tag));
   const haystack = [
     place.name, place.city, place.country, place.description,
-    place.program,place.condition,place.locationNote
+    place.program,place.condition,place.locationNote,
+    ...(Array.isArray(place.searchTerms) ? place.searchTerms : [])
   ].filter(Boolean).join(" ").toLowerCase();
   return categoryMatch && tagsMatch && haystack.includes(searchTerm.trim().toLowerCase());
 }

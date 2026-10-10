@@ -1,4 +1,4 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-yongsan-etland";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-find-makuhari";
 import { PROPOSAL_EMAIL } from "../content/email.js";
 
 const $=id=>document.getElementById(id);
@@ -112,8 +112,17 @@ function makeChip(label,selected,onclick,disabled=false){
  const b=document.createElement("button");b.type="button";b.className="atlas-filter-chip"+(selected?" is-active":"");
  b.textContent=label;b.disabled=disabled;b.setAttribute("aria-pressed",String(selected));b.addEventListener("click",onclick);return b;
 }
+function focusSingleSearchResult(){
+ if(!searchTerm.trim())return;
+ const found=visiblePlaces();
+ if(found.length!==1)return;
+ const target=found[0];
+ if(!Array.isArray(target.coordinates)||target.coordinates.length!==2)return;
+ map.easeTo({center:target.coordinates,zoom:Math.max(map.getZoom(),12),duration:400});
+}
 function syncFilters(){
  renderFilters();renderList();resetMarkers();
+ focusSingleSearchResult();
  const url=new URL(window.location.href);
  if(activeCategory==="all")url.searchParams.delete("category");else url.searchParams.set("category",activeCategory);
  if(activeTags.length)url.searchParams.set("tags",activeTags.join(","));else url.searchParams.delete("tags");
@@ -147,7 +156,7 @@ clearFilters.addEventListener("click",()=>{activeCategory="all";activeTags=[];se
 
 function renderList(){
  list.replaceChildren();
- const shown=visiblePlaces();
+ const shown=visiblePlaces().slice().sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:"base"}));
  filterCount.textContent=String(shown.length).padStart(2,"0")+" / "+String(places.length).padStart(2,"0")+" PLACES";
  if(!shown.length){const msg=document.createElement("p");msg.className="atlas-no-results";msg.textContent="No places match these filters.";list.append(msg);}
  for(const p of shown){
@@ -259,3 +268,4 @@ $("atlas-copy-proposal").addEventListener("click",async()=>{
 });
 loadVectorBasemap();
 loadPlaces();
+focusSingleSearchResult();
