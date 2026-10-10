@@ -1,4 +1,4 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-photos-142";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-hover-preview-fix";
 import { PROPOSAL_EMAIL } from "../content/email.js";
 
 const $=id=>document.getElementById(id);
@@ -65,15 +65,43 @@ map.on("error",e=>{console.warn("Map tile/render issue:",e.error);});
 
 function showTip(p,el){
  tooltip.replaceChildren();
- const firstPhoto=Array.isArray(p.images)?p.images.find(photo=>photo && photo.src):null;
+ const firstPhoto=Array.isArray(p.images)?p.images.find(item=>item && typeof item.src==="string" && item.src.trim()):null;
  if(firstPhoto){
-  const photo=document.createElement("img");
-  photo.className="atlas-tooltip-photo";
-  photo.src=firstPhoto.src;
-  photo.alt=firstPhoto.alt||("Photograph of "+p.name);
-  photo.loading="eager";
-  photo.addEventListener("error",()=>photo.remove(),{once:true});
-  tooltip.append(photo);
+   const frame=document.createElement("div");
+   frame.className="atlas-tooltip-photo-frame";
+   const message=document.createElement("span");
+   message.className="atlas-tooltip-photo-message";
+   message.textContent="Loading photograph…";
+   const photo=document.createElement("img");
+   photo.className="atlas-tooltip-photo";
+   photo.alt=firstPhoto.alt||("Photograph of "+p.name);
+   photo.loading="eager";
+   photo.decoding="async";
+   const localUrl=new URL(firstPhoto.src,document.baseURI).href;
+   const rawUrl="https://raw.githubusercontent.com/artificestudio/artificestudio.github.io/main/"+firstPhoto.src.replace(/^\\/+/, "");
+   let fallbackAttempted=false;
+   photo.addEventListener("load",()=>{
+     frame.classList.add("is-loaded");
+     message.remove();
+   });
+   photo.addEventListener("error",()=>{
+     if(!fallbackAttempted){
+       fallbackAttempted=true;
+       photo.src=rawUrl;
+     }else{
+       photo.remove();
+       message.textContent="Photograph unavailable";
+       frame.classList.add("is-unavailable");
+     }
+   });
+   frame.append(message,photo);
+   tooltip.append(frame);
+   photo.src=localUrl;
+ }else{
+   const note=document.createElement("div");
+   note.className="atlas-tooltip-photo-empty";
+   note.textContent="Photographic documentation in progress";
+   tooltip.append(note);
  }
  const information=document.createElement("div");
  information.className="atlas-tooltip-info";
@@ -95,7 +123,9 @@ function openPlace(p){location.href="atlas-place.html?id="+encodeURIComponent(p.
 function visiblePlaces(){return places.filter(place=>matchesFilters(place,activeCategory,activeTags,searchTerm));}
 function resetMarkers(){
  markers.forEach(marker=>marker.remove());markers.length=0;
- for(const p of visiblePlaces()){
+ // In dense parts of the map, let markers with real photos remain clickable on top.
+ const displayed=visiblePlaces().slice().sort((a,b)=>Number(Boolean(a.images?.length))-Number(Boolean(b.images?.length)));
+ for(const p of displayed){
    if(!Array.isArray(p.coordinates) || p.coordinates.length!==2 || !p.coordinates.every(Number.isFinite))continue;
    const el=document.createElement("button");
    el.type="button";el.className="atlas-marker";el.setAttribute("aria-label",p.name+", "+p.city);

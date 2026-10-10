@@ -81,7 +81,11 @@
  padding:0;background:#fff;border:0;box-shadow:0 2px 16px rgba(0,0,0,.17);
  overflow:hidden;z-index:6;font-family:"Times New Roman",Times,serif;
 }
-.atlas-tooltip-photo{display:block;width:100%;height:155px;object-fit:cover;}
+.atlas-tooltip-photo-frame{position:relative;height:155px;width:100%;background:#efefef;overflow:hidden;display:grid;place-items:center}
+.atlas-tooltip-photo{display:block;width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+.atlas-tooltip-photo-message{position:absolute;inset:0;display:grid;place-items:center;padding:1rem;font-size:.78rem;color:#555;text-align:center;z-index:1}
+.atlas-tooltip-photo-frame.is-unavailable{background:#f4f4f4}
+.atlas-tooltip-photo-empty{display:grid;place-items:center;min-height:90px;padding:1rem;background:#eee;color:#555;font-size:.8rem;text-align:center}
 .atlas-tooltip-info{padding:.75rem .85rem;line-height:1.35;}
 .atlas-tooltip-info strong{display:block;font-weight:normal;font-size:1.12rem;margin-bottom:.25rem;}
 @media(max-width:780px){.atlas-page .atlas-marker{width:15px!important;height:15px!important;min-width:15px!important}}
