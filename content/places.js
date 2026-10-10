@@ -614,7 +614,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Helsinki, Tallinn and Stockholm ferry routes; specify a vessel before geolocating",
     areaReliability: "Pending",
     description: "Passenger ferry, retail and leisure in Baltic Sea"
-  },,
+  },
 
   // EXPANDED ARTIFICIAL WORLDS: TOURISM, INFRASTRUCTURE, MEMORY AND URBAN EXPERIMENTS.
   {
