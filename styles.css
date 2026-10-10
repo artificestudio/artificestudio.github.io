@@ -417,3 +417,10 @@ html,body{background:#fff}
  .site-header nav a,.home-page .site-header nav a{font-size:10px}
  .site-header .wordmark span,.site-header .wordmark{font-size:11px}
 }
+
+/* Homepage radio uses one visual pair of square brackets. */
+.home-page .radio-bracketed-home{padding-left:.7rem;padding-right:.7rem}
+.home-page .home-radio-open,.home-page .home-radio-close{position:absolute;font:clamp(1.1rem,2vw,1.8rem)/1 "Times New Roman",Times,serif;pointer-events:none}
+.home-page .home-radio-open{top:0;left:0}
+.home-page .home-radio-close{bottom:0;right:0}
+.home-page .radio-bracketed-home .radio-small,.home-page .radio-bracketed-home .radio-track,.home-page .radio-bracketed-home .sound-toggle,.home-page .radio-bracketed-home .radio-status{text-transform:lowercase}
