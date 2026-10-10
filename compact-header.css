@@ -72,3 +72,14 @@ body:not(.home-page) .radio-control-icon {display:block;width:14px;height:14px;s
  body:not(.home-page) .radio-dock-meta {font-size:9px!important}
  body:not(.home-page) .radio-dock-track {font-size:9px!important}
 }
+
+/* Bracketed lowercase radio: text and controls form one compact unit. */
+body:not(.home-page) .radio-dock{gap:6px}
+body:not(.home-page) .radio-bracket{font:16px/1 "Times New Roman",Times,serif;display:inline-block;flex:0 0 auto}
+body:not(.home-page) .radio-dock-meta,
+body:not(.home-page) .radio-dock-track,
+body:not(.home-page) .radio-dock-play{text-transform:lowercase}
+@media(max-width:850px){
+ body:not(.home-page) .radio-bracket{display:inline-block!important;font-size:15px!important}
+ body:not(.home-page) .radio-dock-meta{display:block!important}
+}
