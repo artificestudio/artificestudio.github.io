@@ -50,7 +50,7 @@ export const seedPlaces = [
   {
     id: "maine-montparnasse",
     name: "Centre commercial Maine–Montparnasse",
-    city: "Paris", country: "France", year: "1973",
+    city: "Paris", country: "France",
     coordinates: [2.3211, 48.8423],
     category: "shopping-mall", tags: ["retail", "adaptive-reuse", "1970s"],
 
@@ -68,7 +68,7 @@ export const seedPlaces = [
   },
   {
     id: "le-millenaire",
-    name: "Le Millénaire", city: "Aubervilliers", country: "France", year: "2011",
+    name: "Le Millénaire", city: "Aubervilliers", country: "France",
     coordinates: [2.382, 48.900],
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
 
@@ -82,7 +82,7 @@ export const seedPlaces = [
   },
   {
     id: "bercy-2",
-    name: "Bercy 2", city: "Charenton-le-Pont", country: "France", year: "1990",
+    name: "Bercy 2", city: "Charenton-le-Pont", country: "France",
     coordinates: [2.405, 48.823],
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
 
@@ -96,7 +96,7 @@ export const seedPlaces = [
   },
   {
     id: "la-vache-noire",
-    name: "La Vache Noire", city: "Arcueil", country: "France", year: "2007",
+    name: "La Vache Noire", city: "Arcueil", country: "France",
     coordinates: [2.32885, 48.81135],
     coordinateSource: "https://mapcarta.com/W62643138",
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
@@ -111,7 +111,7 @@ export const seedPlaces = [
   },
   {
     id: "belle-epine",
-    name: "Belle Épine", city: "Thiais", country: "France", year: "1971",
+    name: "Belle Épine", city: "Thiais", country: "France",
     coordinates: [2.37214, 48.75659],
     coordinateSource: "https://mapcarta.com/W263891555",
     category: "shopping-mall", tags: ["retail", "periphery", "1970s"],
@@ -128,7 +128,7 @@ export const seedPlaces = [
   // ALGERIA
   {
     id: "riadh-el-feth",
-    name: "Riadh El Feth", city: "Algiers", country: "Algeria", year: "1982 (construction began)",
+    name: "Riadh El Feth", city: "Algiers", country: "Algeria",
     coordinates: [3.07025, 36.74326],
     coordinateSource: "https://mapcarta.com/fr/W1271733343",
     category: "mixed-use-complex", tags: ["retail", "cultural-program", "mixed-program"],
@@ -143,7 +143,7 @@ export const seedPlaces = [
   // SOUTH KOREA
   {
     id: "techno-mart",
-    name: "Gangbyeon Techno Mart", city: "Seoul", country: "South Korea", year: "",
+    name: "Gangbyeon Techno Mart", city: "Seoul", country: "South Korea",
     coordinates: [127.0957, 37.5355],
     category: "electronics-complex", tags: ["retail", "electronics", "technology"],
 
@@ -156,7 +156,7 @@ export const seedPlaces = [
   },
   {
     id: "venezia-mega-mall",
-    name: "Venezia Mega Mall", city: "Seoul", country: "South Korea", year: "",
+    name: "Venezia Mega Mall", city: "Seoul", country: "South Korea",
     coordinates: [127.021434, 37.570978],
     coordinateSource: "https://lse.purpleo.kr/article/1415",
     locationNote: "Approximately located from a commercial registry at 400 Cheonggyecheon-ro. Building footprint should be checked.",
@@ -170,7 +170,7 @@ export const seedPlaces = [
   },
   {
     id: "migliore-dongdaemun",
-    name: "Migliore Dongdaemun", city: "Seoul", country: "South Korea", year: "",
+    name: "Migliore Dongdaemun", city: "Seoul", country: "South Korea",
     coordinates: [127.008527, 37.567963],
     coordinateSource: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=315&vcontsId=106366",
     locationNote: "The inventory says 'Migliore'. This pin identifies the Dongdaemun branch; confirm it is the intended one.",
@@ -184,7 +184,7 @@ export const seedPlaces = [
   },
   {
     id: "apm-place",
-    name: "apM PLACE", city: "Seoul", country: "South Korea", year: "",
+    name: "apM PLACE", city: "Seoul", country: "South Korea",
     coordinates: [127.00841, 37.5653],
     coordinateSource: "https://mapcarta.com/W400847801",
     category: "shopping-mall", tags: ["retail", "fashion"],
@@ -196,7 +196,7 @@ export const seedPlaces = [
   },
   {
     id: "hapjeong-mall",
-    name: "Hapjeong Mall / Mecenatpolis (provisional)", city: "Seoul", country: "South Korea", year: "",
+    name: "Hapjeong Mall / Mecenatpolis (provisional)", city: "Seoul", country: "South Korea",
     coordinates: [126.91378, 37.55089],
     coordinateSource: "https://mapcarta.com/W306956698",
     locationNote: "The inventory only says 'Hapjeong mall'. Mapped provisionally to Mecenatpolis; please confirm the intended building.",
@@ -210,7 +210,7 @@ export const seedPlaces = [
   },
   {
     id: "goodmorning-city",
-    name: "Goodmorning City", city: "Seoul", country: "South Korea", year: "",
+    name: "Goodmorning City", city: "Seoul", country: "South Korea",
     coordinates: [127.0075, 37.56668],
     coordinateSource: "https://mapcarta.com/W358284628",
     category: "shopping-mall", tags: ["retail", "fashion"],
@@ -223,7 +223,7 @@ export const seedPlaces = [
   },
   {
     id: "wangsimni-bitplex",
-    name: "Wangsimni / Bitplex (provisional)", city: "Seoul", country: "South Korea", year: "",
+    name: "Wangsimni / Bitplex (provisional)", city: "Seoul", country: "South Korea",
     coordinates: [127.0383, 37.56212],
     coordinateSource: "https://mapcarta.com/W1258207418",
     locationNote: "The inventory only says 'Wangsimni'. Mapped provisionally to the Bitplex / Enter-6 complex at Wangsimni Station.",
@@ -240,7 +240,7 @@ export const seedPlaces = [
   {
     id: "aeon-sanda-woody-town",
     name: "AEON Sanda Woody Town",
-    city: "Sanda", country: "Japan", year: "",
+    city: "Sanda", country: "Japan",
     coordinates: [135.18746, 34.90853],
     coordinateSource: "https://mapcarta.com/W506631400",
     category: "shopping-mall",
@@ -256,7 +256,7 @@ export const seedPlaces = [
   {
     id: "time-terrace-dongtan",
     name: "Time Terrace Dongtan",
-    city: "Hwaseong", country: "South Korea", year: "2022 (renovated and renamed)",
+    city: "Hwaseong", country: "South Korea",
     coordinates: [127.069312, 37.204856],
     coordinateSource: "https://bim.purpleo.kr/article/1297",
     locationNote: "Interpreted from 'Times Square in Dongtan'. This is the Time Terrace mall inside Metapolis, operated by the company behind Seoul Times Square. It is not the unrelated SH Times Square industrial building.",
@@ -274,7 +274,7 @@ export const seedPlaces = [
   {
     id: "moko-mong-kok-east",
     name: "MOKO (Grand Century Place)",
-    city: "Hong Kong", country: "Hong Kong", year: "1997",
+    city: "Hong Kong", country: "Hong Kong",
     coordinates: [114.17238, 22.32318],
     coordinateSource: "https://mapcarta.com/W37517528",
     locationNote: "Interpreted from 'Mong Kok East'. This is MOKO, the shopping mall beside Mong Kok East station.",
@@ -292,7 +292,7 @@ export const seedPlaces = [
   {
     id: "qianyue-building",
     name: "Qianyue Building (千越大樓)",
-    city: "Taichung", country: "Taiwan", year: "1970s",
+    city: "Taichung", country: "Taiwan",
     coordinates: [120.68314, 24.13827],
     coordinateSource: "https://explander.com/east-central-asia/taiwan/taichung/qianyue-building-taichung-taiwan/",
     category: "mixed-use-complex",
@@ -310,7 +310,7 @@ export const seedPlaces = [
   // ADDITIONAL ARTIFICE RESEARCH PLACES (already on the Atlas; preserved)
   {
     id: "dongtan",
-    name: "Dongtan New Town", city: "Hwaseong", country: "South Korea", year: "2007 (first phase)",
+    name: "Dongtan New Town", city: "Hwaseong", country: "South Korea",
     coordinates: [127.071, 37.206],
     category: "new-town", tags: ["masterplanning", "consumerism", "residential"],
     description: "A planned new town whose apartment brands, infrastructure and corporate economies offer a lens onto contemporary urban consumption."
@@ -322,11 +322,11 @@ export const seedPlaces = [
   },
   {
     id: "nakano-broadway",
-    name: "Nakano Broadway", city: "Tokyo", country: "Japan", year: "1966",
+    name: "Nakano Broadway", city: "Tokyo", country: "Japan",
     coordinates: [139.6658, 35.7092],
     category: "mixed-use-complex", tags: ["retail", "subculture"],
     description: "A multi-storey shopping complex that evolved into a dense ecosystem of specialist retail and subcultures.",
-    images: [{ src: "assets/places/nakano-broadway/DSC01831.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" }]
+    images: [{ src: "assets/places/nakano-broadway/DSC01831.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" }],
     year: "1966",
     program: "Shops, apartments and specialist retailers",
     condition: "Yasmine field inventory (Oct 2026): Field observation: commercial gallery specialising increasingly in collectibles and subculture.",
@@ -338,7 +338,6 @@ export const seedPlaces = [
     name: "Times Square Yeongdeungpo",
     city: "Seoul",
     country: "South Korea",
-    year: "2009",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -353,7 +352,6 @@ export const seedPlaces = [
     name: "Art Forest",
     city: "Seoul",
     country: "South Korea",
-    year: "2024",
     coordinates: null,
     category: "mixed-use-complex",
     tags: ["retail"],
@@ -367,7 +365,6 @@ export const seedPlaces = [
     name: "Euljiro Underground Shopping Centre",
     city: "Seoul",
     country: "South Korea",
-    year: "1967",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -382,7 +379,6 @@ export const seedPlaces = [
     name: "Lions’ Plaza Commercial Building",
     city: "Taipei",
     country: "Taiwan",
-    year: "1979",
     coordinates: null,
     category: "mixed-use-complex",
     tags: ["retail"],
@@ -396,7 +392,6 @@ export const seedPlaces = [
     name: "Sanchong Tang City Plaza",
     city: "New Taipei",
     country: "Taiwan",
-    year: "1992",
     coordinates: null,
     category: "mixed-use-complex",
     tags: ["retail"],
@@ -410,7 +405,6 @@ export const seedPlaces = [
     name: "New Shimbashi Building",
     city: "Tokyo",
     country: "Japan",
-    year: "1971",
     coordinates: [139.75736,35.66628],
     category: "mixed-use-complex",
     tags: ["retail"],
@@ -425,7 +419,6 @@ export const seedPlaces = [
     name: "Asakusa Underground Shopping Street",
     city: "Tokyo",
     country: "Japan",
-    year: "1955",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -439,7 +432,6 @@ export const seedPlaces = [
     name: "AEON LakeTown",
     city: "Koshigaya",
     country: "Japan",
-    year: "2008",
     coordinates: [139.82611,35.87861],
     category: "shopping-mall",
     tags: ["retail"],
@@ -454,7 +446,6 @@ export const seedPlaces = [
     name: "AEON MALL Makuhari New City",
     city: "Chiba",
     country: "Japan",
-    year: "2013",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -469,7 +460,6 @@ export const seedPlaces = [
     name: "Hatoya Hotel",
     city: "Ito",
     country: "Japan",
-    year: "1947",
     coordinates: null,
     category: "hotel",
     tags: ["retail"],
@@ -483,7 +473,6 @@ export const seedPlaces = [
     name: "DECKS Tokyo Beach",
     city: "Tokyo",
     country: "Japan",
-    year: "1996",
     coordinates: [139.7759,35.62906],
     category: "shopping-mall",
     tags: ["retail"],
@@ -498,7 +487,6 @@ export const seedPlaces = [
     name: "DiverCity Tokyo Plaza",
     city: "Tokyo",
     country: "Japan",
-    year: "2012",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -513,7 +501,6 @@ export const seedPlaces = [
     name: "AQUA CiTY ODAIBA",
     city: "Tokyo",
     country: "Japan",
-    year: "2000",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -528,7 +515,6 @@ export const seedPlaces = [
     name: "Rakuseinu / Rakusai Town Centre",
     city: "Kyoto",
     country: "Japan",
-    year: "1981",
     coordinates: null,
     category: "shopping-mall",
     tags: ["retail"],
@@ -543,7 +529,6 @@ export const seedPlaces = [
     name: "Viking Line Baltic Ferry",
     city: "Baltic Sea",
     country: "Multiple countries",
-    year: "Depends on vessel",
     coordinates: null,
     category: "other",
     tags: ["retail"],
