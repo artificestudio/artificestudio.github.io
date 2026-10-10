@@ -53,17 +53,17 @@
           <a class="time-link" id="time-link" href="atlas.html">View in atlas</a>
           <p class="time-method">Counted from 1 January of the recorded year. Exact date unknown.</p>
         </aside>
-        <div class="artifice-radio" aria-label="ARTIFICE radio">
-          <p class="radio-small">ARTIFICE RADIO <span>001</span></p>
-          <p class="radio-track">TECHNO MART</p>
+        <div class="artifice-radio radio-bracketed-home" aria-label="ARTIFICE radio"><span class="home-radio-open" aria-hidden="true">[</span>
+          <p class="radio-small">artifice radio <span>001</span></p>
+          <p class="radio-track">techno mart</p>
           <div class="radio-controls">
             <button class="radio-skip" id="radio-previous" type="button" aria-label="Back 15 seconds" title="Back 15 seconds"><svg class="radio-control-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="square" aria-hidden="true"><path d="M11 6 4 12l7 6V6Zm9 0-7 6 7 6V6Z"/></svg></button>
-            <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play Techno Mart recording" aria-pressed="false">PLAY</button>
+            <button class="sound-toggle" id="sound-toggle" type="button" aria-label="Play Techno Mart recording" aria-pressed="false">play</button>
             <button class="radio-skip" id="radio-next" type="button" aria-label="Forward 15 seconds" title="Forward 15 seconds"><svg class="radio-control-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="square" aria-hidden="true"><path d="m4 6 7 6-7 6V6Zm9 0 7 6-7 6V6Z"/></svg></button>
           </div>
-          <p class="radio-status" id="radio-status" role="status">PRESS PLAY TO LISTEN</p>
+          <p class="radio-status" id="radio-status" role="status">press play to listen</p>
           <div class="radio-progress" aria-hidden="true"><div id="radio-progress-fill"></div></div>
-          <p class="radio-clock" id="radio-clock">00:00 / 00:00</p>
+          <p class="radio-clock" id="radio-clock">00:00 / 00:00</p><span class="home-radio-close" aria-hidden="true">]</span>
         </div>
         <audio id="home-soundtrack" src="assets/artifice-ambient.mp3" preload="metadata" autoplay loop></audio>
       </section>
