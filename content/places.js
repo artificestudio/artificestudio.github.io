@@ -65,6 +65,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Centre closed to the public in 2026 according to the field inventory; basement sports facilities remain in use.",
     areaReliability: "High",
     area: "35,500 m² shopping centre",
+    areaSource: "https://www.drieat.ile-de-france.developpement-durable.gouv.fr/IMG/pdf/190123_mrae_avis_sur_projet_rehabilitation_et_extension_tour_montparnasse_75_delibere.pdf",
+    areaNote: "Commercial centre only, not the entire Maine–Montparnasse complex",
   },
   {
     id: "le-millenaire",
@@ -153,6 +155,9 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: vacant shops, informal retail appearance and reuse of two floors for weddings.",
     areaReliability: "High",
     area: "≈260,000 m² total GFA",
+    areaSource: "https://www.yna.co.kr/view/AKR20110705141100004",
+    areaNote: "Total GFA includes offices and other facilities",
+    images: [{"src":"assets/places/techno-mart/DSC01729.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01735.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01766.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01776.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01780.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"}],
   },
   {
     id: "venezia-mega-mall",
@@ -167,6 +172,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: space mostly used for online retail trade, with underused upper levels.",
     areaReliability: "High",
     area: "≈130,000 m² mall GFA",
+    areaSource: "https://www.yna.co.kr/view/AKR20110614058700003",
+    areaNote: "Retail and leisure areas, not residential towers",
   },
   {
     id: "migliore-dongdaemun",
@@ -181,6 +188,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: some vacant floors and declining commercial activity.",
     areaReliability: "Medium",
     area: "49,566 m² total GFA",
+    areaSource: "https://disco.re/l/ozcxwk",
+    areaNote: "Whole building GFA",
   },
   {
     id: "apm-place",
@@ -207,6 +216,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: active centre with vacant basement and upper-floor units.",
     areaReliability: "High",
     area: "40,176 m² mall GFA",
+    areaSource: "https://www.yna.co.kr/view/AKR20120312093300003",
+    areaNote: "Mall only, excluding residential towers",
   },
   {
     id: "goodmorning-city",
@@ -220,6 +231,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: spa open, cinema reportedly closed September 2026, multiple vacancies.",
     areaReliability: "High",
     area: "92,206 m² total GFA",
+    areaSource: "https://m.apparelnews.co.kr/news/news_view/?idx=130709",
+    areaNote: "Includes commercial, leisure and office floors",
   },
   {
     id: "wangsimni-bitplex",
@@ -234,6 +247,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: active station-linked centre with less-used aisles.",
     areaReliability: "High",
     area: "≈99,000 m² total GFA",
+    areaSource: "https://fi.co.kr/mobile/view.asp?idx=40956",
+    areaNote: "Station and mixed-use complex",
   },
 
   // FOUR ADDITIONAL SITES IN JAPAN, SOUTH KOREA, HONG KONG AND TAIWAN.
@@ -252,6 +267,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Former Saty shopping centre.",
     areaReliability: "High",
     area: "25,298 m² retail",
+    areaSource: "https://www.jcsc.or.jp/data/pdf/2019list_of_shopping_centers.pdf",
+    areaNote: "Retail area only",
   },
   {
     id: "time-terrace-dongtan",
@@ -270,6 +287,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Former Center Point Mall, relaunched as Time Terrace in 2022.",
     areaReliability: "High",
     area: "≈142,000 m² total GFA",
+    areaSource: "https://www.yna.co.kr/view/AKR20220317039800003",
+    areaNote: "Commercial blocks A and B",
   },
   {
     id: "moko-mong-kok-east",
@@ -288,6 +307,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Shopping complex linked to Mong Kok East.",
     areaReliability: "Medium",
     area: "≈67,000 m² retail GFA",
+    areaSource: "https://www.luxstate.com/hk-retail/mall/kowloon/moko/",
+    areaNote: "Mall only",
   },
   {
     id: "qianyue-building",
@@ -305,6 +326,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: former retail space marked by fire in 2005 and artist interventions.",
     areaReliability: "Medium",
     area: "21,070 m² total GFA",
+    areaSource: "https://taichung2050.pixnet.net/blog/posts/10342072765",
+    areaNote: "Building GFA",
   },
 
   // ADDITIONAL ARTIFICE RESEARCH PLACES (already on the Atlas; preserved)
@@ -319,6 +342,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Planned new town; area is land, not floor area.",
     areaReliability: "High",
     area: "9,035,000 m² development land (Dongtan 1)",
+    areaSource: "https://www.molit.go.kr/USR/policyData/m_34681/dtl.jsp?id=524&lcmspage=29",
+    areaNote: "Dongtan 1 development land, not building area",
   },
   {
     id: "nakano-broadway",
@@ -332,6 +357,8 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: commercial gallery specialising increasingly in collectibles and subculture.",
     areaReliability: "Medium",
     area: "≈53,366 m² main building GFA",
+    areaSource: "https://skyscraperclub.com/?p=16733",
+    areaNote: "Main building only",
   }
   {
     id: "times-square-seoul",
@@ -346,6 +373,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Shops, hotel, cinema and offices in Seoul",
     area: "376,400 m² total GFA; 126,800 m² retail"
+    areaSource: "https://www.hankyung.com/article/2009090366231",
+    areaNote: "Mixed-use GFA includes non-retail area",
   },
   {
     id: "art-forest",
@@ -373,6 +402,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Underground shops and pedestrian passageways in Seoul",
     area: "20,334 m² arcade"
+    areaSource: "https://www.sisul.or.kr/global/main/en/sub/shoppingcenter.jsp",
+    areaNote: "Underground arcade, not adjacent centres",
   },
   {
     id: "lions-plaza",
@@ -413,6 +444,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Shops and offices in Tokyo",
     area: "58,107 m² total GFA"
+    areaSource: "https://www.mhs.co.jp/work/new-shinbashi/",
+    areaNote: "Whole building GFA",
   },
   {
     id: "asakusa-underground",
@@ -440,6 +473,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Large suburban shopping centre in Koshigaya",
     area: "≈403,000 m² total GFA; 190,000 m² leasable"
+    areaSource: "https://www.aeonmall.com/news/index/13594/",
+    areaNote: "Three Aeon complexes combined",
   },
   {
     id: "aeon-makuhari-new-city",
@@ -454,6 +489,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Large interconnected shopping centre in Chiba",
     area: "≈402,000 m² total GFA; 128,000 m² leasable"
+    areaSource: "https://www.aeonmall.com/facility/detail/1529/",
+    areaNote: "GFA includes parking",
   },
   {
     id: "hatoya-hotel",
@@ -481,6 +518,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Shops, attractions and leisure in Tokyo",
     area: "≈69,035 m² total GFA"
+    areaSource: "https://www.tokyu-land.co.jp/urban/shopping/list/051.html",
+    areaNote: "Total GFA",
   },
   {
     id: "divercity-tokyo-plaza",
@@ -495,6 +534,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Shops, restaurants and attractions in Tokyo",
     area: "≈140,200 m² mall and parking GFA; 47,000 m² retail"
+    areaSource: "https://www.mitsuifudosan.co.jp/corporate/news/2021/0412/",
+    areaNote: "Mall and parking area",
   },
   {
     id: "aquacity-odaiba",
@@ -509,6 +550,8 @@ export const seedPlaces = [
     areaReliability: "High",
     description: "Shops, restaurants and cinema in Tokyo",
     area: "≈94,000 m² total GFA; 42,500 m² retail"
+    areaSource: "https://www.mec.co.jp/ir/library/2013/4Q/FACT%20BOOK%20201303.pdf",
+    areaNote: "Mall GFA and retail area",
   },
   {
     id: "rakuseinu",
@@ -523,6 +566,8 @@ export const seedPlaces = [
     areaReliability: "Medium",
     description: "New-town shopping arcade in Kyoto",
     area: "15,915 m² retail"
+    areaSource: "https://toshoken.com/news/30550",
+    areaNote: "Shopping arcade, not adjacent department store",
   },
   {
     id: "viking-line",
