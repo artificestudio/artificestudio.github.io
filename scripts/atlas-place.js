@@ -1,4 +1,4 @@
-import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-photos";
+import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-yasmine";
 
 const $=id=>document.getElementById(id);
 const id=new URLSearchParams(location.search).get("id");
@@ -17,12 +17,14 @@ if(!place){
  for(const [label,value] of [
   ["Programme",place.program],
   ["Floor area",place.area],
+  ["Area data reliability",place.areaReliability],
+  ["Area scope / research notes",place.areaNote],
   ["Condition / research notes",place.condition],
   ["Location to verify",place.locationNote]
  ]){
   if(!value)continue;
   const section=document.createElement("p");
-  const title=document.createElement("strong");title.textContent=label+" — ";
+  const title=document.createElement("strong");title.textContent=label+": ";
   section.append(title,document.createTextNode(value));
   research.append(section);
  }
@@ -35,9 +37,14 @@ if(!place){
   link.textContent="#"+tagLabel(tag);
   $("place-tags").append(link);
  }
+ if(place.areaSource && /^https?:\/\//i.test(place.areaSource)){
+  const p=document.createElement("p");
+  const a=document.createElement("a");a.href=place.areaSource;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Floor area reference";
+  p.append(a);research.append(p);
+ }
  if(place.source && /^https?:\/\//i.test(place.source)){
   const link=document.createElement("a");link.href=place.source;link.target="_blank";
-  link.rel="noopener noreferrer";link.textContent="Reference ↗";$("place-source").append(link);
+  link.rel="noopener noreferrer";link.textContent="Reference";$("place-source").append(link);
  }
  if(place.project && /^projects\.html(?:\?project=[a-z0-9-]+)?$/.test(place.project)){
   const link=document.createElement("a");link.href=place.project;

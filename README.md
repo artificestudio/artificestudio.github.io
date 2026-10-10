@@ -1,3 +1,15 @@
+## Yasmine's Atlas inventory, 10 October 2026
+
+The Excel working inventory `ARTIFICE_ATLAS_places.xlsx` contains 34 entries. All 34 are represented by distinct IDs in `content/places.js`; 15 were new entries at import. Existing photograph assignments, including Nakano Broadway, were kept. Five uploaded Gangbyeon Techno Mart photographs were linked.
+
+The reference workbook has two sheets: ATLAS for building programmes, years and observational status; AREA SOURCES for verified or unresolved floor-area figures. The public Atlas keeps source URLs and `areaReliability` metadata when available, with links on individual place pages.
+
+Some records have `coordinates: null` deliberately. They appear in the indexed list and have detail pages, but not red map markers until their exact point is confirmed. This includes the Baltic Sea ferry route, which is not a single fixed site.
+
+A column listing photo base names in the spreadsheet is *not* proof that image files are already uploaded. Upload the actual files to the corresponding `assets/places/<id>/` folders before connecting them in `images`.
+
+Field observations and pending dates/surfaces are presented as research notes, not independently confirmed current facts. Avoid changing a date marked as a renovation to a construction date without evidence.
+
 # ARTIFICE — how to edit the website
 
 **Live website:** https://www.artificepractice.com  

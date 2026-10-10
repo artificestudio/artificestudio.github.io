@@ -1,4 +1,4 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-photos";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-yasmine";
 import { PROPOSAL_EMAIL } from "../content/email.js";
 
 const $=id=>document.getElementById(id);
@@ -96,6 +96,7 @@ function visiblePlaces(){return places.filter(place=>matchesFilters(place,active
 function resetMarkers(){
  markers.forEach(marker=>marker.remove());markers.length=0;
  for(const p of visiblePlaces()){
+   if(!Array.isArray(p.coordinates) || p.coordinates.length!==2 || !p.coordinates.every(Number.isFinite))continue;
    const el=document.createElement("button");
    el.type="button";el.className="atlas-marker";el.setAttribute("aria-label",p.name+", "+p.city);
    const marker=new maplibregl.Marker({element:el,anchor:"center"}).setLngLat(p.coordinates).addTo(map);
@@ -151,9 +152,9 @@ function renderList(){
  if(!shown.length){const msg=document.createElement("p");msg.className="atlas-no-results";msg.textContent="No places match these filters.";list.append(msg);}
  for(const p of shown){
    const b=document.createElement("button");b.className="atlas-list-item";b.type="button";
-   const n=document.createElement("span");n.textContent=p.name+" — "+p.city+", "+p.country;
+   const n=document.createElement("span");n.textContent=p.name+", "+p.city+", "+p.country;
    const typ=document.createElement("span");typ.className="atlas-entry-type";typ.textContent=categoryLabel(p.category);
-   const y=document.createElement("small");y.textContent=p.year||"date unknown";
+   const y=document.createElement("small");y.textContent=(p.year||"date unknown")+(p.coordinates?"":" / LOCATION TO VERIFY");
    b.append(n,typ,y);b.onclick=()=>openPlace(p);list.append(b);
  }
  $("atlas-count").textContent=String(places.length).padStart(2,"0");
