@@ -1,4 +1,4 @@
-import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-yasmine";
+import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-12worlds";
 
 const $=id=>document.getElementById(id);
 const id=new URLSearchParams(location.search).get("id");
@@ -20,7 +20,8 @@ if(!place){
   ["Area data reliability",place.areaReliability],
   ["Area scope / research notes",place.areaNote],
   ["Condition / research notes",place.condition],
-  ["Location to verify",place.locationNote]
+  ["Location to verify",place.locationNote],
+  ["Date context",place.dateNote]
  ]){
   if(!value)continue;
   const section=document.createElement("p");

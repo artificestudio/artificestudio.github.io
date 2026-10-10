@@ -91,11 +91,11 @@
       // The Atlas records years, not complete construction dates. Count
       // from January 1 of the recorded year as an explicit convention.
       // Nine decimals ensure that the time visibly changes in real time.
-      import("./content/places.js?v=20261010-yasmine").then(({ seedPlaces }) => {
+      import("./content/places.js?v=20261010-12worlds").then(({ seedPlaces }) => {
         const candidates = seedPlaces.filter(place =>
-          /^\d{4}$/.test(String(place.year || "").trim()) &&
-          Number(place.year) <= new Date().getFullYear() &&
-          Number(place.year) >= 1800 &&
+          Number.isInteger(place.clockYear ?? Number(place.year)) &&
+          (place.clockYear ?? Number(place.year)) <= new Date().getFullYear() &&
+          (place.clockYear ?? Number(place.year)) >= 1800 &&
           place.id && place.name
         );
         const timeElapsed = document.getElementById("time-elapsed");
@@ -114,7 +114,7 @@
         let counter = 0;
         function updateElapsed() {
           if (!activePlace || document.hidden) return;
-          const startingPoint = Date.UTC(Number(activePlace.year), 0, 1);
+          const startingPoint = Date.UTC((activePlace.clockYear ?? Number(activePlace.year)), 0, 1);
           const years = Math.max(0, (Date.now() - startingPoint) / averageYearMilliseconds);
           timeElapsed.textContent = years.toFixed(9).replace(".", ",");
         }
@@ -130,7 +130,7 @@
             [queue[0], queue[queue.length - 1]] = [queue[queue.length - 1], queue[0]];
           }
           activePlace = queue.pop();
-          timePlace.textContent = activePlace.name.toUpperCase() + " / " + activePlace.city.toUpperCase() + " / " + activePlace.year;
+          timePlace.textContent = activePlace.name.toUpperCase() + " / " + (activePlace.clockEvent || "Construction / opening") + " / " + (activePlace.clockYear ?? activePlace.year);
           timeLink.href = "atlas-place.html?id=" + encodeURIComponent(activePlace.id);
           sequence.textContent = String(++counter).padStart(2, "0");
           updateElapsed();

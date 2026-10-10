@@ -1,3 +1,7 @@
+## Twelve new ARTIFICE territories (October 2026)
+
+Added 12 sites from Spa Resort Hawaiians through Sanzhi UFO Houses. New categories include Leisure resort, Transport infrastructure, Public park, and Museum / memorial. New research tags include artificial worlds, prosperity, suspended time, ordinary heritage, afterlives, infrastructure and leisure. Dates distinguish opening, initial works, completion, conversion and demolition. Records have clockYear/clockEvent for the homepage rotating counter; older entries retain the strict four-digit-year fallback. The clock uses January 1 of the recorded event year as an approximate reference, not a claim about the precise historical day. Demolished Sanzhi houses are an historical marker rather than an existing attraction. No third-party photographs were copied into the repository.
+
 ## Yasmine's Atlas inventory, 10 October 2026
 
 The Excel working inventory `ARTIFICE_ATLAS_places.xlsx` contains 34 entries. All 34 are represented by distinct IDs in `content/places.js`; 15 were new entries at import. Existing photograph assignments, including Nakano Broadway, were kept. Five uploaded Gangbyeon Techno Mart photographs were linked.
