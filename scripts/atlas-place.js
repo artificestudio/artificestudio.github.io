@@ -1,4 +1,4 @@
-import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-12worlds";
+import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-yongsan-etland";
 
 const $=id=>document.getElementById(id);
 const id=new URLSearchParams(location.search).get("id");

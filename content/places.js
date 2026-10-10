@@ -173,6 +173,17 @@ export const seedPlaces = [
 
   // SOUTH KOREA
   {
+    id: "yongsan-et-land",
+    name: "Yongsan ET Land", city: "Seoul", country: "South Korea",
+    coordinates: [126.9595403701, 37.5327661639],
+    coordinateSource: "https://data.visitkorea.or.kr/resource/132229",
+    category: "electronics-complex", tags: ["retail", "electronics", "technology"],
+    description: "Electronics retail complex in Yongsan, opened in 1988 as part of the district's development as a major electronics trading area.",
+    year: "1988",
+    program: "Electronics, computers, audio equipment, cameras and related retail",
+    source: "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=103977",
+  },
+  {
     id: "techno-mart",
     name: "Gangbyeon Techno Mart", city: "Seoul", country: "South Korea",
     coordinates: [127.0957, 37.5355],
