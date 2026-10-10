@@ -53,34 +53,46 @@ export const seedPlaces = [
     city: "Paris", country: "France", year: "1973",
     coordinates: [2.3211, 48.8423],
     category: "shopping-mall", tags: ["retail", "adaptive-reuse", "1970s"],
-    program: "Retail, offices and public facilities",
-    condition: "Working inventory: definitive closure to the public noted for 2026; architectural transformation project in progress. To verify.",
+
     description: "The Maine–Montparnasse retail complex is the site of ARTIFICE's La machine du dialogue project.",
     project: "projects.html?project=la-machine-du-dialogue",
     images: [
       { src: "assets/places/maine-montparnasse/01.webp", caption: "Existing interior passage", alt: "Interior of the Maine–Montparnasse shopping centre" },
       { src: "assets/places/maine-montparnasse/02.webp", caption: "Existing commercial interior", alt: "Vacant interior of the Maine–Montparnasse shopping centre" }
     ]
+    year: "1973",
+    program: "Shops, offices and public facilities",
+    condition: "Yasmine field inventory (Oct 2026): Centre closed to the public in 2026 according to the field inventory; basement sports facilities remain in use.",
+    areaReliability: "High",
+    area: "35,500 m² shopping centre",
   },
   {
     id: "le-millenaire",
     name: "Le Millénaire", city: "Aubervilliers", country: "France", year: "2011",
     coordinates: [2.382, 48.900],
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
-    program: "Retail and offices",
-    area: "56,000 m² retail; 17,000 m² offices (working inventory)",
-    condition: "Working inventory: marked decline; approximately 20 of 140 stores reported open. To verify.",
+
+
     description: "Shopping-centre and office development in Aubervilliers on the northern edge of Paris."
+    year: "2011",
+    program: "Shops and offices",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: severe retail decline and departed major franchises.",
+    areaReliability: "Original",
+    area: "56,000 m² retail; 17,000 m² offices",
   },
   {
     id: "bercy-2",
     name: "Bercy 2", city: "Charenton-le-Pont", country: "France", year: "1990",
     coordinates: [2.405, 48.823],
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
-    program: "Retail",
-    area: "36,000 m² retail (working inventory)",
-    condition: "Working inventory: decline and recent reinvestment noted; a possible demolition horizon of 2031 was mentioned and requires verification.",
+
+
     description: "Shopping centre by Renzo Piano Building Workshop at the edge of Paris."
+    year: "1990",
+    program: "Shops",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: partly repurposed upper floor; proposed redevelopment, potential demolition in 2031 not confirmed.",
+    areaReliability: "Original",
+    area: "36,000 m² retail",
   },
   {
     id: "la-vache-noire",
@@ -88,10 +100,14 @@ export const seedPlaces = [
     coordinates: [2.32885, 48.81135],
     coordinateSource: "https://mapcarta.com/W62643138",
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
-    program: "Retail",
-    area: "49,263 m² (working inventory)",
-    condition: "Working inventory: progressive commercial decline, with 64 of 120 stores reported open. To verify.",
+
+
     description: "Shopping centre in Arcueil with a publicly accessible rooftop landscape."
+    year: "2007",
+    program: "Shops",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: gradual commercial decline and vacant units.",
+    areaReliability: "Original",
+    area: "49,263 m²",
   },
   {
     id: "belle-epine",
@@ -99,10 +115,14 @@ export const seedPlaces = [
     coordinates: [2.37214, 48.75659],
     coordinateSource: "https://mapcarta.com/W263891555",
     category: "shopping-mall", tags: ["retail", "periphery", "1970s"],
-    program: "Retail and cinema",
-    area: "140,000 m² (working inventory; scope to verify)",
-    condition: "Working inventory: long period of decline and more recent signs of renewed activity, tentatively linked to improved public transport. To verify.",
+
+
     description: "A major early regional shopping centre in Thiais, southeast of Paris."
+    year: "1971",
+    program: "Shops and cinema",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: renewed activity associated with transport and projects in surrounding area.",
+    areaReliability: "Original",
+    area: "140,000 m²",
   },
 
   // ALGERIA
@@ -112,9 +132,12 @@ export const seedPlaces = [
     coordinates: [3.07025, 36.74326],
     coordinateSource: "https://mapcarta.com/fr/W1271733343",
     category: "mixed-use-complex", tags: ["retail", "cultural-program", "mixed-program"],
-    program: "Retail and cultural facilities",
-    condition: "Working inventory: described as nearly abandoned. Present condition to verify.",
+
     description: "Post-independence commercial and cultural complex at El Madania, inaugurated in the mid-1980s."
+    year: "1982 (construction began)",
+    program: "Shops, cultural facilities and leisure",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: largely underused commercial and cultural complex.",
+    areaReliability: "Pending",
   },
 
   // SOUTH KOREA
@@ -123,8 +146,13 @@ export const seedPlaces = [
     name: "Gangbyeon Techno Mart", city: "Seoul", country: "South Korea", year: "",
     coordinates: [127.0957, 37.5355],
     category: "electronics-complex", tags: ["retail", "electronics", "technology"],
-    program: "Retail",
+
     description: "Large electronics and entertainment retail complex near Gangbyeon Station."
+    year: "1998",
+    program: "Electronics retail, shops, cinema and offices",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: vacant shops, informal retail appearance and reuse of two floors for weddings.",
+    areaReliability: "High",
+    area: "≈260,000 m² total GFA",
   },
   {
     id: "venezia-mega-mall",
@@ -134,6 +162,11 @@ export const seedPlaces = [
     locationNote: "Approximately located from a commercial registry at 400 Cheonggyecheon-ro. Building footprint should be checked.",
     category: "shopping-mall", tags: ["retail", "mixed-program"],
     description: "Shopping complex at 400 Cheonggyecheon-ro, Hwanghak-dong, Seoul."
+    year: "2008",
+    program: "Shopping and leisure within residential complex",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: space mostly used for online retail trade, with underused upper levels.",
+    areaReliability: "High",
+    area: "≈130,000 m² mall GFA",
   },
   {
     id: "migliore-dongdaemun",
@@ -143,6 +176,11 @@ export const seedPlaces = [
     locationNote: "The inventory says 'Migliore'. This pin identifies the Dongdaemun branch; confirm it is the intended one.",
     category: "shopping-mall", tags: ["retail", "fashion"],
     description: "Multi-storey fashion retail complex in the Dongdaemun district."
+    year: "1998",
+    program: "Vertical fashion retail",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: some vacant floors and declining commercial activity.",
+    areaReliability: "Medium",
+    area: "49,566 m² total GFA",
   },
   {
     id: "apm-place",
@@ -151,6 +189,10 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/W400847801",
     category: "shopping-mall", tags: ["retail", "fashion"],
     description: "Multi-storey fashion wholesale and shopping complex at Eulji-ro 276, Dongdaemun."
+    year: "2016",
+    program: "Wholesale fashion and vertical retail",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: vacancies in a wholesale centre.",
+    areaReliability: "Pending",
   },
   {
     id: "hapjeong-mall",
@@ -160,6 +202,11 @@ export const seedPlaces = [
     locationNote: "The inventory only says 'Hapjeong mall'. Mapped provisionally to Mecenatpolis; please confirm the intended building.",
     category: "shopping-mall", tags: ["retail", "mixed-program", "transit-oriented"],
     description: "Shopping and mixed-use complex at Hapjeong Station, provisionally identified with Mecenatpolis."
+    year: "2012",
+    program: "Shopping within residential complex",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: active centre with vacant basement and upper-floor units.",
+    areaReliability: "High",
+    area: "40,176 m² mall GFA",
   },
   {
     id: "goodmorning-city",
@@ -168,6 +215,11 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/W358284628",
     category: "shopping-mall", tags: ["retail", "fashion"],
     description: "Multi-storey commercial complex in Seoul's Dongdaemun district."
+    year: "2008",
+    program: "Fashion retail and leisure facilities",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: spa open, cinema reportedly closed September 2026, multiple vacancies.",
+    areaReliability: "High",
+    area: "92,206 m² total GFA",
   },
   {
     id: "wangsimni-bitplex",
@@ -177,6 +229,11 @@ export const seedPlaces = [
     locationNote: "The inventory only says 'Wangsimni'. Mapped provisionally to the Bitplex / Enter-6 complex at Wangsimni Station.",
     category: "mixed-use-complex", tags: ["retail", "mixed-program", "transit-oriented"],
     description: "Shopping and entertainment complex integrated with Wangsimni Station."
+    year: "2008",
+    program: "Rail station, shops, cinema and leisure",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: active station-linked centre with less-used aisles.",
+    areaReliability: "High",
+    area: "≈99,000 m² total GFA",
   },
 
   // FOUR ADDITIONAL SITES IN JAPAN, SOUTH KOREA, HONG KONG AND TAIWAN.
@@ -188,8 +245,13 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/W506631400",
     category: "shopping-mall",
     tags: ["retail", "cultural-program"],
-    program: "Shopping, restaurants and cinema",
+
     description: "Shopping complex in Sanda Woody Town, Hyogo Prefecture, with a multi-screen cinema. It forms part of the commercial centre of a planned suburban community."
+    year: "2000",
+    program: "Shops, cinema and suburban centre",
+    condition: "Yasmine field inventory (Oct 2026): Former Saty shopping centre.",
+    areaReliability: "High",
+    area: "25,298 m² retail",
   },
   {
     id: "time-terrace-dongtan",
@@ -200,10 +262,14 @@ export const seedPlaces = [
     locationNote: "Interpreted from 'Times Square in Dongtan'. This is the Time Terrace mall inside Metapolis, operated by the company behind Seoul Times Square. It is not the unrelated SH Times Square industrial building.",
     category: "shopping-mall",
     tags: ["retail", "consumerism", "mixed-program", "commercial-obsolescence"],
-    program: "Retail, restaurants, cinema and leisure",
-    condition: "Time Terrace opened after a renovation in April 2022. A change of management was reported in May 2026.",
+
     description: "Shopping centre within Dongtan's Metapolis residential and commercial complex. Formerly Center Point Mall, the retail spaces were relaunched as Time Terrace in 2022.",
     source: "https://view.asiae.co.kr/en/article/2022031709305224800"
+    year: "2022 (renovation)",
+    program: "Shops, cinema and restaurants",
+    condition: "Yasmine field inventory (Oct 2026): Former Center Point Mall, relaunched as Time Terrace in 2022.",
+    areaReliability: "High",
+    area: "≈142,000 m² total GFA",
   },
   {
     id: "moko-mong-kok-east",
@@ -214,9 +280,14 @@ export const seedPlaces = [
     locationNote: "Interpreted from 'Mong Kok East'. This is MOKO, the shopping mall beside Mong Kok East station.",
     category: "shopping-mall",
     tags: ["retail", "mixed-program", "transit-oriented"],
-    program: "Retail, restaurants, offices and hotel",
+
     description: "Multi-level shopping complex connected to Mong Kok East station, integrated with offices and the Royal Plaza Hotel.",
     source: "https://www.wikidata.org/wiki/Q11080935"
+    year: "1997",
+    program: "Shops, hotel, offices and station access",
+    condition: "Yasmine field inventory (Oct 2026): Shopping complex linked to Mong Kok East.",
+    areaReliability: "Medium",
+    area: "≈67,000 m² retail GFA",
   },
   {
     id: "qianyue-building",
@@ -226,10 +297,14 @@ export const seedPlaces = [
     coordinateSource: "https://explander.com/east-central-asia/taiwan/taichung/qianyue-building-taichung-taiwan/",
     category: "mixed-use-complex",
     tags: ["retail", "commercial-obsolescence", "urban-memory", "adaptive-reuse", "1970s"],
-    program: "Former department store, retail, dining, nightlife and residential uses",
-    condition: "Much of the building has been vacant since the decline of its commercial activities and a fire in 2005. Artists occupied parts of it between 2017 and 2021. Its present access and remaining uses require verification.",
+
     description: "An ageing mixed-use commercial building near Taichung Station, known for its former rooftop restaurant and its partial reuse by artists during the Escape Plan X initiative.",
     source: "https://www.taipeitimes.com/News/feat/archives/2025/05/13/2003836777"
+    year: "1970s",
+    program: "Former department store, restaurants, bars and housing",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: former retail space marked by fire in 2005 and artist interventions.",
+    areaReliability: "Medium",
+    area: "21,070 m² total GFA",
   },
 
   // ADDITIONAL ARTIFICE RESEARCH PLACES (already on the Atlas; preserved)
@@ -239,6 +314,11 @@ export const seedPlaces = [
     coordinates: [127.071, 37.206],
     category: "new-town", tags: ["masterplanning", "consumerism", "residential"],
     description: "A planned new town whose apartment brands, infrastructure and corporate economies offer a lens onto contemporary urban consumption."
+    year: "2007 (phase 1)",
+    program: "New town, housing and commerce",
+    condition: "Yasmine field inventory (Oct 2026): Planned new town; area is land, not floor area.",
+    areaReliability: "High",
+    area: "9,035,000 m² development land (Dongtan 1)",
   },
   {
     id: "nakano-broadway",
@@ -247,7 +327,231 @@ export const seedPlaces = [
     category: "mixed-use-complex", tags: ["retail", "subculture"],
     description: "A multi-storey shopping complex that evolved into a dense ecosystem of specialist retail and subcultures.",
     images: [{ src: "assets/places/nakano-broadway/DSC01831.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" }]
+    year: "1966",
+    program: "Shops, apartments and specialist retailers",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: commercial gallery specialising increasingly in collectibles and subculture.",
+    areaReliability: "Medium",
+    area: "≈53,366 m² main building GFA",
   }
+  {
+    id: "times-square-seoul",
+    name: "Times Square Yeongdeungpo",
+    city: "Seoul",
+    country: "South Korea",
+    year: "2009",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Shops, hotel, cinema and offices",
+    condition: "Yasmine field inventory (Oct 2026): Not yet visited",
+    areaReliability: "High",
+    description: "Shops, hotel, cinema and offices in Seoul",
+    area: "376,400 m² total GFA; 126,800 m² retail"
+  },
+  {
+    id: "art-forest",
+    name: "Art Forest",
+    city: "Seoul",
+    country: "South Korea",
+    year: "2024",
+    coordinates: null,
+    category: "mixed-use-complex",
+    tags: ["retail"],
+    program: "Shops and leisure",
+    condition: "Yasmine field inventory (Oct 2026): New retail facility reported with vacant ground-floor units; exact location requires verification",
+    areaReliability: "Pending",
+    description: "Shops and leisure in Seoul"
+  },
+  {
+    id: "euljiro-underground",
+    name: "Euljiro Underground Shopping Centre",
+    city: "Seoul",
+    country: "South Korea",
+    year: "1967",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Underground shops and pedestrian passageways",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: underused underground commercial arcade",
+    areaReliability: "High",
+    description: "Underground shops and pedestrian passageways in Seoul",
+    area: "20,334 m² arcade"
+  },
+  {
+    id: "lions-plaza",
+    name: "Lions’ Plaza Commercial Building",
+    city: "Taipei",
+    country: "Taiwan",
+    year: "1979",
+    coordinates: null,
+    category: "mixed-use-complex",
+    tags: ["retail"],
+    program: "Shops and mixed-use spaces",
+    condition: "Yasmine field inventory (Oct 2026): Not yet visited",
+    areaReliability: "Pending",
+    description: "Shops and mixed-use spaces in Taipei"
+  },
+  {
+    id: "sanchong-tang-city",
+    name: "Sanchong Tang City Plaza",
+    city: "New Taipei",
+    country: "Taiwan",
+    year: "1992",
+    coordinates: null,
+    category: "mixed-use-complex",
+    tags: ["retail"],
+    program: "Shops and mixed-use spaces",
+    condition: "Yasmine field inventory (Oct 2026): Not yet visited; shopping centre coordinates require verification",
+    areaReliability: "Pending",
+    description: "Shops and mixed-use spaces in New Taipei"
+  },
+  {
+    id: "new-shimbashi-building",
+    name: "New Shimbashi Building",
+    city: "Tokyo",
+    country: "Japan",
+    year: "1971",
+    coordinates: [139.75736,35.66628],
+    category: "mixed-use-complex",
+    tags: ["retail"],
+    program: "Shops and offices",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: decline apparent on upper floors",
+    areaReliability: "High",
+    description: "Shops and offices in Tokyo",
+    area: "58,107 m² total GFA"
+  },
+  {
+    id: "asakusa-underground",
+    name: "Asakusa Underground Shopping Street",
+    city: "Tokyo",
+    country: "Japan",
+    year: "1955",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Underground shops and restaurants",
+    condition: "Yasmine field inventory (Oct 2026): Established historic arcade, now visited for its retro character",
+    areaReliability: "Pending",
+    description: "Underground shops and restaurants in Tokyo"
+  },
+  {
+    id: "aeon-laketown",
+    name: "AEON LakeTown",
+    city: "Koshigaya",
+    country: "Japan",
+    year: "2008",
+    coordinates: [139.82611,35.87861],
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Large suburban shopping centre",
+    condition: "Yasmine field inventory (Oct 2026): Not yet visited",
+    areaReliability: "High",
+    description: "Large suburban shopping centre in Koshigaya",
+    area: "≈403,000 m² total GFA; 190,000 m² leasable"
+  },
+  {
+    id: "aeon-makuhari-new-city",
+    name: "AEON MALL Makuhari New City",
+    city: "Chiba",
+    country: "Japan",
+    year: "2013",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Large interconnected shopping centre",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: oversized facilities and areas with low use",
+    areaReliability: "High",
+    description: "Large interconnected shopping centre in Chiba",
+    area: "≈402,000 m² total GFA; 128,000 m² leasable"
+  },
+  {
+    id: "hatoya-hotel",
+    name: "Hatoya Hotel",
+    city: "Ito",
+    country: "Japan",
+    year: "1947",
+    coordinates: null,
+    category: "hotel",
+    tags: ["retail"],
+    program: "Hot spring hotel and leisure facilities",
+    condition: "Yasmine field inventory (Oct 2026): Not yet visited",
+    areaReliability: "Pending",
+    description: "Hot spring hotel and leisure facilities in Ito"
+  },
+  {
+    id: "decks-tokyo-beach",
+    name: "DECKS Tokyo Beach",
+    city: "Tokyo",
+    country: "Japan",
+    year: "1996",
+    coordinates: [139.7759,35.62906],
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Shops, attractions and leisure",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: underused areas; Island Mall added 2000",
+    areaReliability: "High",
+    description: "Shops, attractions and leisure in Tokyo",
+    area: "≈69,035 m² total GFA"
+  },
+  {
+    id: "divercity-tokyo-plaza",
+    name: "DiverCity Tokyo Plaza",
+    city: "Tokyo",
+    country: "Japan",
+    year: "2012",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Shops, restaurants and attractions",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: several large low-use areas",
+    areaReliability: "High",
+    description: "Shops, restaurants and attractions in Tokyo",
+    area: "≈140,200 m² mall and parking GFA; 47,000 m² retail"
+  },
+  {
+    id: "aquacity-odaiba",
+    name: "AQUA CiTY ODAIBA",
+    city: "Tokyo",
+    country: "Japan",
+    year: "2000",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "Shops, restaurants and cinema",
+    condition: "Yasmine field inventory (Oct 2026): Not yet visited",
+    areaReliability: "High",
+    description: "Shops, restaurants and cinema in Tokyo",
+    area: "≈94,000 m² total GFA; 42,500 m² retail"
+  },
+  {
+    id: "rakuseinu",
+    name: "Rakuseinu / Rakusai Town Centre",
+    city: "Kyoto",
+    country: "Japan",
+    year: "1981",
+    coordinates: null,
+    category: "shopping-mall",
+    tags: ["retail"],
+    program: "New-town shopping arcade",
+    condition: "Yasmine field inventory (Oct 2026): Field observation: ongoing reuse and vacant upper floor after adjoining store closure",
+    areaReliability: "Medium",
+    description: "New-town shopping arcade in Kyoto",
+    area: "15,915 m² retail"
+  },
+  {
+    id: "viking-line",
+    name: "Viking Line Baltic Ferry",
+    city: "Baltic Sea",
+    country: "Multiple countries",
+    year: "Depends on vessel",
+    coordinates: null,
+    category: "other",
+    tags: ["retail"],
+    program: "Passenger ferry, retail and leisure",
+    condition: "Yasmine field inventory (Oct 2026): Helsinki, Tallinn and Stockholm ferry routes; specify a vessel before geolocating",
+    areaReliability: "Pending",
+    description: "Passenger ferry, retail and leisure in Baltic Sea"
+  },
 ];
 
 export function categoryLabel(id) {
