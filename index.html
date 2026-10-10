@@ -87,7 +87,7 @@
       // The Atlas records years, not complete construction dates. Count
       // from January 1 of the recorded year as an explicit convention.
       // Nine decimals ensure that the time visibly changes in real time.
-      import("./content/places.js?v=20261010-find-makuhari").then(({ seedPlaces }) => {
+      import("./content/places.js?v=20261010-photos-142").then(({ seedPlaces }) => {
         const candidates = seedPlaces.filter(place =>
           Number.isInteger(place.clockYear ?? Number(place.year)) &&
           (place.clockYear ?? Number(place.year)) <= new Date().getFullYear() &&

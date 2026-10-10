@@ -88,6 +88,15 @@ export const seedPlaces = [
     images: [
       { src: "assets/places/maine-montparnasse/01.webp", caption: "Existing interior passage", alt: "Interior of the Maine–Montparnasse shopping centre" },
       { src: "assets/places/maine-montparnasse/02.webp", caption: "Existing commercial interior", alt: "Vacant interior of the Maine–Montparnasse shopping centre" }
+    ,
+      { src: "assets/places/maine-montparnasse/08.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/09.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/10.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/11.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/12.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/13.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/14.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" },
+      { src: "assets/places/maine-montparnasse/15.JPG", caption: "Centre commercial Maine–Montparnasse", alt: "Photograph of Centre commercial Maine–Montparnasse" }
     ],
     year: "1973",
     program: "Shops, offices and public facilities",
@@ -99,6 +108,18 @@ export const seedPlaces = [
   },
   {
     id: "le-millenaire",
+    images: [
+      { src: "assets/places/le-millenaire/01.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/02.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/03.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/04.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/05.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/06.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/07.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/08.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/09.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
+      { src: "assets/places/le-millenaire/10.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" }
+    ],
     name: "Le Millénaire", city: "Aubervilliers", country: "France",
     coordinates: [2.382, 48.900],
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
@@ -113,6 +134,14 @@ export const seedPlaces = [
   },
   {
     id: "bercy-2",
+    images: [
+      { src: "assets/places/bercy-2/01.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
+      { src: "assets/places/bercy-2/02.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
+      { src: "assets/places/bercy-2/03.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
+      { src: "assets/places/bercy-2/04.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
+      { src: "assets/places/bercy-2/05.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
+      { src: "assets/places/bercy-2/06.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" }
+    ],
     name: "Bercy 2", city: "Charenton-le-Pont", country: "France",
     coordinates: [2.405, 48.823],
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
@@ -127,6 +156,18 @@ export const seedPlaces = [
   },
   {
     id: "la-vache-noire",
+    images: [
+      { src: "assets/places/la-vache-noire/01.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/02.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/03.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/04.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/05.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/06.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/07.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/08.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/09.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
+      { src: "assets/places/la-vache-noire/10.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" }
+    ],
     name: "La Vache Noire", city: "Arcueil", country: "France",
     coordinates: [2.32885, 48.81135],
     coordinateSource: "https://mapcarta.com/W62643138",
@@ -142,6 +183,15 @@ export const seedPlaces = [
   },
   {
     id: "belle-epine",
+    images: [
+      { src: "assets/places/belle-epine/01.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
+      { src: "assets/places/belle-epine/02.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
+      { src: "assets/places/belle-epine/03.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
+      { src: "assets/places/belle-epine/04.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
+      { src: "assets/places/belle-epine/05.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
+      { src: "assets/places/belle-epine/06.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
+      { src: "assets/places/belle-epine/07.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" }
+    ],
     name: "Belle Épine", city: "Thiais", country: "France",
     coordinates: [2.37214, 48.75659],
     coordinateSource: "https://mapcarta.com/W263891555",
@@ -197,7 +247,24 @@ export const seedPlaces = [
     area: "≈260,000 m² total GFA",
     areaSource: "https://www.yna.co.kr/view/AKR20110705141100004",
     areaNote: "Total GFA includes offices and other facilities",
-    images: [{"src":"assets/places/techno-mart/DSC01729.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01735.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01766.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01776.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01780.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"}],
+    images: [{"src":"assets/places/techno-mart/DSC01729.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01735.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01766.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01776.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},{"src":"assets/places/techno-mart/DSC01780.JPG","caption":"Gangbyeon Techno Mart","alt":"Documentary photograph of Gangbyeon Techno Mart"},
+      { src: "assets/places/techno-mart/01.jpeg", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/02.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/03.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/04.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/05.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/06.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/07.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/08.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/09.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/10.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/11.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/12.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/13.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/14.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/15.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" },
+      { src: "assets/places/techno-mart/16.JPG", caption: "Gangbyeon Techno Mart", alt: "Photograph of Gangbyeon Techno Mart" }
+    ],
   },
   {
     id: "venezia-mega-mall",
@@ -217,6 +284,23 @@ export const seedPlaces = [
   },
   {
     id: "migliore-dongdaemun",
+    images: [
+      { src: "assets/places/migliore-dongdaemun/DSC00368.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00371.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00380.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00382.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00385.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00513.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00520.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00521.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00529.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00531.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00535.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00536.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00539.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00544.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" },
+      { src: "assets/places/migliore-dongdaemun/DSC00553.JPG", caption: "Migliore Dongdaemun", alt: "Photograph of Migliore Dongdaemun" }
+    ],
     name: "Migliore Dongdaemun", city: "Seoul", country: "South Korea",
     coordinates: [127.008527, 37.567963],
     coordinateSource: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=315&vcontsId=106366",
@@ -245,6 +329,16 @@ export const seedPlaces = [
   },
   {
     id: "hapjeong-mall",
+    images: [
+      { src: "assets/places/hapjeong-mall/01.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/02.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/03.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/04.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/05.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/06.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/07.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
+      { src: "assets/places/hapjeong-mall/08.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" }
+    ],
     name: "Hapjeong Mall / Mecenatpolis (provisional)", city: "Seoul", country: "South Korea",
     coordinates: [126.91378, 37.55089],
     coordinateSource: "https://mapcarta.com/W306956698",
@@ -276,6 +370,15 @@ export const seedPlaces = [
   },
   {
     id: "wangsimni-bitplex",
+    images: [
+      { src: "assets/places/wangsimni-bitplex/01.JPG", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" },
+      { src: "assets/places/wangsimni-bitplex/02.JPG", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" },
+      { src: "assets/places/wangsimni-bitplex/03.JPG", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" },
+      { src: "assets/places/wangsimni-bitplex/04.JPG", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" },
+      { src: "assets/places/wangsimni-bitplex/05.JPG", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" },
+      { src: "assets/places/wangsimni-bitplex/06.JPG", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" },
+      { src: "assets/places/wangsimni-bitplex/07.jpeg", caption: "Wangsimni / Bitplex (provisional)", alt: "Photograph of Wangsimni / Bitplex (provisional)" }
+    ],
     name: "Wangsimni / Bitplex (provisional)", city: "Seoul", country: "South Korea",
     coordinates: [127.0383, 37.56212],
     coordinateSource: "https://mapcarta.com/W1258207418",
@@ -391,7 +494,21 @@ export const seedPlaces = [
     coordinates: [139.6658, 35.7092],
     category: "mixed-use-complex", tags: ["retail", "subculture"],
     description: "A multi-storey shopping complex that evolved into a dense ecosystem of specialist retail and subcultures.",
-    images: [{ src: "assets/places/nakano-broadway/DSC01831.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" }],
+    images: [{ src: "assets/places/nakano-broadway/DSC01831.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/01.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/02.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/03.jpeg", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/04.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/05.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/06.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/07.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/08.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/09.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/10.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/11.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/12.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" },
+      { src: "assets/places/nakano-broadway/13.JPG", caption: "Nakano Broadway", alt: "Photograph of Nakano Broadway" }
+    ],
     year: "1966",
     program: "Shops, apartments and specialist retailers",
     condition: "Yasmine field inventory (Oct 2026): Field observation: commercial gallery specialising increasingly in collectibles and subculture.",
@@ -419,6 +536,12 @@ export const seedPlaces = [
   },
   {
     id: "art-forest",
+    images: [
+      { src: "assets/places/art-forest/01.JPG", caption: "Art Forest", alt: "Photograph of Art Forest" },
+      { src: "assets/places/art-forest/1.JPG", caption: "Art Forest", alt: "Photograph of Art Forest" },
+      { src: "assets/places/art-forest/02.JPG", caption: "Art Forest", alt: "Photograph of Art Forest" },
+      { src: "assets/places/art-forest/03.jpeg", caption: "Art Forest", alt: "Photograph of Art Forest" }
+    ],
     name: "Art Forest",
     city: "Seoul",
     country: "South Korea",
@@ -432,6 +555,12 @@ export const seedPlaces = [
   },
   {
     id: "euljiro-underground",
+    images: [
+      { src: "assets/places/euljiro-underground/01.JPG", caption: "Euljiro Underground Shopping Centre", alt: "Photograph of Euljiro Underground Shopping Centre" },
+      { src: "assets/places/euljiro-underground/02.JPG", caption: "Euljiro Underground Shopping Centre", alt: "Photograph of Euljiro Underground Shopping Centre" },
+      { src: "assets/places/euljiro-underground/03.jpeg", caption: "Euljiro Underground Shopping Centre", alt: "Photograph of Euljiro Underground Shopping Centre" },
+      { src: "assets/places/euljiro-underground/04.jpeg", caption: "Euljiro Underground Shopping Centre", alt: "Photograph of Euljiro Underground Shopping Centre" }
+    ],
     name: "Euljiro Underground Shopping Centre",
     city: "Seoul",
     country: "South Korea",
@@ -474,6 +603,15 @@ export const seedPlaces = [
   },
   {
     id: "new-shimbashi-building",
+    images: [
+      { src: "assets/places/new-shimbashi-building/01.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
+      { src: "assets/places/new-shimbashi-building/02.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
+      { src: "assets/places/new-shimbashi-building/03.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
+      { src: "assets/places/new-shimbashi-building/04.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
+      { src: "assets/places/new-shimbashi-building/05.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
+      { src: "assets/places/new-shimbashi-building/06.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
+      { src: "assets/places/new-shimbashi-building/07.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" }
+    ],
     name: "New Shimbashi Building",
     city: "Tokyo",
     country: "Japan",
@@ -490,6 +628,16 @@ export const seedPlaces = [
   },
   {
     id: "asakusa-underground",
+    images: [
+      { src: "assets/places/asakusa-underground/01.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/02.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/03.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/04.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/05.jpeg", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/06.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/07.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
+      { src: "assets/places/asakusa-underground/08.jpeg", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" }
+    ],
     name: "Asakusa Underground Shopping Street",
     city: "Tokyo",
     country: "Japan",
@@ -552,6 +700,15 @@ export const seedPlaces = [
   },
   {
     id: "decks-tokyo-beach",
+    images: [
+      { src: "assets/places/decks-tokyo-beach/1.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
+      { src: "assets/places/decks-tokyo-beach/02.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
+      { src: "assets/places/decks-tokyo-beach/03.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
+      { src: "assets/places/decks-tokyo-beach/04.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
+      { src: "assets/places/decks-tokyo-beach/05.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
+      { src: "assets/places/decks-tokyo-beach/06.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
+      { src: "assets/places/decks-tokyo-beach/07.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" }
+    ],
     name: "DECKS Tokyo Beach",
     city: "Tokyo",
     country: "Japan",
@@ -568,6 +725,12 @@ export const seedPlaces = [
   },
   {
     id: "divercity-tokyo-plaza",
+    images: [
+      { src: "assets/places/divercity-tokyo-plaza/01.JPG", caption: "DiverCity Tokyo Plaza", alt: "Photograph of DiverCity Tokyo Plaza" },
+      { src: "assets/places/divercity-tokyo-plaza/02.JPG", caption: "DiverCity Tokyo Plaza", alt: "Photograph of DiverCity Tokyo Plaza" },
+      { src: "assets/places/divercity-tokyo-plaza/03.JPG", caption: "DiverCity Tokyo Plaza", alt: "Photograph of DiverCity Tokyo Plaza" },
+      { src: "assets/places/divercity-tokyo-plaza/04.jpeg", caption: "DiverCity Tokyo Plaza", alt: "Photograph of DiverCity Tokyo Plaza" }
+    ],
     name: "DiverCity Tokyo Plaza",
     city: "Tokyo",
     country: "Japan",
