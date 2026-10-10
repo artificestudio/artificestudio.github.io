@@ -131,7 +131,8 @@ html,body{background:#fff}
 .about-cities{grid-column:9 / 12;font-size:clamp(1.1rem,1.45vw,1.5rem);line-height:1.4}
 .about-podcast-cloud{grid-column:4 / 10;font-size:clamp(1.1rem,1.5vw,1.55rem);line-height:1.28}
 .about-podcast-links{display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap;font-size:.82em}
-.about-podcast-links a,.about-contact-cloud a{color:inherit;text-decoration:none}
+.about-podcast-links a,.about-podcast-links a:visited{color:#0000ee;text-decoration:underline;text-underline-offset:0}
+.about-contact-cloud a{color:inherit;text-decoration:none}
 .about-podcast-links a:hover,.about-contact-cloud a:hover,.about-podcast-links a:focus-visible,.about-contact-cloud a:focus-visible{text-decoration:underline;text-underline-offset:.15em}
 .about-contact-cloud{grid-column:7 / 13;font-size:clamp(1.25rem,2vw,2rem);overflow-wrap:anywhere}
 /* Other pages maintain white backgrounds rather than the previous cream. */
