@@ -1,0 +1,1 @@
+Store photos, drawings or scans for this Atlas place in this folder. Upload files here, then add their exact paths to the matching entry's `images` array in `content/places.js`. No images are added automatically.

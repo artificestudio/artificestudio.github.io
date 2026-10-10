@@ -64,14 +64,14 @@
 .atlas-proposal-status{min-height:2.2em;font-size:.85rem;line-height:1.3}
 @media(max-width:780px){.atlas-proposal-actions button{min-height:44px}}
 
-/* Atlas markers: simple solid red dots, no strokes, shadows or halo. */
+/* Atlas markers: restrained white hairline for visibility on the dark map. */
 .atlas-page .atlas-marker{
  width:12px!important;height:12px!important;min-width:12px!important;
- border:0!important;border-radius:50%!important;background:#ce231a!important;
+ border:1px solid #fff!important;border-radius:50%!important;background:#ce231a!important;
  box-shadow:none!important;outline:0;cursor:pointer;
 }
 .atlas-page .atlas-marker:hover,.atlas-page .atlas-marker.is-selected{
- background:#f3d32b!important;border:0!important;box-shadow:none!important;
+ background:#f3d32b!important;border:1px solid #fff!important;box-shadow:none!important;
 }
 .atlas-page .atlas-marker:focus-visible{
  background:#f3d32b!important;outline:2px solid #111;outline-offset:3px;
