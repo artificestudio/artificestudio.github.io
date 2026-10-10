@@ -26,7 +26,7 @@
     player.className = "radio-dock";
     player.setAttribute("aria-label", "ARTIFICE Radio");
     player.innerHTML =
-      '<div class="radio-dock-meta"><span>ARTIFICE RADIO</span><span>001</span></div>' +
+      '<div class="radio-dock-meta"><span>RADIO</span></div>' +
       '<div class="radio-dock-row">' +
         '<span class="radio-dock-track">TECHNO MART</span>' +
         '<div class="radio-dock-controls">' +
@@ -40,7 +40,9 @@
         '<span id="radio-clock">00:00 / 00:00</span>' +
       '</div>' +
       '<span id="radio-status" class="radio-dock-status" role="status">PRESS PLAY TO LISTEN</span>';
-    document.body.append(player);
+    const header = document.querySelector(".site-header");
+    if (header) header.append(player);
+    else document.body.append(player);
     audio = document.createElement("audio");
     audio.id = "home-soundtrack";
     audio.src = track;
