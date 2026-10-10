@@ -1,4 +1,4 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-hover-preview-fix";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261010-inventory-35";
 import { PROPOSAL_EMAIL } from "../content/email.js";
 
 const $=id=>document.getElementById(id);
@@ -78,7 +78,7 @@ function showTip(p,el){
    photo.loading="eager";
    photo.decoding="async";
    const localUrl=new URL(firstPhoto.src,document.baseURI).href;
-   const rawUrl="https://raw.githubusercontent.com/artificestudio/artificestudio.github.io/main/"+firstPhoto.src.replace(/^\\/+/, "");
+   const rawUrl="https://raw.githubusercontent.com/artificestudio/artificestudio.github.io/main/"+firstPhoto.src.replace(new RegExp("^/+"), "");
    let fallbackAttempted=false;
    photo.addEventListener("load",()=>{
      frame.classList.add("is-loaded");
