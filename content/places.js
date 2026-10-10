@@ -59,7 +59,7 @@ export const seedPlaces = [
     images: [
       { src: "assets/places/maine-montparnasse/01.webp", caption: "Existing interior passage", alt: "Interior of the Maine–Montparnasse shopping centre" },
       { src: "assets/places/maine-montparnasse/02.webp", caption: "Existing commercial interior", alt: "Vacant interior of the Maine–Montparnasse shopping centre" }
-    ]
+    ],
     year: "1973",
     program: "Shops, offices and public facilities",
     condition: "Yasmine field inventory (Oct 2026): Centre closed to the public in 2026 according to the field inventory; basement sports facilities remain in use.",
@@ -75,7 +75,7 @@ export const seedPlaces = [
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
 
 
-    description: "Shopping-centre and office development in Aubervilliers on the northern edge of Paris."
+    description: "Shopping-centre and office development in Aubervilliers on the northern edge of Paris.",
     year: "2011",
     program: "Shops and offices",
     condition: "Yasmine field inventory (Oct 2026): Field observation: severe retail decline and departed major franchises.",
@@ -89,7 +89,7 @@ export const seedPlaces = [
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
 
 
-    description: "Shopping centre by Renzo Piano Building Workshop at the edge of Paris."
+    description: "Shopping centre by Renzo Piano Building Workshop at the edge of Paris.",
     year: "1990",
     program: "Shops",
     condition: "Yasmine field inventory (Oct 2026): Field observation: partly repurposed upper floor; proposed redevelopment, potential demolition in 2031 not confirmed.",
@@ -104,7 +104,7 @@ export const seedPlaces = [
     category: "shopping-mall", tags: ["retail", "periphery", "commercial-decline"],
 
 
-    description: "Shopping centre in Arcueil with a publicly accessible rooftop landscape."
+    description: "Shopping centre in Arcueil with a publicly accessible rooftop landscape.",
     year: "2007",
     program: "Shops",
     condition: "Yasmine field inventory (Oct 2026): Field observation: gradual commercial decline and vacant units.",
@@ -119,7 +119,7 @@ export const seedPlaces = [
     category: "shopping-mall", tags: ["retail", "periphery", "1970s"],
 
 
-    description: "A major early regional shopping centre in Thiais, southeast of Paris."
+    description: "A major early regional shopping centre in Thiais, southeast of Paris.",
     year: "1971",
     program: "Shops and cinema",
     condition: "Yasmine field inventory (Oct 2026): Field observation: renewed activity associated with transport and projects in surrounding area.",
@@ -135,7 +135,7 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/fr/W1271733343",
     category: "mixed-use-complex", tags: ["retail", "cultural-program", "mixed-program"],
 
-    description: "Post-independence commercial and cultural complex at El Madania, inaugurated in the mid-1980s."
+    description: "Post-independence commercial and cultural complex at El Madania, inaugurated in the mid-1980s.",
     year: "1982 (construction began)",
     program: "Shops, cultural facilities and leisure",
     condition: "Yasmine field inventory (Oct 2026): Field observation: largely underused commercial and cultural complex.",
@@ -149,7 +149,7 @@ export const seedPlaces = [
     coordinates: [127.0957, 37.5355],
     category: "electronics-complex", tags: ["retail", "electronics", "technology"],
 
-    description: "Large electronics and entertainment retail complex near Gangbyeon Station."
+    description: "Large electronics and entertainment retail complex near Gangbyeon Station.",
     year: "1998",
     program: "Electronics retail, shops, cinema and offices",
     condition: "Yasmine field inventory (Oct 2026): Field observation: vacant shops, informal retail appearance and reuse of two floors for weddings.",
@@ -166,7 +166,7 @@ export const seedPlaces = [
     coordinateSource: "https://lse.purpleo.kr/article/1415",
     locationNote: "Approximately located from a commercial registry at 400 Cheonggyecheon-ro. Building footprint should be checked.",
     category: "shopping-mall", tags: ["retail", "mixed-program"],
-    description: "Shopping complex at 400 Cheonggyecheon-ro, Hwanghak-dong, Seoul."
+    description: "Shopping complex at 400 Cheonggyecheon-ro, Hwanghak-dong, Seoul.",
     year: "2008",
     program: "Shopping and leisure within residential complex",
     condition: "Yasmine field inventory (Oct 2026): Field observation: space mostly used for online retail trade, with underused upper levels.",
@@ -182,7 +182,7 @@ export const seedPlaces = [
     coordinateSource: "https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=315&vcontsId=106366",
     locationNote: "The inventory says 'Migliore'. This pin identifies the Dongdaemun branch; confirm it is the intended one.",
     category: "shopping-mall", tags: ["retail", "fashion"],
-    description: "Multi-storey fashion retail complex in the Dongdaemun district."
+    description: "Multi-storey fashion retail complex in the Dongdaemun district.",
     year: "1998",
     program: "Vertical fashion retail",
     condition: "Yasmine field inventory (Oct 2026): Field observation: some vacant floors and declining commercial activity.",
@@ -197,7 +197,7 @@ export const seedPlaces = [
     coordinates: [127.00841, 37.5653],
     coordinateSource: "https://mapcarta.com/W400847801",
     category: "shopping-mall", tags: ["retail", "fashion"],
-    description: "Multi-storey fashion wholesale and shopping complex at Eulji-ro 276, Dongdaemun."
+    description: "Multi-storey fashion wholesale and shopping complex at Eulji-ro 276, Dongdaemun.",
     year: "2016",
     program: "Wholesale fashion and vertical retail",
     condition: "Yasmine field inventory (Oct 2026): Field observation: vacancies in a wholesale centre.",
@@ -210,7 +210,7 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/W306956698",
     locationNote: "The inventory only says 'Hapjeong mall'. Mapped provisionally to Mecenatpolis; please confirm the intended building.",
     category: "shopping-mall", tags: ["retail", "mixed-program", "transit-oriented"],
-    description: "Shopping and mixed-use complex at Hapjeong Station, provisionally identified with Mecenatpolis."
+    description: "Shopping and mixed-use complex at Hapjeong Station, provisionally identified with Mecenatpolis.",
     year: "2012",
     program: "Shopping within residential complex",
     condition: "Yasmine field inventory (Oct 2026): Field observation: active centre with vacant basement and upper-floor units.",
@@ -225,7 +225,7 @@ export const seedPlaces = [
     coordinates: [127.0075, 37.56668],
     coordinateSource: "https://mapcarta.com/W358284628",
     category: "shopping-mall", tags: ["retail", "fashion"],
-    description: "Multi-storey commercial complex in Seoul's Dongdaemun district."
+    description: "Multi-storey commercial complex in Seoul's Dongdaemun district.",
     year: "2008",
     program: "Fashion retail and leisure facilities",
     condition: "Yasmine field inventory (Oct 2026): Field observation: spa open, cinema reportedly closed September 2026, multiple vacancies.",
@@ -241,7 +241,7 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/W1258207418",
     locationNote: "The inventory only says 'Wangsimni'. Mapped provisionally to the Bitplex / Enter-6 complex at Wangsimni Station.",
     category: "mixed-use-complex", tags: ["retail", "mixed-program", "transit-oriented"],
-    description: "Shopping and entertainment complex integrated with Wangsimni Station."
+    description: "Shopping and entertainment complex integrated with Wangsimni Station.",
     year: "2008",
     program: "Rail station, shops, cinema and leisure",
     condition: "Yasmine field inventory (Oct 2026): Field observation: active station-linked centre with less-used aisles.",
@@ -261,7 +261,7 @@ export const seedPlaces = [
     category: "shopping-mall",
     tags: ["retail", "cultural-program"],
 
-    description: "Shopping complex in Sanda Woody Town, Hyogo Prefecture, with a multi-screen cinema. It forms part of the commercial centre of a planned suburban community."
+    description: "Shopping complex in Sanda Woody Town, Hyogo Prefecture, with a multi-screen cinema. It forms part of the commercial centre of a planned suburban community.",
     year: "2000",
     program: "Shops, cinema and suburban centre",
     condition: "Yasmine field inventory (Oct 2026): Former Saty shopping centre.",
@@ -281,7 +281,7 @@ export const seedPlaces = [
     tags: ["retail", "consumerism", "mixed-program", "commercial-obsolescence"],
 
     description: "Shopping centre within Dongtan's Metapolis residential and commercial complex. Formerly Center Point Mall, the retail spaces were relaunched as Time Terrace in 2022.",
-    source: "https://view.asiae.co.kr/en/article/2022031709305224800"
+    source: "https://view.asiae.co.kr/en/article/2022031709305224800",
     year: "2022 (renovation)",
     program: "Shops, cinema and restaurants",
     condition: "Yasmine field inventory (Oct 2026): Former Center Point Mall, relaunched as Time Terrace in 2022.",
@@ -301,7 +301,7 @@ export const seedPlaces = [
     tags: ["retail", "mixed-program", "transit-oriented"],
 
     description: "Multi-level shopping complex connected to Mong Kok East station, integrated with offices and the Royal Plaza Hotel.",
-    source: "https://www.wikidata.org/wiki/Q11080935"
+    source: "https://www.wikidata.org/wiki/Q11080935",
     year: "1997",
     program: "Shops, hotel, offices and station access",
     condition: "Yasmine field inventory (Oct 2026): Shopping complex linked to Mong Kok East.",
@@ -320,7 +320,7 @@ export const seedPlaces = [
     tags: ["retail", "commercial-obsolescence", "urban-memory", "adaptive-reuse", "1970s"],
 
     description: "An ageing mixed-use commercial building near Taichung Station, known for its former rooftop restaurant and its partial reuse by artists during the Escape Plan X initiative.",
-    source: "https://www.taipeitimes.com/News/feat/archives/2025/05/13/2003836777"
+    source: "https://www.taipeitimes.com/News/feat/archives/2025/05/13/2003836777",
     year: "1970s",
     program: "Former department store, restaurants, bars and housing",
     condition: "Yasmine field inventory (Oct 2026): Field observation: former retail space marked by fire in 2005 and artist interventions.",
@@ -336,7 +336,7 @@ export const seedPlaces = [
     name: "Dongtan New Town", city: "Hwaseong", country: "South Korea",
     coordinates: [127.071, 37.206],
     category: "new-town", tags: ["masterplanning", "consumerism", "residential"],
-    description: "A planned new town whose apartment brands, infrastructure and corporate economies offer a lens onto contemporary urban consumption."
+    description: "A planned new town whose apartment brands, infrastructure and corporate economies offer a lens onto contemporary urban consumption.",
     year: "2007 (phase 1)",
     program: "New town, housing and commerce",
     condition: "Yasmine field inventory (Oct 2026): Planned new town; area is land, not floor area.",
@@ -359,7 +359,7 @@ export const seedPlaces = [
     area: "≈53,366 m² main building GFA",
     areaSource: "https://skyscraperclub.com/?p=16733",
     areaNote: "Main building only",
-  }
+  },
   {
     id: "times-square-seoul",
     name: "Times Square Yeongdeungpo",
@@ -372,7 +372,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Not yet visited",
     areaReliability: "High",
     description: "Shops, hotel, cinema and offices in Seoul",
-    area: "376,400 m² total GFA; 126,800 m² retail"
+    area: "376,400 m² total GFA; 126,800 m² retail",
     areaSource: "https://www.hankyung.com/article/2009090366231",
     areaNote: "Mixed-use GFA includes non-retail area",
   },
@@ -401,7 +401,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: underused underground commercial arcade",
     areaReliability: "High",
     description: "Underground shops and pedestrian passageways in Seoul",
-    area: "20,334 m² arcade"
+    area: "20,334 m² arcade",
     areaSource: "https://www.sisul.or.kr/global/main/en/sub/shoppingcenter.jsp",
     areaNote: "Underground arcade, not adjacent centres",
   },
@@ -443,7 +443,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: decline apparent on upper floors",
     areaReliability: "High",
     description: "Shops and offices in Tokyo",
-    area: "58,107 m² total GFA"
+    area: "58,107 m² total GFA",
     areaSource: "https://www.mhs.co.jp/work/new-shinbashi/",
     areaNote: "Whole building GFA",
   },
@@ -472,7 +472,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Not yet visited",
     areaReliability: "High",
     description: "Large suburban shopping centre in Koshigaya",
-    area: "≈403,000 m² total GFA; 190,000 m² leasable"
+    area: "≈403,000 m² total GFA; 190,000 m² leasable",
     areaSource: "https://www.aeonmall.com/news/index/13594/",
     areaNote: "Three Aeon complexes combined",
   },
@@ -488,7 +488,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: oversized facilities and areas with low use",
     areaReliability: "High",
     description: "Large interconnected shopping centre in Chiba",
-    area: "≈402,000 m² total GFA; 128,000 m² leasable"
+    area: "≈402,000 m² total GFA; 128,000 m² leasable",
     areaSource: "https://www.aeonmall.com/facility/detail/1529/",
     areaNote: "GFA includes parking",
   },
@@ -517,7 +517,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: underused areas; Island Mall added 2000",
     areaReliability: "High",
     description: "Shops, attractions and leisure in Tokyo",
-    area: "≈69,035 m² total GFA"
+    area: "≈69,035 m² total GFA",
     areaSource: "https://www.tokyu-land.co.jp/urban/shopping/list/051.html",
     areaNote: "Total GFA",
   },
@@ -533,7 +533,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: several large low-use areas",
     areaReliability: "High",
     description: "Shops, restaurants and attractions in Tokyo",
-    area: "≈140,200 m² mall and parking GFA; 47,000 m² retail"
+    area: "≈140,200 m² mall and parking GFA; 47,000 m² retail",
     areaSource: "https://www.mitsuifudosan.co.jp/corporate/news/2021/0412/",
     areaNote: "Mall and parking area",
   },
@@ -549,7 +549,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Not yet visited",
     areaReliability: "High",
     description: "Shops, restaurants and cinema in Tokyo",
-    area: "≈94,000 m² total GFA; 42,500 m² retail"
+    area: "≈94,000 m² total GFA; 42,500 m² retail",
     areaSource: "https://www.mec.co.jp/ir/library/2013/4Q/FACT%20BOOK%20201303.pdf",
     areaNote: "Mall GFA and retail area",
   },
@@ -565,7 +565,7 @@ export const seedPlaces = [
     condition: "Yasmine field inventory (Oct 2026): Field observation: ongoing reuse and vacant upper floor after adjoining store closure",
     areaReliability: "Medium",
     description: "New-town shopping arcade in Kyoto",
-    area: "15,915 m² retail"
+    area: "15,915 m² retail",
     areaSource: "https://toshoken.com/news/30550",
     areaNote: "Shopping arcade, not adjacent department store",
   },
