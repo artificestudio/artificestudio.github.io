@@ -220,7 +220,7 @@ export const seedPlaces = [
     condition: "Almost entirely vacant, drastically underused, the cultural activities never functioned in the area. Monumental architecture and large open air public area but no uses.",
     areaReliability: "Pending",
     area: "about 40 000 m²",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. An esplanade of roughly 1,500 m² is documented, but the complex's total building area is not confirmed.",
+    areaNote: "Area figure remains unverified. An esplanade of roughly 1,500 m² is documented, but the complex's total building area is not confirmed.",
   },
 
   // SOUTH KOREA
@@ -235,10 +235,10 @@ export const seedPlaces = [
     program: "Electronics retail, cinema, shops",
     source: "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=103977",
     condition: "The area is scheduled for redevelopment, so most of the shops are leaving. Located in Yongsan area, specialized in Electronics goods, this mall crystalizes an era. Planned for demolition, it remains in a state of in-between.",
-    dateNote: "The October 2026 field inventory gives 1987, with an extension in 2020. The existing Korea Tourism Organization reference gives an opening in 1988; the construction/opening distinction and extension date remain to be checked.",
+    dateNote: "Working records suggest 1987, with a possible extension in 2020. The existing Korea Tourism Organization reference gives an opening in 1988; the construction/opening distinction and extension date remain to be checked.",
     area: "about 70 000 m²",
     areaReliability: "Pending",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified.",
+    areaNote: "Area figure remains unverified.",
   },
   {
     id: "techno-mart",
@@ -334,7 +334,7 @@ export const seedPlaces = [
     condition: "Wholesale fashion centre, part of Dongdaemun shopping district, several vacancies.",
     areaReliability: "Pending",
     area: "10 000 m²",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. No reliable entire-building floor area identified; small unit listings are not usable.",
+    areaNote: "Area figure remains unverified. No reliable entire-building floor area identified; small unit listings are not usable.",
   },
   {
     id: "hapjeong-mall",
@@ -353,7 +353,7 @@ export const seedPlaces = [
     coordinateSource: "https://mapcarta.com/W306956698",
     locationNote: "",
     category: "shopping-mall", tags: ["retail", "mixed-program", "transit-oriented"],
-    description: "Shopping and mixed-use complex at Hapjeong Station, identified in the October 2026 field inventory as Mecenatpolis.",
+    description: "Shopping and mixed-use complex at Hapjeong Station, provisionally identified as Mecenatpolis.",
     year: "2012",
     program: "Shops & residential complex",
     condition: "The mall is alive, but numerous vacancies in the basement and upper floors and underused during the week.",
@@ -565,7 +565,7 @@ export const seedPlaces = [
     description: "Shops and leisure in Seoul",
     year: "2024",
     area: "about 30 000 m²",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. Facility identity is ambiguous; verify exact address before assigning an area.",
+    areaNote: "Area figure remains unverified. Facility identity is ambiguous; verify exact address before assigning an area.",
   },
   {
     id: "euljiro-underground",
@@ -604,7 +604,7 @@ export const seedPlaces = [
     description: "Shops and mixed-use spaces in Taipei",
     year: "1979",
     area: "250 000 m² total",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. Potential figures from secondary descriptions could not be verified to building registry standard.",
+    areaNote: "Area figure remains unverified. Potential figures from secondary descriptions could not be verified to building registry standard.",
   },
   {
     id: "sanchong-tang-city",
@@ -620,7 +620,7 @@ export const seedPlaces = [
     description: "Shops and mixed-use spaces in New Taipei",
     year: "1992",
     area: "35 000 m²",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. Tang City Plaza / Tomson park boundaries unclear; cannot identify comparable total area.",
+    areaNote: "Area figure remains unverified. Tang City Plaza / Tomson park boundaries unclear; cannot identify comparable total area.",
   },
   {
     id: "new-shimbashi-building",
@@ -672,7 +672,7 @@ export const seedPlaces = [
     description: "Underground shops and restaurants in Tokyo",
     year: "1955",
     area: "about 1000 m²",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. Street length is published, but no trustworthy total floor-area figure.",
+    areaNote: "Area figure remains unverified. Street length is published, but no trustworthy total floor-area figure.",
   },
   {
     id: "aeon-laketown",
@@ -725,7 +725,7 @@ export const seedPlaces = [
     description: "Hot spring hotel and leisure facilities in Ito",
     year: "1947",
     area: "8 200 m²",
-    areaNote: "Figure supplied in the October 2026 field inventory; not independently verified. Hotel covers several buildings; no reliable entire-building floor-area found.",
+    areaNote: "Area figure remains unverified. Hotel covers several buildings; no reliable entire-building floor-area found.",
   },
   {
     id: "decks-tokyo-beach",
