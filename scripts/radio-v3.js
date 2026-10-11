@@ -30,7 +30,7 @@
     player.setAttribute("aria-label", "ARTIFICE Radio");
     player.innerHTML =
       '<span class="radio-bracket" aria-hidden="true">[</span>' +
-      '<div class="radio-dock-meta"><span>artifice radio</span> <span id="radio-sequence">001</span></div>' +
+      '<div class="radio-dock-meta"><span>artifice radio</span><span id="radio-sequence" style="margin-left:14px!important;padding-left:4px!important">001</span></div>' +
       '<div class="radio-dock-row">' +
       '<span class="radio-dock-track radio-track">techno mart</span>' +
       '<div class="radio-dock-controls">' +
