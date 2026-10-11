@@ -1,70 +1,81 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ARTIFICE projects: architectural research, memory, consumer culture and speculative transformations." />
-    <meta name="theme-color" content="#ffffff" />
-    <title>Projects — ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css?v=20261012-exhibition-archive" />
-  <link rel="stylesheet" href="mobile-v3.css?v=3"><link rel="icon" type="image/svg+xml" href="favicon-artifice-times-a.svg?v=20261010"><link rel="shortcut icon" type="image/svg+xml" href="favicon-artifice-times-a.svg?v=20261010"><link rel="stylesheet" href="compact-header.css?v=2-brackets"></head>
-  <body class="contact-page projects-page">
-    <header class="site-header">
-      <a class="wordmark" href="index.html" aria-label="ARTIFICE, home"><span>ARTIFICE</span></a>
-      <nav aria-label="Main navigation">
-        <a href="about.html">about</a>
-        <a href="projects.html" aria-current="page">projects</a>
-        <a href="atlas.html">atlas</a>
-        <a href="contact.html">contact</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projects by ARTIFICE, an architectural research and creative practice.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Projects | ARTIFICE</title>
+  <link rel="stylesheet" href="styles.css?v=20261012-exhibition-archive">
+  <link rel="stylesheet" href="mobile-v3.css?v=3">
+  <link rel="stylesheet" href="compact-header.css?v=2-brackets">
+  <link rel="stylesheet" href="projects-clean.css?v=20261012-clean1">
+  <link rel="icon" type="image/svg+xml" href="favicon-artifice-a-20261012.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon-artifice-a-20261012.svg">
+</head>
+<body class="contact-page artifice-projects-clean">
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="ARTIFICE, home"><span>ARTIFICE</span></a>
+    <nav aria-label="Main navigation">
+      <a href="about.html">about</a>
+      <a href="projects.html" aria-current="page">projects</a>
+      <a href="atlas.html">atlas</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
 
-    
-    <main class="projects-archive" id="projects-archive">
-      <header class="projects-archive-header">
-        <div class="projects-archive-kicker">
-          <span>ARTIFICE / INDEX OF WORK</span>
-          <span>ARCHITECTURE, MEMORY &amp; THE AFTERLIVES OF CONSUMPTION</span>
-          <span id="projects-archive-total">02 ENTRIES</span>
-        </div>
-        <h1>Worlds <em>in</em><br>transition<span class="projects-archive-period">.</span></h1>
-        <div class="projects-archive-thesis">
-          <span class="projects-archive-crosshair" aria-hidden="true">✳</span>
-          <p>Research, documentation and architectural speculation within the worlds we have inherited. Every project is another way of reading the present.</p>
-          <span class="projects-archive-scroll">SCROLL TO EXPLORE ↓</span>
-        </div>
-      </header>
-      <section class="projects-archive-list" id="projects-archive-list" aria-label="Browse ARTIFICE projects">
-        <p><a href="projects.html?project=la-machine-du-dialogue">La machine du dialogue</a> &nbsp; <a href="projects.html?project=dongtan-consumer-city">Dongtan: The Making of a Consumer City</a></p>
-      </section>
-      <footer class="projects-archive-footer"><span>ARTIFICE / OPEN ARCHIVE</span><span>THIS INDEX WILL CONTINUE TO GROW</span><a href="atlas.html">EXPLORE THE ATLAS ↗</a></footer>
-    </main>
-
-    <main class="project-content projects-detail" id="projects-detail" hidden>
-      <div class="projects-detail-tools"><a href="projects.html">← ALL PROJECTS</a><span id="projects-detail-number">RESEARCH / 01</span></div>
-      <div class="project-heading">
-        <p class="project-location" id="project-location">Maine–Montparnasse · Paris, France</p>
-        <h1 id="project-title">La machine du dialogue</h1>
+  <main class="projects-clean-main">
+    <section id="projects-index-view" aria-labelledby="projects-label">
+      <div class="clean-index-heading">
+        <h1 id="projects-label">Projects</h1>
+        <p><span id="projects-total">02</span> projects</p>
       </div>
+      <div class="clean-project-list" id="projects-index-items">
+        <article class="clean-project-entry">
+          <a class="clean-project-link" href="projects.html?project=la-machine-du-dialogue">
+            <figure class="clean-project-figure"><img src="assets/maine-01.webp" alt="La machine du dialogue"></figure>
+            <p class="clean-project-metadata">01 &nbsp; Paris, France</p>
+            <h2 class="clean-project-title">La machine du dialogue</h2>
+          </a>
+        </article>
+        <article class="clean-project-entry">
+          <a class="clean-project-link" href="projects.html?project=dongtan-consumer-city">
+            <figure class="clean-project-figure"><img src="assets/projects/dongtan/05-chaebol-map.webp" alt="Dongtan research maps"></figure>
+            <p class="clean-project-metadata">02 &nbsp; Hwaseong, South Korea</p>
+            <h2 class="clean-project-title">Dongtan: The Making of a Consumer City</h2>
+          </a>
+        </article>
+      </div>
+    </section>
 
-      <section class="project-gallery" aria-label="Project image gallery">
-        <div class="project-frame" id="project-frame" role="button" tabindex="0" aria-label="Browse images: move the mouse left or right, click, or use the arrow keys">
-          <img id="project-image" src="assets/maine-01.webp" alt="Architectural model of La machine du dialogue, showing its open stacked levels" width="2048" height="1535" />
+    <article id="projects-detail-view" aria-label="Project" hidden>
+      <div class="clean-detail-top">
+        <a href="projects.html">All projects</a>
+        <span id="project-number">01 of 02</span>
+      </div>
+      <h1 class="clean-detail-title" id="project-title">Project</h1>
+      <div class="clean-detail-location">
+        <span id="project-location"></span>
+        <span id="project-years"></span>
+      </div>
+      <section class="clean-gallery" aria-label="Project documents">
+        <div class="clean-gallery-stage" id="project-stage" role="button" tabindex="0" aria-label="View next project image, or use arrow keys">
+          <img id="project-image" src="assets/maine-01.webp" alt="Project documentation">
         </div>
-        <div class="project-gallery-meta" aria-live="polite">
-          <span class="project-counter" id="project-counter">01 / 13</span>
-          <span class="project-caption" id="project-caption">The architectural model</span>
+        <div class="clean-gallery-info" aria-live="polite">
+          <span id="project-image-count">01 of 01</span>
+          <span class="clean-gallery-caption" id="project-caption"></span>
+          <div class="clean-gallery-controls">
+            <button type="button" id="project-prev">Previous</button>
+            <button type="button" id="project-next">Next</button>
+          </div>
         </div>
       </section>
-
-      <div class="project-description" id="project-description">
-        <p>La machine du dialogue emerges from the ambition to transform the Maine Montparnasse shopping centre, a consumerist remnant, into a civic infrastructure dedicated to exchange and engagement.</p>
-        <p>Rather than erasing this ruin-like architecture inherited from the Trente Glorieuses, the project chooses to graft itself onto it, preserving its essential structure while subverting its commercial logic. A place once based on consumption is replaced by a place based on speech, encounter, and the collective production of ideas.</p>
-        <p>Organised around a citizens’ assembly composed of randomly selected participants and experts, the project is accompanied by thematic pavilions hosting exhibitions, workshops, and discussion spaces open to the public, while also integrating the existing facilities.</p>
-      </div>
-      <nav class="projects-detail-related" id="projects-related" aria-label="Other ARTIFICE projects"></nav>
-    </main>
-
-    <script type="module" src="scripts/projects.js?v=20261012-exhibition-archive"></script>
-  <script defer src="scripts/radio-v3.js?v=20261012-playlist2"></script></body>
+      <div class="clean-project-description" id="project-description"></div>
+      <a class="clean-other-project" id="other-project" href="projects.html">Another project</a>
+    </article>
+  </main>
+  <script type="module" src="scripts/projects.js?v=20261012-clean1"></script>
+  <script defer src="scripts/radio-v3.js?v=20261012-playlist2"></script>
+</body>
 </html>
