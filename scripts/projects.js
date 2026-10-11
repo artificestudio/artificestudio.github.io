@@ -1,8 +1,12 @@
 import {projects,findProject} from "../content/projects.js?v=20261012-dongtan";
 
-// projects.html?project=<id> selects a project; bare projects.html shows the first.
-const requested=new URLSearchParams(location.search).get("project");
-const project=findProject(requested)||projects[0];
+const requested = new URLSearchParams(location.search).get("project");
+const project = requested ? findProject(requested) : null;
+const archive = document.getElementById("projects-archive");
+const detail = document.getElementById("projects-detail");
+if (project) {
+ archive.hidden = true;
+ detail.hidden = false;
 const images=project.images.map((picture,index)=>[
  String(index+1).padStart(2,"0"),picture.caption||"",picture.alt||picture.caption||project.title,picture.src
 ]);
@@ -31,14 +35,24 @@ description.replaceChildren();
 for(const paragraph of (project.description||[])){
  const element=document.createElement("p");element.textContent=paragraph;description.append(element);
 }
-const index=document.getElementById("projects-index");
-index.replaceChildren();
-for(const entry of projects){
- const a=document.createElement("a");a.href="projects.html?project="+encodeURIComponent(entry.id);
- a.textContent=entry.title;
- if(entry.id===project.id)a.setAttribute("aria-current","page");
- index.append(a);
+
+const related = document.getElementById("projects-related");
+for (const [i, entry] of projects.entries()) {
+  const link = document.createElement("a");
+  link.href = "projects.html?project=" + encodeURIComponent(entry.id);
+  const label = document.createElement("span");
+  label.textContent = String(i + 1).padStart(2, "0") + " / " + String(projects.length).padStart(2,"0");
+  const name = document.createElement("strong");
+  name.textContent = entry.title;
+  link.append(label, name);
+  if (entry.id === project.id) {
+    link.setAttribute("aria-current","page");
+  }
+  related.append(link);
 }
+document.getElementById("projects-detail-number").textContent =
+  "DOCUMENT " + String(projects.indexOf(project) + 1).padStart(2, "0") +
+  " / " + String(projects.length).padStart(2,"0");
 
 // Use the first photo immediately, including when opening a different project.
 const frame = document.getElementById("project-frame");
@@ -122,3 +136,90 @@ frame.addEventListener("keydown", event => {
 
 // Initial frame must match the selected project, not the HTML placeholder.
 showImage(0);
+
+} else {
+ archive.hidden = false;
+ detail.hidden = true;
+
+const archiveList = document.getElementById("projects-archive-list");
+const archiveTotal = document.getElementById("projects-archive-total");
+archiveTotal.textContent = String(projects.length).padStart(2, "0") + " ENTRIES";
+archiveList.replaceChildren();
+
+for (const [i, entry] of projects.entries()) {
+  const record = document.createElement("article");
+  record.className = "archive-record";
+  const link = document.createElement("a");
+  link.className = "archive-record-link";
+  link.href = "projects.html?project=" + encodeURIComponent(entry.id);
+  link.setAttribute("aria-label","Explore " + entry.title);
+
+  const ordinal = document.createElement("div");
+  ordinal.className = "archive-record-ordinal";
+  const number = document.createElement("span");
+  number.textContent = String(i + 1).padStart(2, "0");
+  const coords = document.createElement("span");
+  coords.textContent = entry.city + " / " + entry.country;
+  const years = document.createElement("span");
+  years.textContent = entry.years || "";
+  ordinal.append(number, coords, years);
+
+  const stage = document.createElement("div");
+  stage.className = "archive-record-stage";
+  const figure = document.createElement("div");
+  figure.className = "archive-record-figure";
+  const first = entry.images?.[0];
+  const second = entry.images?.find((image, n) => n > 0 && image.src !== first?.src);
+  if (first) {
+    const front = document.createElement("img");
+    front.className = "archive-record-image";
+    front.src = first.src;
+    front.alt = first.alt || entry.title;
+    front.loading = i ? "lazy" : "eager";
+    figure.append(front);
+    if (second) {
+      const hiddenPhoto = document.createElement("img");
+      hiddenPhoto.className = "archive-record-reveal";
+      hiddenPhoto.src = second.src;
+      hiddenPhoto.alt = "";
+      hiddenPhoto.loading = "lazy";
+      hiddenPhoto.setAttribute("aria-hidden", "true");
+      figure.append(hiddenPhoto);
+    }
+    const figureLabel = document.createElement("span");
+    figureLabel.className = "archive-record-figure-label";
+    figureLabel.textContent = "FIG. " + String(i+1).padStart(2,"0") + " / " + String(entry.images.length).padStart(2,"0");
+    figure.append(figureLabel);
+  }
+  const info = document.createElement("div");
+  info.className = "archive-record-info";
+  const stamp = document.createElement("span");
+  stamp.className = "archive-record-stamp";
+  stamp.textContent = entry.city + ", " + entry.country + " / " + entry.years;
+  const title = document.createElement("h2");
+  title.textContent = entry.title;
+  const synopsis = document.createElement("p");
+  synopsis.textContent = entry.description?.[0] || "";
+  const action = document.createElement("span");
+  action.className = "archive-record-action";
+  action.textContent = "OPEN RECORD ↗";
+  info.append(stamp,title,synopsis,action);
+  stage.append(figure,info);
+  link.append(ordinal,stage);
+  record.append(link);
+  archiveList.append(record);
+
+  // A moving circular aperture reveals the next research document on hover.
+  // Touchscreens and reduced-motion settings receive an ordinary static image.
+  if (second) {
+    figure.addEventListener("pointermove", event => {
+      if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+      const rect = figure.getBoundingClientRect();
+      figure.style.setProperty("--lens-x", ((event.clientX - rect.left) / rect.width * 100).toFixed(1) + "%");
+      figure.style.setProperty("--lens-y", ((event.clientY - rect.top) / rect.height * 100).toFixed(1) + "%");
+    });
+  }
+}
+document.title = "Projects | ARTIFICE";
+
+}
