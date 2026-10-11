@@ -293,3 +293,28 @@
   }
   .artifice-projects-clean .clean-document-tile span {font-size:.72rem;}
 }
+
+/* Regular Times New Roman and a white, unframed project image presentation. */
+.artifice-projects-clean, .artifice-projects-clean * {
+  font-family: "Times New Roman", Times, serif !important;
+  font-weight: 400 !important;
+  font-synthesis: none !important;
+}
+.artifice-projects-clean .clean-project-figure,
+.artifice-projects-clean .clean-project-figure img,
+.artifice-projects-clean .clean-project-entry:nth-child(even) .clean-project-figure img,
+.artifice-projects-clean .clean-gallery-stage,
+.artifice-projects-clean .clean-document-tile img {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+.artifice-projects-clean .clean-project-figure img,
+.artifice-projects-clean .clean-project-entry:nth-child(even) .clean-project-figure img {
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+}
+.artifice-projects-clean .clean-document-tile img {
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+}
