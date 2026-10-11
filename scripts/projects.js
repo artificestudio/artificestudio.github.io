@@ -94,6 +94,31 @@ function renderDetail(project) {
   const prev = document.getElementById("project-prev");
   const next = document.getElementById("project-next");
   let current = 0;
+  const thumbnailGrid = document.getElementById("project-thumbnails");
+  document.getElementById("project-documents-count").textContent = twoDigits(gallery.length);
+  thumbnailGrid.replaceChildren();
+  const thumbnails = gallery.map((item, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "clean-document-tile";
+    button.setAttribute("aria-label", "View document " + (index + 1) + ": " + (item.caption || project.title));
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.src = item.src;
+    img.alt = "";
+    const note = document.createElement("span");
+    note.textContent = twoDigits(index + 1) + "  " + (item.caption || "");
+    button.append(img, note);
+    button.addEventListener("click", () => {
+      show(index - current);
+      stage.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+        block: "center"
+      });
+    });
+    thumbnailGrid.append(button);
+    return button;
+  });
   function show(offset) {
     if (!gallery.length) return;
     current = (current + offset + gallery.length) % gallery.length;
@@ -102,6 +127,7 @@ function renderDetail(project) {
     image.alt = item.alt || item.caption || project.title;
     caption.textContent = item.caption || "";
     count.textContent = twoDigits(current + 1) + " of " + twoDigits(gallery.length);
+    thumbnails.forEach((button, index) => button.setAttribute("aria-pressed", String(index === current)));
   }
   prev.addEventListener("click", () => show(-1));
   next.addEventListener("click", () => show(1));

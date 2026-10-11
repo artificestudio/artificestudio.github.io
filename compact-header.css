@@ -83,3 +83,46 @@ body:not(.home-page) .radio-dock-play{text-transform:lowercase}
  body:not(.home-page) .radio-bracket{display:inline-block!important;font-size:15px!important}
  body:not(.home-page) .radio-dock-meta{display:block!important}
 }
+
+/* Radio header spacing: separated title, number, track and controls. */
+body:not(.home-page) .site-header .radio-dock {
+  gap:clamp(10px,1.2vw,18px);
+  white-space:nowrap;
+  font-family:"Times New Roman",Times,serif;
+}
+body:not(.home-page) .site-header .radio-dock-meta {
+  display:flex!important;
+  align-items:baseline;
+  gap:8px;
+  flex:0 0 auto;
+  margin:0!important;
+}
+body:not(.home-page) .site-header .radio-dock-meta #radio-sequence {
+  display:inline-block;
+  min-width:2em;
+  font-variant-numeric:tabular-nums;
+}
+body:not(.home-page) .site-header .radio-dock-row {
+  display:flex;
+  flex:0 0 auto;
+  align-items:center;
+  gap:clamp(13px,1.6vw,24px);
+}
+body:not(.home-page) .site-header .radio-dock-controls {gap:clamp(5px,.75vw,12px);}
+body:not(.home-page) .site-header .radio-dock-track {display:block;flex:0 0 auto;}
+body:not(.home-page) .site-header .radio-dock-button {flex:0 0 auto;}
+@media(max-width:850px){
+  body:not(.home-page) .site-header .radio-dock {gap:clamp(5px,1.5vw,10px)!important;}
+  body:not(.home-page) .site-header .radio-dock-meta {
+    display:flex!important;gap:5px!important;margin:0 auto 0 0!important;font-size:10px!important;
+  }
+  body:not(.home-page) .site-header .radio-dock-row {gap:clamp(5px,1.5vw,9px)!important;}
+  body:not(.home-page) .site-header .radio-dock-controls {gap:2px!important;}
+  body:not(.home-page) .site-header .radio-dock-button {min-width:25px!important;padding:2px!important;}
+}
+@media(max-width:390px){
+  body:not(.home-page) .site-header .radio-dock-meta {font-size:9px!important;gap:3px!important;}
+  body:not(.home-page) .site-header .radio-dock-track {font-size:9px!important;}
+  body:not(.home-page) .site-header .radio-bracket {font-size:12px!important;}
+  body:not(.home-page) .site-header .radio-dock-button {min-width:23px!important;}
+}
