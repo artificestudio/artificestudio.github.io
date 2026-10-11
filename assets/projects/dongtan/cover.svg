@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Dongtan research, diagram of relationships between the public planner, the chaebols, and the consumer city">
+  <rect width="1600" height="1000" fill="#fafaf8"/>
+  <g fill="none" stroke="#d2d2cf" stroke-width="1.4">
+    <path d="M0 200H1600M0 400H1600M0 600H1600M0 800H1600M200 0V1000M400 0V1000M600 0V1000M800 0V1000M1000 0V1000M1200 0V1000M1400 0V1000"/>
+  </g>
+  <g fill="none" stroke="#101010" stroke-width="7">
+    <path d="M108 590L232 590L232 708L375 708L375 494L462 494L462 633L566 633L566 430L719 430L719 574L855 574L855 341L991 341L991 558L1166 558L1166 397L1326 397L1326 686L1490 686"/>
+    <path d="M193 355L193 486L345 486L345 375L531 375L531 267L778 267L778 326L967 326L967 201L1322 201L1322 277L1446 277"/>
+    <path d="M96 784H458V855H872V763H1121V884H1490"/>
+  </g>
+  <g fill="#b3221b">
+    <circle cx="719" cy="430" r="11"/><circle cx="991" cy="558" r="11"/><circle cx="1326" cy="397" r="11"/>
+    <circle cx="345" cy="486" r="11"/><circle cx="1121" cy="763" r="11"/>
+  </g>
+  <rect x="90" y="66" width="950" height="242" fill="#fafaf8" opacity=".96"/>
+  <g font-family="Times New Roman, Georgia, serif" fill="#111">
+    <text x="102" y="124" font-size="23" letter-spacing="2.5">ARTIFICE / RESEARCH / 2025</text>
+    <text x="100" y="217" font-size="91">DONGTAN</text>
+    <text x="103" y="268" font-size="29">The Making of a Consumer City</text>
+    <text x="103" y="925" font-size="20">Doriann Delaive · ENSA Paris-Belleville · An editorial diagram based on the research thesis</text>
+    <text x="1075" y="112" font-size="21">PUBLIC PLANNING</text>
+    <text x="1075" y="147" font-size="21">CORPORATE DEVELOPMENT</text>
+    <text x="1075" y="182" font-size="21">URBAN CONSUMPTION</text>
+  </g>
+  <g fill="#b3221b"><rect x="1037" y="96" width="17" height="17"/><rect x="1037" y="132" width="17" height="17"/><rect x="1037" y="167" width="17" height="17"/></g>
+</svg>
