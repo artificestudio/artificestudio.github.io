@@ -28,7 +28,9 @@ This website is hosted for free on **GitHub Pages**. You can add places, project
 
 The homepage (index.html) has two minimalist modules rendered above the existing film and original Babel drawing.
 
-**ARTIFICE Radio** plays the existing Techno Mart recording at `assets/artifice-ambient.mp3` on repeat. Browsers commonly block unmuted audio autoplay. The site tries playing on arrival, then waits for a user interaction if blocked. Visitors can always press PLAY or PAUSE. The previous/next controls currently seek backward/forward 15 seconds within the only available audio file; when more recordings are added, a real multi-track playlist can replace this behaviour. To swap the track, replace the audio source in `index.html` and update the displayed `TECHNO MART` title. Do not rename the existing audio asset accidentally.
+**ARTIFICE Radio** now has a two-recording playlist: Techno Mart (`assets/artifice-ambient.mp3`) and Yodobashi Camera (`assets/yodobashi camera.mp3`). The previous/next buttons switch recordings, and playback automatically advances to the next track. Playback intention, selected recording and position are retained when moving between pages (subject to browser autoplay restrictions). Visitors can always press PLAY or PAUSE.
+
+**Add a new ARTIFICE Radio recording:** upload an MP3 to `assets/`, then add one entry to the `TRACKS` array at the top of [scripts/radio-v3.js](scripts/radio-v3.js), for example `{ id: "new-recording", title: "new recording", src: "assets/new-recording.mp3" }`. The current track label and sequence number update automatically on both the homepage and interior pages. Keep each `id` unique. The radio scripts are normally left unchanged except when adding tracks.
 
 **ARTIFICE Time** draws a random place from `content/places.js` every five seconds. It includes only entries whose `year` is precisely four digits such as `"1966"`; descriptive or provisional dates like `"1970s"`, `"2007 (first phase)"` or `"2022 (renovated and renamed)"` are excluded on purpose. It now displays continuously updating fractional years (nine decimals) counted from **January 1 of the recorded year**, a clearly stated approximation because exact opening dates are not available in the inventory. The selected place still changes every 5 seconds. Each clock entry links to the place's Atlas record.
 
@@ -186,7 +188,7 @@ Copy the existing project object inside the `projects` array, add a comma betwee
 
 `https://www.artificepractice.com/projects.html?project=tokyo-workshop`
 
-If someone visits `projects.html` without a `?project=` parameter, it opens the first project in the array (currently **La machine du dialogue**).
+Visiting `projects.html` **without** a `?project=` parameter now opens the **editorial visual index**, with the full catalogue automatically generated from `content/projects.js`. Each project appears as a large image-led archival record, with a reveal of the second research image on mouse hover when available. Clicking opens the existing project detail page with the image gallery and full description. A direct `?project=your-id` link always opens that project's detail page.
 
 - `description` is an array of paragraphs; each quoted line becomes one paragraph.
 - `images` is an ordered list: move an entry up/down to rearrange the gallery.
