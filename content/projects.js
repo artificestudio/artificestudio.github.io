@@ -52,6 +52,15 @@ export const projects = [
       "Research and original documentation by Doriann Delaive, ENSA Paris-Belleville, 2025. Conducted within the Métropoles en miroir seminar directed by Cristiana Mazzoni, with Jean Attali and Mete Kutlu."
     ],
     images: [
+      { src: "assets/projects/dongtan/13-residential-towers.webp", caption: "Dongtan residential towers, field photographs in the thesis appendix, 2025", alt: "Residential towers and housing development in Dongtan", type: "photograph" },
+      { src: "assets/projects/dongtan/19-sunset-over-dongtan.webp", caption: "Dongtan at sunset, field photograph, 2025", alt: "Warm evening light over apartment towers and distant cranes", type: "photograph" },
+      { src: "assets/projects/dongtan/21-apartment-towers.webp", caption: "Apartment towers and urban landscape, Dongtan, 2025", alt: "High-rise apartments photographed during site research", type: "photograph" },
+      { src: "assets/projects/dongtan/20-housing-on-the-horizon.webp", caption: "Dongtan New Town and its horizon, field photograph, 2025", alt: "New Town apartment complexes under hazy skies", type: "photograph" },
+      { src: "assets/projects/dongtan/16-construction-and-housing.webp", caption: "Housing construction in Dongtan, field photograph, 2025", alt: "Construction of apartment complexes within the planned city", type: "photograph" },
+      { src: "assets/projects/dongtan/18-construction-site.webp", caption: "Construction site in Dongtan, field photograph, 2025", alt: "Construction activity and structural works between apartment blocks", type: "photograph" },
+      { src: "assets/projects/dongtan/22-woodland-between-developments.webp", caption: "Woodland and urban edges, field photograph, 2025", alt: "Trees and partially developed areas near new residential districts", type: "photograph" },
+      { src: "assets/projects/dongtan/15-residential-facades.webp", caption: "Residential façades and apartment typologies, field photograph, 2025", alt: "The repeated housing façades of Dongtan New Town", type: "photograph" },
+      { src: "assets/projects/dongtan/17-development-branding.webp", caption: "Real-estate development branding, field photograph, 2025", alt: "Residential marketing signs and branded construction", type: "photograph" },
       { src: "assets/projects/dongtan/05-chaebol-map.webp", caption: "Mapping the developers behind Dongtan's built fabric, research drawings, 2025", alt: "Research maps identifying chaebol involvement in housing development across Dongtan" },
       { src: "assets/projects/dongtan/02-nolli-dongtan.webp", caption: "Nolli studies of Dongtan New Town, 2025", alt: "Four figure ground drawings comparing the urban fabric in Dongtan" },
       { src: "assets/projects/dongtan/03-pedestrian-islands.webp", caption: "Walkable areas and fragmentation of urban space, 2025", alt: "Two analytical diagrams identifying disconnected pedestrian areas and large urban blocks" },
