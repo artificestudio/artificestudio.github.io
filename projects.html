@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="La machine du dialogue — an architectural project for Maine Montparnasse, Paris, by ARTIFICE." />
+    <meta name="description" content="ARTIFICE projects: architectural research, memory, consumer culture and speculative transformations." />
     <meta name="theme-color" content="#ffffff" />
-    <title>La machine du dialogue — ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css?v=20261012-project-index" />
+    <title>Projects — ARTIFICE</title>
+    <link rel="stylesheet" href="styles.css?v=20261012-exhibition-archive" />
   <link rel="stylesheet" href="mobile-v3.css?v=3"><link rel="icon" type="image/svg+xml" href="favicon-artifice-times-a.svg?v=20261010"><link rel="shortcut icon" type="image/svg+xml" href="favicon-artifice-times-a.svg?v=20261010"><link rel="stylesheet" href="compact-header.css?v=2-brackets"></head>
   <body class="contact-page projects-page">
     <header class="site-header">
@@ -19,14 +19,29 @@
       </nav>
     </header>
 
-    <main class="project-content">
-      <section class="project-index-section project-index-intro" aria-label="Browse ARTIFICE projects">
-        <h2>Projects</h2>
-        <nav id="projects-index" class="project-index" aria-label="Select a project">
-          <a href="projects.html?project=la-machine-du-dialogue">La machine du dialogue</a>
-          <a href="projects.html?project=dongtan-consumer-city">Dongtan: The Making of a Consumer City</a>
-        </nav>
+    
+    <main class="projects-archive" id="projects-archive">
+      <header class="projects-archive-header">
+        <div class="projects-archive-kicker">
+          <span>ARTIFICE / INDEX OF WORK</span>
+          <span>ARCHITECTURE, MEMORY &amp; THE AFTERLIVES OF CONSUMPTION</span>
+          <span id="projects-archive-total">02 ENTRIES</span>
+        </div>
+        <h1>Worlds <em>in</em><br>transition<span class="projects-archive-period">.</span></h1>
+        <div class="projects-archive-thesis">
+          <span class="projects-archive-crosshair" aria-hidden="true">✳</span>
+          <p>Research, documentation and architectural speculation within the worlds we have inherited. Every project is another way of reading the present.</p>
+          <span class="projects-archive-scroll">SCROLL TO EXPLORE ↓</span>
+        </div>
+      </header>
+      <section class="projects-archive-list" id="projects-archive-list" aria-label="Browse ARTIFICE projects">
+        <p><a href="projects.html?project=la-machine-du-dialogue">La machine du dialogue</a> &nbsp; <a href="projects.html?project=dongtan-consumer-city">Dongtan: The Making of a Consumer City</a></p>
       </section>
+      <footer class="projects-archive-footer"><span>ARTIFICE / OPEN ARCHIVE</span><span>THIS INDEX WILL CONTINUE TO GROW</span><a href="atlas.html">EXPLORE THE ATLAS ↗</a></footer>
+    </main>
+
+    <main class="project-content projects-detail" id="projects-detail" hidden>
+      <div class="projects-detail-tools"><a href="projects.html">← ALL PROJECTS</a><span id="projects-detail-number">RESEARCH / 01</span></div>
       <div class="project-heading">
         <p class="project-location" id="project-location">Maine–Montparnasse · Paris, France</p>
         <h1 id="project-title">La machine du dialogue</h1>
@@ -47,9 +62,9 @@
         <p>Rather than erasing this ruin-like architecture inherited from the Trente Glorieuses, the project chooses to graft itself onto it, preserving its essential structure while subverting its commercial logic. A place once based on consumption is replaced by a place based on speech, encounter, and the collective production of ideas.</p>
         <p>Organised around a citizens’ assembly composed of randomly selected participants and experts, the project is accompanied by thematic pavilions hosting exhibitions, workshops, and discussion spaces open to the public, while also integrating the existing facilities.</p>
       </div>
-      
+      <nav class="projects-detail-related" id="projects-related" aria-label="Other ARTIFICE projects"></nav>
     </main>
 
-    <script type="module" src="scripts/projects.js?v=20261012-index-visible"></script>
-  <script defer src="scripts/radio-v3.js?v=5-brackets"></script></body>
+    <script type="module" src="scripts/projects.js?v=20261012-exhibition-archive"></script>
+  <script defer src="scripts/radio-v3.js?v=20261012-playlist2"></script></body>
 </html>
