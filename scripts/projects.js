@@ -1,4 +1,4 @@
-import {projects,findProject} from "../content/projects.js";
+import {projects,findProject} from "../content/projects.js?v=20261012-dongtan";
 
 // projects.html?project=<id> selects a project; bare projects.html shows the first.
 const requested=new URLSearchParams(location.search).get("project");
