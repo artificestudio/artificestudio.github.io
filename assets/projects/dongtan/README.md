@@ -1,21 +1,25 @@
-# Dongtan research images
+# Dongtan, The Making of a Consumer City
 
-Doriann Delaive, 2025. Original thesis: Dongtan. L'héritage des chaebols dans la fabrication d'une ville de consommation, ENSA Paris-Belleville, Métropoles en miroir.
+A research project by Doriann Delaive, ENSA Paris-Belleville, 2025. Original thesis: *Dongtan, L'héritage des chaebols dans la fabrication d'une ville de consommation*, Métropoles en miroir seminar (Cristiana Mazzoni, Jean Attali, Mete Kutlu).
 
-The site's cover.svg is an editorial title illustration, not a scan of an original cartographic figure.
+Published on ARTIFICE at `projects.html?project=dongtan-consumer-city`. The Atlas pin `dongtan` links back to this project.
 
-A curated package containing 10 source-based images was prepared separately from pages 17, 21, 31, 38-39, 43, 48, 54, 58, 59 and 75 of the thesis. The web images should be uploaded to this folder before they are referenced in content/projects.js. Do not reference missing files.
+## Figure selection (in site gallery order)
 
-Suggested sequence:
-02-nolli-dongtan.webp
-05-chaebol-map.webp
-04-urbanization-1985-2023.webp
-03-pedestrian-islands.webp
-06-branded-apartments.webp
-07-dongtan-way-of-life.webp
-08-lotte-department-store.webp
-09-lotte-interior.webp
-10-consumption-heatmap.webp
-12-new-town-landscape.webp
+1. `05-chaebol-map.webp` — research maps of apartment developers and chaebols; thesis pp. 38–39.
+2. `02-nolli-dongtan.webp` — four Dongtan Nolli / figure-ground diagrams; thesis p. 17.
+3. `03-pedestrian-islands.webp` — diagrams of traversable spaces and urban fragmentation; thesis p. 21.
+4. `04-urbanization-1985-2023.webp` — historical Dongtan satellite sequence; thesis p. 31 (Google Earth underlying imagery).
+5. `06-branded-apartments.webp` — building-products and branded apartments; thesis p. 43.
+6. `07-dongtan-way-of-life.webp` — real-estate advertising brochures; thesis p. 48 (underlying brochures were collected from local agencies).
+7. `08-lotte-department-store.webp` — commercial setting; thesis p. 54.
+8. `09-lotte-interior.webp` — Lotte Mall escalators; thesis p. 58.
+9. `10-consumption-heatmap.webp` — commercial concentrations; thesis p. 59.
+10. `11-public-planning.webp` — research figure on public planning; thesis p. 63.
+11. `12-new-town-landscape.webp` — Dongtan fieldwork photographic documentation; thesis p. 75.
 
-Copyright: Some diagrams contain third-party satellite bases, imagery or scanned promotional publications. Credit underlying sources and check permission before public reuse. The original work and photographs are by Doriann Delaive unless otherwise indicated in the thesis.
+All gallery images are compressed WebP excerpts extracted directly from the thesis PDF. `cover.svg` is an optional editorial illustration (not a thesis document).
+
+**Credits / reuse:** Research maps, montages and photographs by Doriann Delaive, 2025, except where the thesis specifies other image providers or underlying materials. Historical imagery, third-party brochures, satellite imagery and other external materials retain the rights of their respective authors. Verify licensing and attribution before republishing those excerpts outside the research context.
+
+To change the gallery order, edit `content/projects.js`. To replace a file, upload a WebP with the same filename into this folder; no modifications to page templates are needed.
