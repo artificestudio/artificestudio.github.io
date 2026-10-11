@@ -1,4 +1,4 @@
-import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261010-photos-142";
+import {seedPlaces,categoryLabel,tagLabel} from "../content/places.js?v=20261012-inventory-clean";
 
 const $=id=>document.getElementById(id);
 const id=new URLSearchParams(location.search).get("id");
