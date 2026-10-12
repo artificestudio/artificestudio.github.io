@@ -30,9 +30,9 @@
     player.setAttribute("aria-label", "ARTIFICE Radio");
     player.innerHTML =
       '<span class="radio-bracket" aria-hidden="true">[</span>' +
-      '<div class="radio-dock-meta"><span>artifice radio</span><span id="radio-sequence" style="margin-left:14px!important;padding-left:4px!important">001</span></div>' +
+      '<div class="radio-dock-meta"><span>artifice radio</span><span id="radio-sequence">001</span></div>' +
       '<div class="radio-dock-row">' +
-      '<span class="radio-dock-track radio-track">techno mart</span>' +
+      '<span class="radio-dock-track">techno mart</span>' +
       '<div class="radio-dock-controls">' +
       '<button type="button" id="radio-previous" class="radio-dock-button" aria-label="Previous recording" title="Previous recording"><svg class="radio-control-icon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M11 6 4 12l7 6V6Zm9 0-7 6 7 6V6Z"/></svg></button>' +
       '<button type="button" id="sound-toggle" class="radio-dock-button radio-dock-play" aria-label="Play recording" aria-pressed="false">play</button>' +
@@ -59,7 +59,7 @@
   const status = document.getElementById("radio-status");
   const title = isHome
     ? document.querySelector(".artifice-radio .radio-track")
-    : document.querySelector(".radio-dock .radio-track");
+    : document.querySelector(".radio-dock .radio-dock-track");
   const sequence = document.getElementById("radio-sequence");
   if (![toggle, previous, next, progress, clock, status, title].every(Boolean)) return;
 
