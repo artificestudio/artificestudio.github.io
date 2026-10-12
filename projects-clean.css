@@ -318,3 +318,42 @@
   aspect-ratio: auto !important;
   object-fit: contain !important;
 }
+
+
+/* Display every photograph and drawing in full, including tall maps.
+   Fixed, consistent stage and contact-sheet heights; no image cropping. */
+.artifice-projects-clean .clean-gallery-stage {
+  background: #fff !important;
+  height: clamp(320px,70svh,850px);
+  min-height: 0;
+  overflow: hidden;
+}
+.artifice-projects-clean .clean-gallery-stage img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+.artifice-projects-clean .clean-document-tile img {
+  display: block !important;
+  width: 100% !important;
+  height: clamp(170px,19vw,290px) !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #fff !important;
+}
+@media (max-width: 850px) {
+  .artifice-projects-clean .clean-gallery-stage {
+    height: clamp(280px,62svh,650px) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+  }
+  .artifice-projects-clean .clean-document-tile img {
+    height: clamp(155px,37vw,260px) !important;
+  }
+}
