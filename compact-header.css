@@ -126,3 +126,106 @@ body:not(.home-page) .site-header .radio-dock-button {flex:0 0 auto;}
   body:not(.home-page) .site-header .radio-bracket {font-size:12px!important;}
   body:not(.home-page) .site-header .radio-dock-button {min-width:23px!important;}
 }
+
+
+/* October 2026: stable, single-baseline mobile radio layout.
+   Keep the whole player in the header's second row without the
+   legacy track margins or auto-spaced fragments. */
+body:not(.home-page) .site-header .radio-dock-track {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  align-self: center !important;
+  text-transform: lowercase;
+}
+body:not(.home-page) .site-header .radio-dock-meta #radio-sequence {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+@media (max-width: 850px) {
+  body:not(.home-page) .site-header {
+    grid-template-rows: minmax(28px,auto) 32px !important;
+    row-gap: 3px !important;
+    padding: 8px 14px 7px !important;
+  }
+  body:not(.home-page) .site-header .radio-dock {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    display: grid !important;
+    grid-template-columns: auto minmax(0,1fr) auto auto !important;
+    align-items: center !important;
+    justify-content: stretch !important;
+    column-gap: clamp(4px,1.45vw,9px) !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  body:not(.home-page) .site-header .radio-bracket:first-child {
+    grid-column: 1;
+    justify-self: start;
+  }
+  body:not(.home-page) .site-header .radio-dock-meta {
+    grid-column: 2;
+    min-width: 0;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-self: start;
+    justify-content: flex-start;
+    gap: clamp(6px,2.2vw,13px) !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    white-space: nowrap;
+  }
+  body:not(.home-page) .site-header .radio-dock-row {
+    grid-column: 3;
+    display: flex !important;
+    align-items: center !important;
+    justify-self: end;
+    min-width: 0;
+    flex-wrap: nowrap;
+    gap: clamp(5px,1.4vw,10px) !important;
+  }
+  body:not(.home-page) .site-header .radio-dock-track {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font: 11px/1 "Times New Roman",Times,serif !important;
+    white-space: nowrap;
+  }
+  body:not(.home-page) .site-header .radio-dock-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+  body:not(.home-page) .site-header .radio-dock-button {
+    display: grid !important;
+    place-items: center !important;
+    min-width: 26px !important;
+    min-height: 30px !important;
+    padding: 2px !important;
+    line-height: 1 !important;
+  }
+  body:not(.home-page) .site-header .radio-dock-play {
+    min-width: 36px !important;
+  }
+  body:not(.home-page) .site-header .radio-bracket:last-child {
+    grid-column: 4;
+    justify-self: end;
+  }
+}
+@media (max-width: 390px) {
+  body:not(.home-page) .site-header .radio-dock-track { font-size: 10px !important; }
+  body:not(.home-page) .site-header .radio-dock-meta { gap: 6px !important; }
+  body:not(.home-page) .site-header .radio-dock-button { min-width: 23px !important; }
+  body:not(.home-page) .site-header .radio-dock-play { min-width: 32px !important; }
+}
+@media (max-width: 350px) {
+  body:not(.home-page) .site-header .radio-dock-track {
+    max-width: 71px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
