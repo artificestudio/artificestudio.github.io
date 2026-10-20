@@ -340,6 +340,10 @@ export const seedPlaces = [
   },
   {
     id: "hapjeong-mall",
+    architect: "The Jerde Partnership (retail/public realm); EAWES (towers)",
+    constructionCompany: "GS Engineering & Construction (developer and construction group; contractor role to verify)",
+    ownership: "Private (mixed-use development; individual property titles not verified)",
+    attributionSources: ["https://m.ancbook.com/contents/anc/2012/11/03.htm","https://archinect.com/news/article/59025599/jerde-s-mecenatpolis-opens-in-seoul"],
     images: [
       { src: "assets/places/hapjeong-mall/01.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
       { src: "assets/places/hapjeong-mall/02.JPG", caption: "Hapjeong Mall / Mecenatpolis (provisional)", alt: "Photograph of Hapjeong Mall / Mecenatpolis (provisional)" },
@@ -531,6 +535,9 @@ export const seedPlaces = [
   },
   {
     id: "times-square-seoul",
+    architect: "Junglim Architecture (lead designer: Lee Pil-hoon; consortium: Sisang Architecture)",
+    ownership: "Private (Kyungbang Co., Ltd., original client/developer)",
+    attributionSources: ["https://junglim.com/en/times-square/","https://sca.seoul.go.kr/seoulhour/site/urbanArch/board/permanent/308?baCommSelec=false&baNotice=false&baOpenDay=false&baUse=true&bcId=permanent&cp=2&listType=list&sortDirection=DESC&sortOrder=BA_REGDATE"],
     name: "Times Square Yeongdeungpo",
     city: "Seoul",
     country: "South Korea",
@@ -680,6 +687,8 @@ export const seedPlaces = [
   },
   {
     id: "aeon-laketown",
+    ownership: "Private (AEON REIT Investment Corporation holds documented retail assets; ownership differs by component)",
+    attributionSources: ["https://www.aeon-jreit.co.jp/ja/portfolio/detail.html?id=0001","https://www.aeon-jreit.co.jp/ja/portfolio/detail.html?id=0002"],
     name: "AEON LakeTown",
     city: "Koshigaya",
     country: "Japan",
@@ -786,6 +795,8 @@ export const seedPlaces = [
   },
   {
     id: "aquacity-odaiba",
+    ownership: "Private (Mitsubishi Estate group, historically managed; current title not independently verified)",
+    attributionSources: ["https://www.mec.co.jp/en/company/history/"],
     name: "AQUA CiTY ODAIBA",
     city: "Tokyo",
     country: "Japan",
