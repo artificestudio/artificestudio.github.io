@@ -48,7 +48,7 @@
         </div>
         <aside class="artifice-time" aria-label="ARTIFICE time archive">
           <p class="time-small">ARTIFICE TIME <span class="time-sequence" id="time-sequence">01</span></p>
-          <p class="time-elapsed"><span id="time-elapsed">00,000000000</span><span class="time-unit"> YEARS</span></p>
+          <p class="time-elapsed"><span id="time-elapsed">0</span><span class="time-unit"> years ago</span></p>
           <p class="time-place" id="time-place">Architecture, time and memory</p>
           <a class="time-link" id="time-link" href="atlas.html">View in atlas</a>
           <p class="time-method">Counted from 1 January of the recorded year. Exact date unknown.</p>
@@ -112,7 +112,7 @@
           if (!activePlace || document.hidden) return;
           const startingPoint = Date.UTC((activePlace.clockYear ?? Number(activePlace.year)), 0, 1);
           const years = Math.max(0, (Date.now() - startingPoint) / averageYearMilliseconds);
-          timeElapsed.textContent = years.toFixed(9).replace(".", ",");
+          timeElapsed.textContent = String(Math.floor(years));
         }
         function nextPlace() {
           if (!queue.length) {
