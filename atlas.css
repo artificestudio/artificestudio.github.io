@@ -166,3 +166,17 @@ body.atlas-page .maplibregl-ctrl-bottom-right{bottom:0;right:0;z-index:4}
 body.atlas-page .maplibregl-ctrl-attrib{background:transparent!important;font:10px "Times New Roman",serif!important}
 body.atlas-page .maplibregl-ctrl-attrib.maplibregl-compact{min-height:20px}
 body.atlas-page .atlas-map-controls{z-index:5}
+
+/* Align Atlas title, proposal and map controls on a single compact row below the wordmark. */
+@media(min-width:781px){
+ body.atlas-page .atlas-heading{top:5.3rem!important;left:var(--page-pad);right:auto;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:2.2rem!important;max-width:calc(100vw - 220px)!important}
+ body.atlas-page .atlas-heading h1{padding:0!important;margin:0!important;line-height:1.15!important}
+ body.atlas-page #propose-button{margin:0!important;padding:.1rem 0!important;align-self:center!important}
+ body.atlas-page .atlas-map-controls{top:5.25rem!important;right:1rem!important}
+}
+@media(max-width:780px){
+ body.atlas-page .atlas-heading{top:5.2rem!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:.8rem!important;max-width:calc(100% - 4.5rem)!important}
+ body.atlas-page .atlas-heading h1{font-size:clamp(.95rem,3.6vw,1.25rem)!important;padding:0!important;line-height:1.1!important}
+ body.atlas-page #propose-button{font-size:clamp(.65rem,2.4vw,.8rem)!important;margin:0!important;padding:.1rem 0!important}
+ body.atlas-page .atlas-map-controls{top:5.15rem!important;right:.5rem!important}
+}
