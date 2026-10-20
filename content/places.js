@@ -218,6 +218,9 @@ export const seedPlaces = [
   // ALGERIA
   {
     id: "riadh-el-feth",
+    architect: "Lavalin (Canadian engineering and design office; complex); Marian Konieczny designed the separate Martyrs' Memorial",
+    attributionSources: ["https://mutualheritage-alger.univ-tours.fr/items/show/167"],
+    attributionNote: "The memorial's sculptor/architect must not be conflated with the adjoining commercial complex.",
     name: "Riadh El Feth", city: "Algiers", country: "Algeria",
     coordinates: [3.07025, 36.74326],
     coordinateSource: "https://mapcarta.com/fr/W1271733343",
@@ -235,6 +238,8 @@ export const seedPlaces = [
   // SOUTH KOREA
   {
     id: "yongsan-et-land",
+    ownership: "Private (SYS Holdings Co., Ltd., operator; real-estate title not confirmed)",
+    attributionSources: ["https://www.i-etland.co.kr/chn/location.php"],
     name: "Yongsan ET Land", city: "Seoul", country: "South Korea",
     coordinates: [126.9595403701, 37.5327661639],
     coordinateSource: "https://data.visitkorea.or.kr/resource/132229",
@@ -678,6 +683,9 @@ export const seedPlaces = [
   },
   {
     id: "asakusa-underground",
+    ownership: "Private merchant-led development (historic); present land title not verified",
+    attributionSources: ["https://crd.ndl.go.jp/reference/entry/index.php?id=1000286686&page=ref_view","https://www.japantimes.co.jp/podcast/2024/06/20/deep-dive/tokyo-underground-longform/"],
+    attributionNote: "Historically built by a company formed by local merchants; this does not establish current ownership.",
     images: [
       { src: "assets/places/asakusa-underground/01.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
       { src: "assets/places/asakusa-underground/02.JPG", caption: "Asakusa Underground Shopping Street", alt: "Photograph of Asakusa Underground Shopping Street" },
