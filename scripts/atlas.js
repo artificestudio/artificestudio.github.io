@@ -12,7 +12,7 @@ const map=new maplibregl.Map({
   container:"atlas-map",
   style:{version:8,sources:{},layers:[{id:"initial-white",type:"background",paint:{"background-color":"#ffffff"}}]},
   center:[133,36],zoom:2.25,minZoom:1,maxZoom:19,
-  attributionControl:false,renderWorldCopies:false,
+  attributionControl:false,renderWorldCopies:true,
   dragRotate:false,pitchWithRotate:false,touchPitch:false,
   cooperativeGestures:false
 });
