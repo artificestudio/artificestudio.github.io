@@ -626,6 +626,8 @@ export const seedPlaces = [
   },
   {
     id: "new-shimbashi-building",
+    architect: "Matsuda Hirata Sekkei (MHS)",
+    attributionSources: ["https://www.mhs.co.jp/feature/%E3%83%8B%E3%83%A5%E3%83%BC%E6%96%B0%E6%A9%8B%E3%83%93%E3%83%ABarchive/"],
     images: [
       { src: "assets/places/new-shimbashi-building/01.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
       { src: "assets/places/new-shimbashi-building/02.JPG", caption: "New Shimbashi Building", alt: "Photograph of New Shimbashi Building" },
@@ -757,6 +759,8 @@ export const seedPlaces = [
   },
   {
     id: "divercity-tokyo-plaza",
+    ownership: "Private (Mitsui Fudosan development; Mitsui Fudosan Retail Management operates)",
+    attributionSources: ["https://mitsui-shopping-park.com/en/divercity-tokyo/company/index.html"],
     images: [
       { src: "assets/places/divercity-tokyo-plaza/01.JPG", caption: "DiverCity Tokyo Plaza", alt: "Photograph of DiverCity Tokyo Plaza" },
       { src: "assets/places/divercity-tokyo-plaza/02.JPG", caption: "DiverCity Tokyo Plaza", alt: "Photograph of DiverCity Tokyo Plaza" },
@@ -1026,6 +1030,10 @@ export const seedPlaces = [
   },
   {
     id: "921-earthquake-museum",
+    architect: "Jay Chiu (Da'han Design) and Zhuang Xue Neng Architects (Chelungpu Fault Gallery)",
+    constructionCompany: "Kong Chou Construction Co., Ltd. (Phase 1)",
+    ownership: "Public (National Museum of Natural Science)",
+    attributionSources: ["https://www.nmns.edu.tw/park_921/about/introduction/","https://www.kcce.com.tw/en/work_detail.php?Key=1&tID=1"],
     name: "921 Earthquake Museum of Taiwan",
     city: "Wufeng, Taichung",
     country: "Taiwan",
