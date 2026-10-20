@@ -361,3 +361,8 @@
 /* Align Projects heading with the Atlas and About page headings. */
 .artifice-projects-clean .projects-clean-main{padding-top:clamp(3.9rem,6.5vh,5rem)!important}
 @media(max-width:780px){.artifice-projects-clean .projects-clean-main{padding-top:4.35rem!important}}
+
+.artifice-projects-clean .clean-gallery-stage video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.artifice-projects-clean .clean-gallery-stage video[hidden],.artifice-projects-clean .clean-gallery-stage img[hidden]{display:none!important}
+.artifice-projects-clean .clean-project-figure video{display:block;width:100%;height:100%;object-fit:cover}
+.artifice-projects-clean .clean-document-tile video{width:100%;height:clamp(170px,19vw,290px);object-fit:contain;background:#111}
