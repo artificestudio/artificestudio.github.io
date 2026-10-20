@@ -483,3 +483,11 @@ html,body{background:#fff}
 .home-page .time-place{width:100%;min-height:2.5em;max-height:2.5em;overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
 .home-page .time-link{display:inline-block;min-height:1.2em}
 @media(max-width:780px){.home-page .artifice-time{min-height:115px}.home-page .time-place{min-height:2.5em;max-height:2.5em}}
+
+/* About: one continuous research paragraph and architectural matrix brackets. */
+.about-fragment-second{grid-column:6 / 13;max-width:42rem}
+.about-cities-matrix{display:inline-block;position:relative;padding:.3rem 1.15rem;line-height:1.55}
+.about-cities-matrix::before,.about-cities-matrix::after{content:"";position:absolute;top:0;bottom:0;width:.6rem;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+.about-cities-matrix::before{left:0;border-left:1.5px solid currentColor}
+.about-cities-matrix::after{right:0;border-right:1.5px solid currentColor}
+@media(max-width:780px){.about-fragment-second{grid-column:2 / 7;max-width:none}.about-cities-matrix{padding:.25rem 1rem}}
