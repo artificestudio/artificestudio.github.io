@@ -70,9 +70,9 @@
     </main>
     <script>
       const film = document.querySelector(".hero-film");
-      const desktopFilm = window.matchMedia("(prefers-reduced-motion: no-preference)");
+      const desktopFilm = window.matchMedia("(min-width: 781px) and (prefers-reduced-motion: no-preference)");
       function startDesktopFilm() {
-        if (!desktopFilm.matches) return;
+        if (!desktopFilm.matches) { film.pause(); return; }
         const source = film.querySelector("source");
         if (!source.src) {
           source.src = source.dataset.src;
@@ -132,7 +132,7 @@
           updateElapsed();
         }
         nextPlace();
-        setInterval(updateElapsed, 50);
+        setInterval(updateElapsed, 60000);
         setInterval(nextPlace, 5000);
         document.addEventListener("visibilitychange", updateElapsed);
       }).catch(() => {
