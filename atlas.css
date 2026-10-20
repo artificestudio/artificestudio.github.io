@@ -191,3 +191,7 @@ body.atlas-page .atlas-legend{mix-blend-mode:normal!important;color:#fff!importa
 body.atlas-page .atlas-legend .atlas-dot{background:#bd261c!important;mix-blend-mode:normal!important;isolation:isolate!important;flex-shrink:0}
 body.atlas-page .atlas-legend{isolation:auto}
 body.atlas-page .atlas-legend{color:#111!important}
+
+/* Bring Atlas title and proposal closer to the wordmark without overlapping it. */
+@media(min-width:781px){body.atlas-page .atlas-heading{top:3.9rem!important}body.atlas-page .atlas-map-controls{top:3.85rem!important}}
+@media(max-width:780px){body.atlas-page .atlas-heading{top:4.35rem!important}body.atlas-page .atlas-map-controls{top:4.3rem!important}}
