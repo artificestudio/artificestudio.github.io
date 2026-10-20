@@ -243,18 +243,17 @@ for(const category of CATEGORIES){
  $("propose-category").append(option);
 }
 $("propose-button").onclick=()=>{
- dialog.show();
- selectMode=true;
- proposalStatus.textContent="Click the map to select a location, then fill in the form.";
-};
-dialog.querySelector("[data-close]").onclick=()=>dialog.close();
-dialog.addEventListener("close",()=>{
  selectMode=false;
- chosen=null;
- selectedMarker?.remove();
- selectedMarker=null;
- $("propose-coordinate").textContent="No position selected — click the map";
-});
+ dialog.showModal();
+ proposalStatus.textContent="Complete the form and select a location on the map.";
+};
+$("atlas-pick-location").onclick=()=>{
+ selectMode=true;
+ dialog.close();
+ proposalStatus.textContent="Click the map to set the location.";
+ map.getCanvas().style.cursor="crosshair";
+};
+dialog.querySelector("[data-close]").onclick=()=>{selectMode=false;dialog.close();};
 map.on("click",event=>{
  if(!selectMode)return;
  chosen=[event.lngLat.lng,event.lngLat.lat];
@@ -263,11 +262,14 @@ map.on("click",event=>{
  element.className="atlas-proposal-pin";
  selectedMarker=new maplibregl.Marker({element}).setLngLat(chosen).addTo(map);
  $("propose-coordinate").textContent=chosen[1].toFixed(6)+"°, "+chosen[0].toFixed(6)+"° (WGS84)";
- proposalStatus.textContent="Location selected. Finish the form to prepare your email.";
+ proposalStatus.textContent="Location selected. You can now prepare the email.";
+ selectMode=false;
+ map.getCanvas().style.cursor="";
+ dialog.showModal();
 });
 function composeProposal(){
  if(!form.reportValidity())return null;
- if(!chosen){proposalStatus.textContent="Select a point on the map before preparing your email.";return null;}
+ if(!chosen){proposalStatus.textContent="Select a location using the map button before sending.";return null;}
  const formData=new FormData(form);
  const string=key=>String(formData.get(key)||"").trim();
  const name=string("name"),city=string("city");
