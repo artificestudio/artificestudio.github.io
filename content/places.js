@@ -697,6 +697,8 @@ export const seedPlaces = [
   },
   {
     id: "aeon-makuhari-new-city",
+    ownership: "Private (AEON Mall Co., Ltd., operator)",
+    attributionSources: ["https://www.aeonmall.com/mallnews/index/6530/"],
     name: "AEON MALL Makuhari New City",
     city: "Chiba",
     country: "Japan",
@@ -892,6 +894,8 @@ export const seedPlaces = [
   },
   {
     id: "huis-ten-bosch",
+    ownership: "Private (Huis Ten Bosch Co., Ltd., operator)",
+    attributionSources: ["https://english.huistenbosch.co.jp/aboutus/company/"],
     name: "Huis Ten Bosch",
     city: "Sasebo",
     country: "Japan",
@@ -930,6 +934,9 @@ export const seedPlaces = [
   },
   {
     id: "seonyudo-park",
+    architect: "Cho Sung-ryong (architecture); Jung Young-sun (landscape)",
+    ownership: "Public (Seoul Metropolitan Government)",
+    attributionSources: ["https://www.seoul.go.kr/story/architecture/2021/m_today_02.html","https://english.seoul.go.kr/seonyudo-park-in-seoul/"],
     name: "Seonyudo Park",
     city: "Seoul",
     country: "South Korea",
