@@ -501,7 +501,7 @@ html,body{background:#fff}
 .about-poem-page .about-definition p{margin:0 0 1rem}
 .about-poem-page .about-definition-term{font-size:clamp(1.4rem,2vw,2rem);margin-bottom:1.2rem!important}
 .about-poem-page .about-definition-term span{font-size:.65em}
-.about-poem-page .about-definition-source{font-size:.72em;color:#555;margin-top:.5rem!important}
+.about-poem-page .about-definition-source{font-size:.72em;color:#000;margin-top:.5rem!important}
 .about-poem-page .about-definition-source a{color:inherit;text-underline-offset:2px}
 .about-poem-page .about-definition-label{font-size:.75em;margin-top:2.7rem!important;letter-spacing:.02em}
 .about-poem-page .about-definition-original{font-size:clamp(1.25rem,1.8vw,1.8rem);line-height:1.28;max-width:47rem}
