@@ -51,16 +51,12 @@ function configureBlackWhite(style){
    if(layer.type==="background"){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
-     if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":1};}
-     else if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":1};}
+     if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":["interpolate",["linear"],["zoom"],4,0,6,1]};}
+     else if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":["interpolate",["linear"],["zoom"],4,0,6,1]};}
      else if(urbanLanduse){
-       // Intermediate urban fabric, not individual building footprints.
-       // This bridges the gap between country silhouettes and detailed Nolli geometry.
-       layer.layout={...(layer.layout||{}),visibility:"visible"};
-       layer.minzoom=Math.min(layer.minzoom??7,7);
-       layer.maxzoom=24;
-       layer.filter=["all",...(layer.filter?[layer.filter]:[]),["in",["get","class"],["literal",["residential","commercial","industrial","retail"]]]];
-       layer.paint={"fill-color":"#222222","fill-opacity":["interpolate",["linear"],["zoom"],7,0,9,.30,10.5,.38,11.5,.24,12.5,.10,14,0]};
+       // Broad land-use polygons are not building footprints and create
+       // mismatched gray blocks. Keep the Nolli ground white instead.
+       layer.layout={...(layer.layout||{}),visibility:"none"};
      }
      else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.minzoom=Math.min(layer.minzoom??11,11);layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],10,0,11,.20,12,.55,13,.85,14,1]};}
      else layer.layout={...(layer.layout||{}),visibility:"none"};
@@ -68,12 +64,12 @@ function configureBlackWhite(style){
      if(road){
        // Cartographic road surface: broad pale-gray corridor, not a hairline.
        layer.layout={...(layer.layout||{}),visibility:"visible"};
-       layer.paint={"line-color":"#d0d0d0","line-opacity":["interpolate",["linear"],["zoom"],10,0,12,.8,14,1],"line-width":["interpolate",["exponential",2],["zoom"],10,1,12,2.5,14,7,16,16,18,35]};
+       layer.paint={"line-color":"#d0d0d0","line-opacity":["interpolate",["linear"],["zoom"],10,0,12,.8,14,1],"line-width":["interpolate",["exponential",2],["zoom"],10,.4,12,1.2,14,3,16,7,18,14]};
      }
      else if(riverLine){
        // Waterway polygons remain exact; narrow waterways use width-aware gray ribbons.
        layer.layout={...(layer.layout||{}),visibility:"visible"};
-       layer.paint={"line-color":"#b0b0b0","line-opacity":1,"line-width":["interpolate",["exponential",2],["zoom"],9,1,12,2,14,5,16,12,18,25]};
+       layer.paint={"line-color":"#b0b0b0","line-opacity":["interpolate",["linear"],["zoom"],9,0,11,.8,12,1],"line-width":["interpolate",["exponential",2],["zoom"],9,.5,12,1.5,14,3,16,6,18,10]};
      }
      else if(water)layer.paint={"line-color":"#c7c7c7","line-width":1,"line-opacity":1};
      else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],10,0,11,.12,12,.40,13,.75,14,1]};}
@@ -113,7 +109,7 @@ async function loadVectorBasemap(){
    mapStatus.hidden=true;
    map.once("style.load",()=>{
      map.addSource("artifice-countries",{type:"geojson",data:"https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"});
-     map.addLayer({id:"artifice-country-fill",type:"fill",source:"artifice-countries",paint:{"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],3,1,7,.72,9,0]}});
+     map.addLayer({id:"artifice-country-fill",type:"fill",source:"artifice-countries",paint:{"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],3,1,5,.95,6,.3,7,0]}});
      map.addLayer({id:"artifice-country-borders",type:"line",source:"artifice-countries",paint:{"line-color":"#777777","line-width":["interpolate",["linear"],["zoom"],1,.45,5,.75],"line-opacity":["interpolate",["linear"],["zoom"],4,1,8,0]}});
      const nameEl=$("atlas-country-name");
      map.on("mousemove","artifice-country-fill",event=>{
