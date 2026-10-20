@@ -37,6 +37,8 @@ function configureBlackWhite(style){
    const building=/(building)/.test(key);
    const urbanLanduse=/(landuse)/.test(key) && layer.type==="fill";
    const terrain=/(contour|elevation|topograph)/.test(key);
+   const road=/(road|transportation|highway|street|motorway)/.test(key) && !/(label|name|shield)/.test(key);
+   const riverLine=/(waterway|river|stream|canal)/.test(key) && layer.type==="line";
    // Keep building footprints visible beyond the source style zoom threshold.
    if(building && (layer.type==="fill" || layer.type==="line")){
      layer.maxzoom=24;
@@ -47,7 +49,7 @@ function configureBlackWhite(style){
    if(layer.type==="background"){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
-     if(water)layer.paint={"fill-color":"#ffffff","fill-opacity":1};
+     if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#ffffff","fill-opacity":1};}
      else if(urbanLanduse){
        // Intermediate urban fabric, not individual building footprints.
        // This bridges the gap between country silhouettes and detailed Nolli geometry.
@@ -60,7 +62,17 @@ function configureBlackWhite(style){
      else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.minzoom=Math.min(layer.minzoom??11,11);layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],10,0,11,.20,12,.55,13,.85,14,1]};}
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="line"){
-     if(water)layer.paint={"line-color":"#cecece","line-width":.7,"line-opacity":1};
+     if(road){
+       // Cartographic road surface: broad white casing instead of a hairline.
+       layer.layout={...(layer.layout||{}),visibility:"visible"};
+       layer.paint={"line-color":"#ffffff","line-opacity":["interpolate",["linear"],["zoom"],10,0,12,.8,14,1],"line-width":["interpolate",["exponential",2],["zoom"],10,1,12,2.5,14,7,16,16,18,35]};
+     }
+     else if(riverLine){
+       // Waterway polygons remain exact; narrow waterways use width-aware white ribbons.
+       layer.layout={...(layer.layout||{}),visibility:"visible"};
+       layer.paint={"line-color":"#ffffff","line-opacity":1,"line-width":["interpolate",["exponential",2],["zoom"],9,1,12,2,14,5,16,12,18,25]};
+     }
+     else if(water)layer.paint={"line-color":"#ffffff","line-width":2,"line-opacity":1};
      else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],10,0,11,.12,12,.40,13,.75,14,1]};}
      else if(terrain)layer.paint={"line-color":"#e5e5e5","line-width":.5,"line-opacity":["interpolate",["linear"],["zoom"],9,0,12,.65]};
      else layer.layout={...(layer.layout||{}),visibility:"none"};
