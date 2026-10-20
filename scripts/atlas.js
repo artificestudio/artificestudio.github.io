@@ -36,7 +36,12 @@ function configureBlackWhite(style){
    const water=/(water|ocean|lake|river|sea)/.test(key);
    const building=/(building)/.test(key);
    const terrain=/(contour|elevation|topograph)/.test(key);
-   // The upstream style stops several building layers at a preset zoom.\n   // Extend them so vector-tile overzoom keeps footprints visible at street scale.\n   if(building && (layer.type==="fill" || layer.type==="line")){layer.maxzoom=24;layer.minzoom=Math.min(layer.minzoom??12,12);}\n   const countryLabel=false;
+   // Keep building footprints visible beyond the source style zoom threshold.
+   if(building && (layer.type==="fill" || layer.type==="line")){
+     layer.maxzoom=24;
+     layer.minzoom=Math.min(layer.minzoom??12,12);
+   }
+   const countryLabel=false;
    const cityLabel=false;
    if(layer.type==="background"){
      layer.paint={"background-color":"#ffffff"};
