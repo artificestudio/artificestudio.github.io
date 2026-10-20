@@ -868,6 +868,8 @@ export const seedPlaces = [
   },
   {
     id: "tsukuba-center-building",
+    architect: "Arata Isozaki & Associates",
+    attributionSources: ["https://docomomojapan.com/structure/296/"],
     name: "Tsukuba Center Building",
     city: "Tsukuba",
     country: "Japan",
@@ -904,6 +906,8 @@ export const seedPlaces = [
   },
   {
     id: "la-grande-motte",
+    architect: "Jean Balladur (chief architect and urban planner)",
+    attributionSources: ["https://www.culture.gouv.fr/regions/drac-occitanie/ressources-documentaires/publications-de-la-drac-occitanie/collection-duo/jean-balladur-et-la-grande-motte.-l-architecte-d-une-ville"],
     name: "La Grande-Motte",
     city: "La Grande-Motte",
     country: "France",
@@ -940,6 +944,8 @@ export const seedPlaces = [
   },
   {
     id: "sewoon-sangga",
+    architect: "Kim Swoo-geun (KECC)",
+    attributionSources: ["https://english.seoul.go.kr/seoul-reinvigorate-sewoon-sangga-urban-regeneration-plan/","https://www.arko.or.kr/pavilion/18pavilion/en/kecc.html"],
     name: "Sewoon Sangga",
     city: "Seoul",
     country: "South Korea",
@@ -958,6 +964,8 @@ export const seedPlaces = [
   },
   {
     id: "espaces-abraxas",
+    architect: "Ricardo Bofill Taller de Arquitectura",
+    attributionSources: ["https://ricardobofill.com/projects/"],
     name: "Les Espaces d'Abraxas",
     city: "Noisy-le-Grand",
     country: "France",
@@ -976,6 +984,8 @@ export const seedPlaces = [
   },
   {
     id: "avoriaz",
+    architect: "Atelier d'Architecture d'Avoriaz (Jacques Labro, Jean-Jacques Orzoni, Jean-Marc Roques)",
+    attributionSources: ["https://www.avoriaz.com/decouvrir/la-station/architecture-organique/"],
     name: "Avoriaz 1800",
     city: "Morzine",
     country: "France",
@@ -994,6 +1004,10 @@ export const seedPlaces = [
   },
   {
     id: "kai-tak-cruise-terminal",
+    architect: "Foster + Partners; Wong Tung & Partners",
+    constructionCompany: "Dragages Hong Kong",
+    ownership: "Public",
+    attributionSources: ["https://www.archsd.gov.hk/en/exhibition/kai-tak-cruise-terminal-building.html","https://www.bouygues-construction.com/en/activities/maritime-infrastructure/port-development/kai-tak-terminal"],
     name: "Kai Tak Cruise Terminal",
     city: "Hong Kong",
     country: "Hong Kong",
