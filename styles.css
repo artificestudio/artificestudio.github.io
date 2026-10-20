@@ -473,3 +473,13 @@ html,body{background:#fff}
 .home-page .hero-babel-overlay{opacity:.32}
 .home-page .hero-film{filter:saturate(.92) contrast(1.02) brightness(.94)}
 .home-page .film-shade{background:linear-gradient(to bottom,rgba(0,0,0,.12),transparent 25%,transparent 75%,rgba(0,0,0,.12))}
+
+/* Stable home time archive: reserve space for changing place names and year counts. */
+.home-page .artifice-time{display:flex;flex-direction:column;align-items:flex-start;min-height:145px;justify-content:flex-end}
+.home-page .time-small{width:100%;flex:0 0 auto}
+.home-page .time-elapsed{display:flex;flex-wrap:nowrap;align-items:baseline;white-space:nowrap;min-height:1.1em;gap:.25em}
+.home-page #time-elapsed{display:inline-block;min-width:3ch;font-variant-numeric:tabular-nums;text-align:left}
+.home-page .time-unit{flex:0 0 auto}
+.home-page .time-place{width:100%;min-height:2.5em;max-height:2.5em;overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.home-page .time-link{display:inline-block;min-height:1.2em}
+@media(max-width:780px){.home-page .artifice-time{min-height:115px}.home-page .time-place{min-height:2.5em;max-height:2.5em}}
