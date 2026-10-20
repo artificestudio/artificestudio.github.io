@@ -357,3 +357,7 @@
     height: clamp(155px,37vw,260px) !important;
   }
 }
+
+/* Align Projects heading with the Atlas and About page headings. */
+.artifice-projects-clean .projects-clean-main{padding-top:clamp(3.9rem,6.5vh,5rem)!important}
+@media(max-width:780px){.artifice-projects-clean .projects-clean-main{padding-top:4.35rem!important}}
