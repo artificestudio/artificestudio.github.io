@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#111111" />
     <title>ARTIFICE</title>
-    <link rel="stylesheet" href="styles.css?v=20261010-radio-brackets" />
+    <link rel="stylesheet" href="styles.css?v=20261020-home-video" />
     
   <link rel="stylesheet" href="mobile-v3.css?v=3"><link rel="icon" type="image/svg+xml" href="favicon-artifice-a-20261012.svg"><link rel="shortcut icon" type="image/svg+xml" href="favicon-artifice-a-20261012.svg"></head>
 
@@ -38,7 +38,7 @@
           poster="assets/home-preview.jpg"
           aria-hidden="true"
         >
-          <source data-src="assets/home-film.mp4" type="video/mp4" />
+          <source data-src="assets/home/C0935_2.mp4" type="video/mp4" />
         </video>
         <div class="hero-film-mobile" aria-hidden="true"></div>
         <div class="hero-babel-overlay" aria-hidden="true"></div>
@@ -70,7 +70,7 @@
     </main>
     <script>
       const film = document.querySelector(".hero-film");
-      const desktopFilm = window.matchMedia("(min-width: 781px) and (prefers-reduced-motion: no-preference)");
+      const desktopFilm = window.matchMedia("(prefers-reduced-motion: no-preference)");
       function startDesktopFilm() {
         if (!desktopFilm.matches) return;
         const source = film.querySelector("source");
