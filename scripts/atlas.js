@@ -213,7 +213,14 @@ function renderList(){
  const shown=visiblePlaces().slice().sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:"base"}));
  filterCount.textContent=String(shown.length).padStart(2,"0")+" / "+String(places.length).padStart(2,"0")+" PLACES";
  if(!shown.length){const msg=document.createElement("p");msg.className="atlas-no-results";msg.textContent="No places match these filters.";list.append(msg);}
- for(const p of shown){
+ const continentFor=country=>({France:"Europe",Algeria:"Africa","South Korea":"Asia",Japan:"Asia","Hong Kong":"Asia",Taiwan:"Asia"})[country]||"Other";
+ for(const continent of ["Asia","Europe","Africa","Other"]){
+   const members=shown.filter(p=>continentFor(p.country)===continent);
+   if(!members.length)continue;
+   const heading=document.createElement("h3");heading.className="atlas-continent-heading";heading.textContent=continent;
+   list.append(heading);
+   const group=document.createElement("div");group.className="atlas-continent-group";list.append(group);
+ for(const p of members){
    const b=document.createElement("button");b.className="atlas-list-item";b.type="button";
    const n=document.createElement("span");n.textContent=p.name+", "+p.city+", "+p.country;
    const typ=document.createElement("span");typ.className="atlas-entry-type";typ.textContent=categoryLabel(p.category);
@@ -221,7 +228,9 @@ function renderList(){
    const metadata=document.createElement("span");metadata.className="atlas-entry-metadata";
    const detail=(label,value)=>{const line=document.createElement("span");line.textContent=label+": "+(value||"Not documented");return line;};
    metadata.append(detail("Architect",p.architect),detail("Construction",p.constructionCompany),detail("Ownership",p.ownership));
-   b.append(n,typ,y,metadata);b.onclick=()=>openPlace(p);list.append(b);
+   b.append(n,typ,y,metadata);b.onclick=()=>openPlace(p);group.append(b);
+ }
+
  }
  $("atlas-count").textContent=String(places.length).padStart(2,"0");
 }
