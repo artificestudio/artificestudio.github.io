@@ -74,5 +74,16 @@ export const projects = [
       { src: "assets/projects/dongtan/12-new-town-landscape.webp", caption: "Dongtan New Town, field documentation, 2025", alt: "Photograph of Dongtan's apartment towers and open terrain" }
     ]
   }
+  ,{
+    id: "techno-mart-artifice",
+    title: "Techno Mart Artifice",
+    category: "Video",
+    site: "Gangbyeon Techno Mart",
+    city: "Seoul",
+    country: "South Korea",
+    atlasPlaceId: "techno-mart",
+    description: [],
+    images: [{src:"assets/projects/C0935.mp4",type:"video",caption:"Techno Mart Artifice",alt:"Video documenting Techno Mart"}]
+  }
 ];
 export const findProject = id => projects.find(project => project.id === id);
