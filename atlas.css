@@ -195,3 +195,14 @@ body.atlas-page .atlas-legend{color:#111!important}
 /* Bring Atlas title and proposal closer to the wordmark without overlapping it. */
 @media(min-width:781px){body.atlas-page .atlas-heading{top:3.9rem!important}body.atlas-page .atlas-map-controls{top:3.85rem!important}}
 @media(max-width:780px){body.atlas-page .atlas-heading{top:4.35rem!important}body.atlas-page .atlas-map-controls{top:4.3rem!important}}
+
+/* Index first; secondary research filters remain accessible below. */
+body.atlas-page .atlas-directory-top{margin-bottom:.65rem}
+body.atlas-page #atlas-list{margin-bottom:2rem}
+body.atlas-page .atlas-filters{border-top:1px solid #111;padding-top:1.25rem}
+body.atlas-page .atlas-entry-metadata{display:flex;flex-direction:column;gap:.15rem;width:100%;font-size:.73rem;line-height:1.3;color:#666}
+body.atlas-page .atlas-list-item{align-items:start}
+/* Per-pixel inverse for legend lettering only; red marker never blends. */
+body.atlas-page .atlas-legend{mix-blend-mode:normal!important;color:inherit!important;isolation:auto!important}
+body.atlas-page .atlas-legend .atlas-legend-text{color:#fff!important;mix-blend-mode:difference!important;background:transparent!important}
+body.atlas-page .atlas-legend .atlas-dot{background:#bd261c!important;mix-blend-mode:normal!important}
