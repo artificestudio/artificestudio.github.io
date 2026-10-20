@@ -143,3 +143,9 @@
 .atlas-page .atlas-heading h1{padding:.2rem .4rem}
 .atlas-page #propose-button{border-color:currentColor}
 .atlas-page .atlas-country-name{padding:0 .2rem}
+
+/* Atlas text blends against map pixels rather than the opaque heading overlay. */
+.atlas-page .atlas-heading{isolation:auto!important;mix-blend-mode:difference!important;color:#fff!important}
+.atlas-page .atlas-heading h1,.atlas-page #propose-button{mix-blend-mode:normal!important;color:#fff!important;background:transparent!important;text-shadow:none!important}
+.atlas-page .atlas-heading>div{background:transparent!important}
+.atlas-page .atlas-heading{background:transparent!important}
