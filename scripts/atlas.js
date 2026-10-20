@@ -1,4 +1,4 @@
-import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261012-inventory-clean";
+import {seedPlaces,CATEGORIES,TAG_LABELS,categoryLabel,tagLabel,matchesFilters} from "../content/places.js?v=20261020-attributions";
 import { PROPOSAL_EMAIL } from "../content/email.js";
 
 const $=id=>document.getElementById(id);
