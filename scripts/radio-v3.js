@@ -6,7 +6,8 @@
 
   const TRACKS = [
     { id: "techno-mart", title: "techno mart", src: "assets/artifice-ambient.mp3" },
-    { id: "yodobashi-camera", title: "yodobashi camera", src: "assets/yodobashi camera.mp3" }
+    { id: "yodobashi-camera", title: "yodobashi camera", src: "assets/yodobashi camera.mp3" },
+    { id: "tm-escalators-and-indications", title: "tm escalators and indications", src: "assets/techno mart escalator and indications.mp3" }
   ];
   const STORAGE_KEY = "artifice-radio-v2";
   const isHome = document.body.classList.contains("home-page");
