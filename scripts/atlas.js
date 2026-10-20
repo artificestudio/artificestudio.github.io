@@ -61,10 +61,21 @@ function configureBlackWhite(style){
 }
 async function loadVectorBasemap(){
  try{
-   const r=await fetch("https://tiles.openfreemap.org/styles/liberty");
-   if(!r.ok)throw Error("Vector style HTTP "+r.status);
-   const style=configureBlackWhite(await r.json());
+   const endpoints=["https://tiles.openfreemap.org/styles/liberty","https://tiles.openfreemap.org/styles/bright"];
+   let baseStyle=null;
+   for(const endpoint of endpoints){
+     try{
+       const response=await fetch(endpoint,{cache:"no-store"});
+       if(!response.ok)throw Error("HTTP "+response.status);
+       baseStyle=await response.json();
+       if(!Array.isArray(baseStyle.layers)||!baseStyle.sources)throw Error("Invalid map style");
+       break;
+     }catch(error){console.warn("Atlas basemap endpoint unavailable:",endpoint,error);}
+   }
+   if(!baseStyle)throw Error("No vector basemap style available");
+   const style=configureBlackWhite(baseStyle);
    map.setStyle(style,{diff:false});
+   mapStatus.hidden=true;
    map.once("style.load",()=>{
      map.addSource("artifice-countries",{type:"geojson",data:"https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"});
      map.addLayer({id:"artifice-country-fill",type:"fill",source:"artifice-countries",paint:{"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],3,1,7,0]}});
@@ -82,7 +93,8 @@ async function loadVectorBasemap(){
    mapStatus.textContent="Rendering map…";
  }catch(e){
    console.error("ARTIFICE Atlas vector style unavailable:",e);
-   mapStatus.textContent="Map basemap could not load. Please reload.";
+   mapStatus.hidden=false;
+   mapStatus.textContent="Map temporarily unavailable. Please try reloading.";
  }
 }
 map.on("idle",()=>{if(map.isStyleLoaded()&&map.getStyle().sources && Object.keys(map.getStyle().sources).length)mapStatus.hidden=true;});
