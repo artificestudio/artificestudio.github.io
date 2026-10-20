@@ -108,6 +108,7 @@ export const seedPlaces = [
   },
   {
     id: "le-millenaire",
+    architect: "Antoine Grumbach", constructionCompany: "Bouygues", ownership: "Private", attributionSources: ["https://www.icade.fr/projets/centres-commerciaux/centre-commercial-le-millenaire","https://www.klepierre.com/finance/publications-container/le-millenaire-66-des-surfaces-reservees-dans-ce-centre-commercial-unique-aux-portes-de-paris-fr"],
     images: [
       { src: "assets/places/le-millenaire/01.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
       { src: "assets/places/le-millenaire/02.jpeg", caption: "Le Millénaire", alt: "Photograph of Le Millénaire" },
@@ -134,6 +135,7 @@ export const seedPlaces = [
   },
   {
     id: "bercy-2",
+    architect: "Renzo Piano Building Workshop (with Jean-François Blassel)", ownership: "Private", attributionSources: ["https://www.fondazionerenzopiano.org/en/project/bercy-2-shopping-centre/","https://fr.wikipedia.org/wiki/Bercy_2"],
     images: [
       { src: "assets/places/bercy-2/01.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
       { src: "assets/places/bercy-2/02.JPG", caption: "Bercy 2", alt: "Photograph of Bercy 2" },
