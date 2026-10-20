@@ -149,3 +149,20 @@
 .atlas-page .atlas-heading h1,.atlas-page #propose-button{mix-blend-mode:normal!important;color:#fff!important;background:transparent!important;text-shadow:none!important}
 .atlas-page .atlas-heading>div{background:transparent!important}
 .atlas-page .atlas-heading{background:transparent!important}
+
+/* Continuous full-screen atlas: navigation floats over the map, without a white strip. */
+body.atlas-page{margin:0;overflow:hidden;background:#fff}
+body.atlas-page .atlas-main{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;padding:0!important;overflow:hidden}
+body.atlas-page .atlas-stage{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important}
+body.atlas-page .site-header{background:transparent!important;border:0!important;box-shadow:none!important;z-index:50}
+body.atlas-page .site-header::before,body.atlas-page .site-header::after{background:transparent!important;box-shadow:none!important}
+body.atlas-page .site-header .wordmark,body.atlas-page .site-header nav,body.atlas-page .site-header nav a{background:transparent!important}
+body.atlas-page .site-header .wordmark,body.atlas-page .site-header nav a{color:#fff!important;mix-blend-mode:difference!important;text-shadow:none!important}
+body.atlas-page .site-header nav{isolation:auto!important}
+body.atlas-page .atlas-legend{background:transparent!important;color:#fff!important;mix-blend-mode:difference!important;right:1rem!important;bottom:2.1rem!important;padding:0!important}
+body.atlas-page .atlas-legend .atlas-dot{mix-blend-mode:normal}
+body.atlas-page .atlas-country-name{background:transparent!important}
+body.atlas-page .maplibregl-ctrl-bottom-right{bottom:0;right:0;z-index:4}
+body.atlas-page .maplibregl-ctrl-attrib{background:transparent!important;font:10px "Times New Roman",serif!important}
+body.atlas-page .maplibregl-ctrl-attrib.maplibregl-compact{min-height:20px}
+body.atlas-page .atlas-map-controls{z-index:5}
