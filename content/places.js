@@ -382,6 +382,9 @@ export const seedPlaces = [
   },
   {
     id: "goodmorning-city",
+    ownership: "Private (approximately 3,000 individually owned units; redevelopment under discussion in 2026)",
+    attributionSources: ["https://realty.chosun.com/m/article.amp.html?contid=2026092103440","https://search.newspim.com/news/view/20260915001039"],
+    attributionNote: "Woori Asset Trust signed a redevelopment MOU in September 2026; it is not identified here as the building's owner.",
     name: "Goodmorning City", city: "Seoul", country: "South Korea",
     coordinates: [127.0075, 37.56668],
     coordinateSource: "https://mapcarta.com/W358284628",
@@ -753,6 +756,9 @@ export const seedPlaces = [
   },
   {
     id: "hatoya-hotel",
+    ownership: "Private (Fuji Shoji Co., Ltd., confirmed hotel operator; title to land and building not verified)",
+    attributionSources: ["https://www.koyou.pref.shizuoka.jp/employment/detail/7941/"],
+    attributionNote: "Do not confuse the Ito Hatoya Hotel with the unrelated Kyoto Hatoya Tourism Group.",
     name: "Hatoya Hotel",
     city: "Ito",
     country: "Japan",
