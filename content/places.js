@@ -457,6 +457,9 @@ export const seedPlaces = [
   },
   {
     id: "moko-mong-kok-east",
+    architect: "Wong & Ouyang (HK) Ltd.",
+    ownership: "Private / railway joint development (Sun Hung Kai Properties and Kowloon-Canton Railway Corporation)",
+    attributionSources: ["https://www.wongouyang.com/projects/grand-century-place-2/","https://www.shkp.com/en-US/media/press-releases/20230301"],
     name: "MOKO (Grand Century Place)",
     city: "Hong Kong", country: "Hong Kong",
     coordinates: [114.17238, 22.32318],
@@ -865,6 +868,8 @@ export const seedPlaces = [
   // EXPANDED ARTIFICIAL WORLDS: TOURISM, INFRASTRUCTURE, MEMORY AND URBAN EXPERIMENTS.
   {
     id: "spa-resort-hawaiians",
+    ownership: "Private (Joban Kosan Co., Ltd., resort operator; property title not independently confirmed)",
+    attributionSources: ["https://www.hawaiians.co.jp/en/corporate/"],
     name: "Spa Resort Hawaiians (Joban Hawaiian Center)",
     city: "Iwaki",
     country: "Japan",
@@ -883,6 +888,8 @@ export const seedPlaces = [
   },
   {
     id: "umihotaru-parking-area",
+    ownership: "Public infrastructure / expressway concession (operated by NEXCO East and Trans-Tokyo Bay Highway Co.; property title not confirmed)",
+    attributionSources: ["https://www.e-nexco.co.jp/en/pressroom/kanto/2019/0116/00002165.html","https://www.umihotaru.com/en/umihotaru/"],
     name: "Umihotaru Parking Area",
     city: "Kisarazu, Tokyo Bay",
     country: "Japan",
@@ -1086,6 +1093,9 @@ export const seedPlaces = [
   },
   {
     id: "sanzhi-ufo-houses",
+    ownership: "Private (Hung Kuo Group, historical site owner; demolished)",
+    attributionSources: ["https://en.wikipedia.org/wiki/Sanzhi_UFO_houses"],
+    attributionNote: "Historic land ownership only. Architect and original construction contractor remain unverified.",
     name: "Sanzhi UFO Houses (demolished)",
     city: "Sanzhi, New Taipei",
     country: "Taiwan",
