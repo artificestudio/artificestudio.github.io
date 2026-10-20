@@ -19,6 +19,13 @@ const map=new maplibregl.Map({
 map.addControl(new maplibregl.AttributionControl({compact:true}),"bottom-right");
 map.touchZoomRotate.disableRotation();
 const HOME={center:[62,25],zoom:1.65};
+const sidebar=$("atlas-directory"),sidebarToggle=$("atlas-sidebar-toggle"),sidebarClose=$("atlas-sidebar-close");
+function setSidebar(open){sidebar.classList.toggle("is-open",open);sidebarToggle.setAttribute("aria-expanded",String(open));sidebarToggle.textContent=open?"CLOSE ×":"FILTERS / PLACES ↗";if(open)sidebarClose.focus({preventScroll:true});}
+sidebarToggle.addEventListener("click",()=>setSidebar(!sidebar.classList.contains("is-open")));
+sidebarClose.addEventListener("click",()=>{setSidebar(false);sidebarToggle.focus();});
+sidebarToggle.addEventListener("mouseenter",()=>{if(matchMedia("(hover:hover) and (pointer:fine)").matches)setSidebar(true);});
+sidebar.addEventListener("mouseleave",()=>{if(matchMedia("(hover:hover) and (pointer:fine)").matches)setSidebar(false);});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sidebar.classList.contains("is-open"))setSidebar(false);});
 
 function configureBlackWhite(style){
  const s=JSON.parse(JSON.stringify(style));
@@ -29,14 +36,14 @@ function configureBlackWhite(style){
    const road=/(road|street|transportation|highway|bridge|tunnel|rail)/.test(id+" "+sourceLayer);
    const building=/(building)/.test(id+" "+sourceLayer);
    const placeLabel=layer.type==="symbol";
-   if(layer.type==="background"){layer.paint={"background-color":"#080808"};continue;}
+   if(layer.type==="background"){layer.paint={"background-color":"#ffffff"};continue;}
    if(layer.type==="fill"){
-     layer.paint={"fill-color":water?"#ffffff":building?"#252525":"#080808","fill-opacity":1};
+     layer.paint={"fill-color":water?"#ffffff":building?"#111111":"#ffffff","fill-opacity":building?["interpolate",["linear"],["zoom"],10,0,13,1]:1};
    }else if(layer.type==="line"){
-     layer.paint={"line-color":water?"#ffffff":boundary?"#ffffff":road?"#3d3d3d":"#777777","line-width":boundary?["interpolate",["linear"],["zoom"],1,.65,8,1.1,13,1.5]:road?["interpolate",["linear"],["zoom"],4,.25,12,.65,17,1.4]:.5,"line-opacity":boundary?0.9:0.85};
+     layer.paint={"line-color":water?"#c9c9c9":boundary?"#b8b8b8":road?"#bcbcbc":"#dedede","line-width":boundary?["interpolate",["linear"],["zoom"],1,.65,8,1.1,13,1.5]:road?["interpolate",["linear"],["zoom"],4,.25,12,.65,17,1.4]:.5,"line-opacity":boundary?0.9:0.85};
    }else if(layer.type==="symbol"){
      // Keep legibility, but avoid colorful, high-density labels at global scale.
-     layer.paint={"text-color":"#ffffff","text-halo-color":"#090909","text-halo-width":1.1,"icon-opacity":0,"text-opacity":/(poi|housenumber|house-number|aeroway)/.test(id)?0:1};
+     layer.paint={"text-color":"#333333","text-halo-color":"#ffffff","text-halo-width":1.1,"icon-opacity":0,"text-opacity":/(poi|housenumber|house-number|aeroway)/.test(id)?0:1};
    }else if(layer.type==="circle"){
      layer.paint={"circle-color":"#ffffff","circle-radius":1};
    }else if(layer.type==="fill-extrusion"){
