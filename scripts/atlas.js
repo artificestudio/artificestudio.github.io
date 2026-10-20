@@ -11,14 +11,14 @@ const categoryControls=$("atlas-categories"),tagControls=$("atlas-tags"),searchI
 const map=new maplibregl.Map({
   container:"atlas-map",
   style:{version:8,sources:{},layers:[{id:"initial-white",type:"background",paint:{"background-color":"#ffffff"}}]},
-  center:[62,25],zoom:1.65,minZoom:1,maxZoom:19,
+  center:[133,36],zoom:2.25,minZoom:1,maxZoom:19,
   attributionControl:false,renderWorldCopies:false,
   dragRotate:false,pitchWithRotate:false,touchPitch:false,
   cooperativeGestures:false
 });
 map.addControl(new maplibregl.AttributionControl({compact:true}),"bottom-right");
 map.touchZoomRotate.disableRotation();
-const HOME={center:[62,25],zoom:1.65};
+const HOME={center:[133,36],zoom:2.25};
 const sidebar=$("atlas-directory"),sidebarToggle=$("atlas-sidebar-toggle"),sidebarClose=$("atlas-sidebar-close");
 function setSidebar(open){sidebar.classList.toggle("is-open",open);sidebarToggle.setAttribute("aria-expanded",String(open));sidebarToggle.textContent=open?"CLOSE ×":"FILTERS / PLACES ↗";if(open)sidebarClose.focus({preventScroll:true});}
 sidebarToggle.addEventListener("click",()=>setSidebar(!sidebar.classList.contains("is-open")));
