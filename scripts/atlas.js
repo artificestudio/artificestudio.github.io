@@ -42,10 +42,11 @@ function configureBlackWhite(style){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
      if(water)layer.paint={"fill-color":"#ffffff","fill-opacity":1};
-     else if(building)layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],11,0,13,1]};
+     else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.minzoom=Math.min(layer.minzoom??14,12);layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],12,0,13,1]};}
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="line"){
      if(water)layer.paint={"line-color":"#cecece","line-width":.7,"line-opacity":1};
+     else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],12,0,13,1]};}
      else if(terrain)layer.paint={"line-color":"#e5e5e5","line-width":.5,"line-opacity":["interpolate",["linear"],["zoom"],9,0,12,.65]};
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="symbol"){
