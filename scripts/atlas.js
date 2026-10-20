@@ -30,26 +30,29 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sidebar.classList.c
 function configureBlackWhite(style){
  const s=JSON.parse(JSON.stringify(style));
  for(const layer of s.layers){
-   const id=(layer.id||"").toLowerCase(),sourceLayer=(layer["source-layer"]||"").toLowerCase();
-   const water=/(water|ocean|lake|river|sea)/.test(id+" "+sourceLayer);
-   const land=/(landcover|landuse|land|park|grass|wood|forest|sand|earth|country)/.test(id+" "+sourceLayer);
-   const boundary=/(boundary|admin|border)/.test(id+" "+sourceLayer);
-   const road=/(road|street|transportation|highway|bridge|tunnel|rail)/.test(id+" "+sourceLayer);
-   const building=/(building)/.test(id+" "+sourceLayer);
-   const placeLabel=layer.type==="symbol";
-   if(layer.type==="background"){layer.paint={"background-color":"#ffffff"};continue;}
-   if(layer.type==="fill"){
-     layer.paint={"fill-color":water?"#f0f0f0":building?"#111111":land?"#ffffff":"#ffffff","fill-opacity":building?["interpolate",["linear"],["zoom"],10,0,13,1]:1};
+   const id=(layer.id||"").toLowerCase();
+   const sourceLayer=(layer["source-layer"]||"").toLowerCase();
+   const key=id+" "+sourceLayer;
+   const water=/(water|ocean|lake|river|sea)/.test(key);
+   const building=/(building)/.test(key);
+   const terrain=/(contour|elevation|topograph)/.test(key);
+   const countryLabel=/(country|continent|state|province)/.test(id);
+   const cityLabel=/(city|place_city|place_town|settlement)/.test(id);
+   if(layer.type==="background"){
+     layer.paint={"background-color":"#ffffff"};
+   }else if(layer.type==="fill"){
+     if(water)layer.paint={"fill-color":"#ededed","fill-opacity":1};
+     else if(building)layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],11,0,13,1]};
+     else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="line"){
-     layer.paint={"line-color":water?"#dedede":boundary?"#b8b8b8":road?"#bcbcbc":"#dedede","line-width":boundary?["interpolate",["linear"],["zoom"],1,.65,8,1.1,13,1.5]:road?["interpolate",["linear"],["zoom"],4,.25,12,.65,17,1.4]:.5,"line-opacity":boundary?0.9:0.85};
+     if(water)layer.paint={"line-color":"#cecece","line-width":.7,"line-opacity":1};
+     else if(terrain)layer.paint={"line-color":"#e5e5e5","line-width":.5,"line-opacity":["interpolate",["linear"],["zoom"],9,0,12,.65]};
+     else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="symbol"){
-     // Keep legibility, but avoid colorful, high-density labels at global scale.
-     layer.paint={"text-color":"#333333","text-halo-color":"#ffffff","text-halo-width":1.1,"icon-opacity":0,"text-opacity":/(poi|housenumber|house-number|aeroway)/.test(id)?0:1};
-   }else if(layer.type==="circle"){
-     layer.paint={"circle-color":"#ffffff","circle-radius":1};
-   }else if(layer.type==="fill-extrusion"){
-     layer.layout={...(layer.layout||{}),visibility:"none"};
-   }else if(layer.type==="raster"){
+     if(countryLabel||cityLabel){
+       layer.paint={...(layer.paint||{}),"text-color":"#555555","text-halo-color":"#ffffff","text-halo-width":1,"icon-opacity":0,"text-opacity":["interpolate",["linear"],["zoom"],5,1,11,0]};
+     }else layer.layout={...(layer.layout||{}),visibility:"none"};
+   }else{
      layer.layout={...(layer.layout||{}),visibility:"none"};
    }
  }
