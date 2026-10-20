@@ -2,7 +2,7 @@
  * ARTIFICE / ATLAS — EDIT THE RESEARCH INVENTORY HERE.
  *
  * Place IDs must stay unique. WGS84 coordinates are always [longitude, latitude].
- * "condition" preserves provisional field observations; these are
+ * Optional attribution fields per place: architect, constructionCompany, ownership ("Public", "Private", or "Public / private"). Leave absent until independently documented.\n * "condition" preserves provisional field observations; these are
  * NOT independently verified current closure or demolition announcements.
  * "coordinateSource" documents where an actual location was checked.
  * "locationNote" flags provisional matches when the table names a district rather
