@@ -34,6 +34,7 @@ function configureBlackWhite(style){
    const sourceLayer=(layer["source-layer"]||"").toLowerCase();
    const key=id+" "+sourceLayer;
    const water=/(water|ocean|lake|river|sea)/.test(key);
+   const waterPolygon=layer.type==="fill" && /(water|waterway|river|lake)/.test(key);
    const building=/(building)/.test(key);
    const urbanLanduse=/(landuse)/.test(key) && layer.type==="fill";
    const terrain=/(contour|elevation|topograph)/.test(key);
@@ -49,7 +50,8 @@ function configureBlackWhite(style){
    if(layer.type==="background"){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
-     if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#ffffff","fill-opacity":1};}
+     if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#dedede","fill-opacity":1};}
+     else if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#dedede","fill-opacity":1};}
      else if(urbanLanduse){
        // Intermediate urban fabric, not individual building footprints.
        // This bridges the gap between country silhouettes and detailed Nolli geometry.
@@ -70,9 +72,9 @@ function configureBlackWhite(style){
      else if(riverLine){
        // Waterway polygons remain exact; narrow waterways use width-aware white ribbons.
        layer.layout={...(layer.layout||{}),visibility:"visible"};
-       layer.paint={"line-color":"#ffffff","line-opacity":1,"line-width":["interpolate",["exponential",2],["zoom"],9,1,12,2,14,5,16,12,18,25]};
+       layer.paint={"line-color":"#dedede","line-opacity":1,"line-width":["interpolate",["exponential",2],["zoom"],9,1,12,2,14,5,16,12,18,25]};
      }
-     else if(water)layer.paint={"line-color":"#ffffff","line-width":2,"line-opacity":1};
+     else if(water)layer.paint={"line-color":"#c7c7c7","line-width":1,"line-opacity":1};
      else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],10,0,11,.12,12,.40,13,.75,14,1]};}
      else if(terrain)layer.paint={"line-color":"#e5e5e5","line-width":.5,"line-opacity":["interpolate",["linear"],["zoom"],9,0,12,.65]};
      else layer.layout={...(layer.layout||{}),visibility:"none"};
