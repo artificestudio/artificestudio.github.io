@@ -36,12 +36,12 @@ function configureBlackWhite(style){
    const water=/(water|ocean|lake|river|sea)/.test(key);
    const building=/(building)/.test(key);
    const terrain=/(contour|elevation|topograph)/.test(key);
-   const countryLabel=/(country|continent|state|province)/.test(id);
-   const cityLabel=/(city|place_city|place_town|settlement)/.test(id);
+   const countryLabel=false;
+   const cityLabel=false;
    if(layer.type==="background"){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
-     if(water)layer.paint={"fill-color":"#ededed","fill-opacity":1};
+     if(water)layer.paint={"fill-color":"#ffffff","fill-opacity":1};
      else if(building)layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],11,0,13,1]};
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="line"){
@@ -64,6 +64,19 @@ async function loadVectorBasemap(){
    if(!r.ok)throw Error("Vector style HTTP "+r.status);
    const style=configureBlackWhite(await r.json());
    map.setStyle(style,{diff:false});
+   map.once("style.load",()=>{
+     map.addSource("artifice-countries",{type:"geojson",data:"https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"});
+     map.addLayer({id:"artifice-country-fill",type:"fill",source:"artifice-countries",paint:{"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],3,1,7,0]}});
+     map.addLayer({id:"artifice-country-borders",type:"line",source:"artifice-countries",paint:{"line-color":"#777777","line-width":["interpolate",["linear"],["zoom"],1,.45,5,.75],"line-opacity":["interpolate",["linear"],["zoom"],4,1,8,0]}});
+     const nameEl=$("atlas-country-name");
+     map.on("mousemove","artifice-country-fill",event=>{
+       if(map.getZoom()>=6||!event.features?.length){nameEl.textContent="";return;}
+       const properties=event.features[0].properties||{};
+       nameEl.textContent=properties.ADMIN||properties.name||properties.NAME||"";
+     });
+     map.on("mouseleave","artifice-country-fill",()=>{nameEl.textContent="";});
+     map.on("zoom",()=>{if(map.getZoom()>=6)nameEl.textContent="";});
+   });
    $("atlas-basemap-credit").textContent="OpenFreeMap / OSM";
    mapStatus.textContent="Rendering map…";
  }catch(e){
