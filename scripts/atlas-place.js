@@ -16,7 +16,7 @@ if(!place){
  if(Array.isArray(place.coordinates) && place.coordinates.length===2){
   const link=document.createElement("a");
   link.href="atlas.html?place="+encodeURIComponent(place.id);
-  link.textContent="Locate on Atlas map ↗";
+  link.textContent="Locate on Atlas map";
   const p=document.createElement("p");p.append(link);
   $("place-research").append(p);
  }
@@ -56,7 +56,7 @@ if(!place){
  }
  if(place.project && /^projects\.html(?:\?project=[a-z0-9-]+)?$/.test(place.project)){
   const link=document.createElement("a");link.href=place.project;
-  link.textContent="Explore ARTIFICE's project →";$("place-project").append(link);
+  link.textContent="Explore ARTIFICE's project";$("place-project").append(link);
  }
 
  // Add images in content/places.js, e.g. images: [{src:"assets/places/my-place/01.webp",caption:"...",alt:"..."}].
@@ -69,7 +69,7 @@ if(!place){
   const cap=document.createElement("figcaption");
   const nav=document.createElement("div");nav.className="atlas-place-image-nav";
   const prev=document.createElement("button");prev.type="button";prev.textContent="← Previous";
-  const next=document.createElement("button");next.type="button";next.textContent="Next →";
+  const next=document.createElement("button");next.type="button";next.textContent="Next";
   const count=document.createElement("span");
   const update=()=>{
     const picture=entries[current];img.src=picture.src;img.alt=picture.alt||picture.caption||place.name;
