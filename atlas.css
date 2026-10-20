@@ -185,3 +185,9 @@ body.atlas-page .atlas-map-controls{z-index:5}
 body.atlas-page .site-header{mix-blend-mode:difference!important;isolation:auto!important;color:#fff!important;background:transparent!important}
 body.atlas-page .site-header .wordmark,body.atlas-page .site-header .wordmark *,body.atlas-page .site-header nav,body.atlas-page .site-header nav a,body.atlas-page .site-header .radio-dock,body.atlas-page .site-header .radio-dock *,body.atlas-page .site-header .radio-dock-button{mix-blend-mode:normal!important;color:#fff!important;background:transparent!important;text-shadow:none!important}
 body.atlas-page .site-header .radio-control-icon{stroke:currentColor!important}
+
+/* Keep the indexed-places marker red: blend only the legend text, never the dot. */
+body.atlas-page .atlas-legend{mix-blend-mode:normal!important;color:#fff!important}
+body.atlas-page .atlas-legend .atlas-dot{background:#bd261c!important;mix-blend-mode:normal!important;isolation:isolate!important;flex-shrink:0}
+body.atlas-page .atlas-legend{isolation:auto}
+body.atlas-page .atlas-legend{color:#111!important}
