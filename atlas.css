@@ -126,3 +126,7 @@
 @media(hover:hover) and (pointer:fine){.atlas-page .atlas-sidebar-toggle:hover + .atlas-directory,.atlas-page .atlas-directory:hover{transform:translateX(0)}}
 @media(max-width:780px){.atlas-page .atlas-heading{top:5.5rem;left:.5rem;right:.5rem}.atlas-page .atlas-heading h1{font-size:1.15rem}.atlas-page #propose-button{font-size:.8rem;margin-left:.5rem}.atlas-page .atlas-map-controls{top:9rem}.atlas-page .atlas-directory{padding-top:6.5rem}.atlas-page .atlas-sidebar-close{top:5.7rem}.atlas-page .atlas-sidebar-toggle{top:50%;padding:.7rem .35rem}.atlas-page .atlas-credit{bottom:.15rem}.atlas-page .atlas-legend{bottom:1.8rem}}
 @media(prefers-reduced-motion:reduce){.atlas-page .atlas-directory{transition:none}}
+
+/* Country hover identification, unobtrusive bottom-right */
+.atlas-page .atlas-country-name{position:absolute;right:1rem;bottom:5.3rem;z-index:6;font:1.15rem "Times New Roman",serif;color:#111;background:#fff;padding:0 .2rem;pointer-events:none}
+.atlas-page .atlas-country-name:empty{display:none}
