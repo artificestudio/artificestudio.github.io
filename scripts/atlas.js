@@ -45,13 +45,14 @@ function configureBlackWhite(style){
      layer.maxzoom=24;
      layer.minzoom=Math.min(layer.minzoom??11,11);
    }
+   // Draw circulation below the solid building footprints.
    const countryLabel=false;
    const cityLabel=false;
    if(layer.type==="background"){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
-     if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#dedede","fill-opacity":1};}
-     else if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#dedede","fill-opacity":1};}
+     if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":1};}
+     else if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":1};}
      else if(urbanLanduse){
        // Intermediate urban fabric, not individual building footprints.
        // This bridges the gap between country silhouettes and detailed Nolli geometry.
@@ -65,14 +66,14 @@ function configureBlackWhite(style){
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="line"){
      if(road){
-       // Cartographic road surface: broad white casing instead of a hairline.
+       // Cartographic road surface: broad pale-gray corridor, not a hairline.
        layer.layout={...(layer.layout||{}),visibility:"visible"};
-       layer.paint={"line-color":"#ffffff","line-opacity":["interpolate",["linear"],["zoom"],10,0,12,.8,14,1],"line-width":["interpolate",["exponential",2],["zoom"],10,1,12,2.5,14,7,16,16,18,35]};
+       layer.paint={"line-color":"#d0d0d0","line-opacity":["interpolate",["linear"],["zoom"],10,0,12,.8,14,1],"line-width":["interpolate",["exponential",2],["zoom"],10,1,12,2.5,14,7,16,16,18,35]};
      }
      else if(riverLine){
-       // Waterway polygons remain exact; narrow waterways use width-aware white ribbons.
+       // Waterway polygons remain exact; narrow waterways use width-aware gray ribbons.
        layer.layout={...(layer.layout||{}),visibility:"visible"};
-       layer.paint={"line-color":"#dedede","line-opacity":1,"line-width":["interpolate",["exponential",2],["zoom"],9,1,12,2,14,5,16,12,18,25]};
+       layer.paint={"line-color":"#b0b0b0","line-opacity":1,"line-width":["interpolate",["exponential",2],["zoom"],9,1,12,2,14,5,16,12,18,25]};
      }
      else if(water)layer.paint={"line-color":"#c7c7c7","line-width":1,"line-opacity":1};
      else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],10,0,11,.12,12,.40,13,.75,14,1]};}
@@ -86,6 +87,11 @@ function configureBlackWhite(style){
      layer.layout={...(layer.layout||{}),visibility:"none"};
    }
  }
+ // Ensure buildings sit above circulation and water even if the source style
+ // originally ordered road layers on top of buildings.
+ const buildingLayers=s.layers.filter(layer=>/(building)/.test(((layer.id||"")+" "+(layer["source-layer"]||"")).toLowerCase()) && (layer.type==="fill"||layer.type==="line"));
+ s.layers=s.layers.filter(layer=>!buildingLayers.includes(layer));
+ s.layers.push(...buildingLayers);
  return s;
 }
 async function loadVectorBasemap(){
