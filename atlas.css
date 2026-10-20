@@ -180,3 +180,8 @@ body.atlas-page .atlas-map-controls{z-index:5}
  body.atlas-page #propose-button{font-size:clamp(.65rem,2.4vw,.8rem)!important;margin:0!important;padding:.1rem 0!important}
  body.atlas-page .atlas-map-controls{top:5.15rem!important;right:.5rem!important}
 }
+
+/* Apply pixel-accurate inversion to the WHOLE transparent header, including radio. */
+body.atlas-page .site-header{mix-blend-mode:difference!important;isolation:auto!important;color:#fff!important;background:transparent!important}
+body.atlas-page .site-header .wordmark,body.atlas-page .site-header .wordmark *,body.atlas-page .site-header nav,body.atlas-page .site-header nav a,body.atlas-page .site-header .radio-dock,body.atlas-page .site-header .radio-dock *,body.atlas-page .site-header .radio-dock-button{mix-blend-mode:normal!important;color:#fff!important;background:transparent!important;text-shadow:none!important}
+body.atlas-page .site-header .radio-control-icon{stroke:currentColor!important}
