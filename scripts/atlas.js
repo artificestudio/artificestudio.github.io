@@ -20,7 +20,7 @@ map.addControl(new maplibregl.AttributionControl({compact:true}),"bottom-right")
 map.touchZoomRotate.disableRotation();
 const HOME={center:[133,36],zoom:2.25};
 const sidebar=$("atlas-directory"),sidebarToggle=$("atlas-sidebar-toggle"),sidebarClose=$("atlas-sidebar-close");
-function setSidebar(open){sidebar.classList.toggle("is-open",open);sidebarToggle.setAttribute("aria-expanded",String(open));sidebarToggle.textContent=open?"CLOSE ×":"FILTERS / PLACES ↗";if(open)sidebarClose.focus({preventScroll:true});}
+function setSidebar(open){sidebar.classList.toggle("is-open",open);sidebarToggle.setAttribute("aria-expanded",String(open));sidebarToggle.textContent=open?"CLOSE ×":"FILTERS / PLACES";if(open)sidebarClose.focus({preventScroll:true});}
 sidebarToggle.addEventListener("click",()=>setSidebar(!sidebar.classList.contains("is-open")));
 sidebarClose.addEventListener("click",()=>{setSidebar(false);sidebarToggle.focus();});
 sidebarToggle.addEventListener("mouseenter",()=>{if(matchMedia("(hover:hover) and (pointer:fine)").matches)setSidebar(true);});
