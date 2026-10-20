@@ -206,3 +206,6 @@ body.atlas-page .atlas-list-item{align-items:start}
 body.atlas-page .atlas-legend{mix-blend-mode:normal!important;color:inherit!important;isolation:auto!important}
 body.atlas-page .atlas-legend .atlas-legend-text{color:#fff!important;mix-blend-mode:difference!important;background:transparent!important}
 body.atlas-page .atlas-legend .atlas-dot{background:#bd261c!important;mix-blend-mode:normal!important}
+
+.atlas-page .atlas-continent-heading{font:normal 1.15rem "Times New Roman",serif;margin:1.4rem 0 .65rem}
+.atlas-page .atlas-continent-group{display:flex;flex-direction:column;gap:.15rem}
