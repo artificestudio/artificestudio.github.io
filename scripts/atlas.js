@@ -36,6 +36,7 @@ function configureBlackWhite(style){
    const water=/(water|lake|river|sea)/.test(key) && !/(ocean|marine|landcover)/.test(key);
    const oceanLayer=/(ocean|marine)/.test(key);
    const waterPolygon=layer.type==="fill" && /(water|waterway|river|lake)/.test(key);
+   const inlandWaterFilter=["match",["coalesce",["get","class"],["get","type"],""],["lake","river","reservoir","pond","basin","canal","stream"],true,false];
    const building=/(building)/.test(key);
    const urbanLanduse=/(landuse)/.test(key) && layer.type==="fill";
    const terrain=/(contour|elevation|topograph)/.test(key);
@@ -53,8 +54,8 @@ function configureBlackWhite(style){
      layer.paint={"background-color":"#ffffff"};
    }else if(layer.type==="fill"){
      if(oceanLayer){layer.layout={...(layer.layout||{}),visibility:"none"};}
-     else if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":["interpolate",["linear"],["zoom"],4,0,6,1]};}
-     else if(water){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"fill-color":"#b0b0b0","fill-opacity":["interpolate",["linear"],["zoom"],4,0,6,1]};}
+     else if(waterPolygon){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.filter=["all",...(layer.filter?[layer.filter]:[]),inlandWaterFilter];layer.paint={"fill-color":"#b0b0b0","fill-opacity":["interpolate",["linear"],["zoom"],9,0,10,1]};}
+     else if(water){layer.layout={...(layer.layout||{}),visibility:"none"};}
      else if(urbanLanduse){
        // Broad land-use polygons are not building footprints and create
        // mismatched gray blocks. Keep the Nolli ground white instead.
@@ -111,7 +112,7 @@ async function loadVectorBasemap(){
    mapStatus.hidden=true;
    map.once("style.load",()=>{
      map.addSource("artifice-countries",{type:"geojson",data:"https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"});
-     map.addLayer({id:"artifice-country-fill",type:"fill",source:"artifice-countries",paint:{"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],3,1,5.5,1,7,.95,9,.75,11,.1,12,0]}});
+     map.addLayer({id:"artifice-country-fill",type:"fill",source:"artifice-countries",paint:{"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],3,1,5.5,1,6.5,.65,7.5,0]}});
      map.addLayer({id:"artifice-country-borders",type:"line",source:"artifice-countries",paint:{"line-color":"#777777","line-width":["interpolate",["linear"],["zoom"],1,.45,5,.75],"line-opacity":["interpolate",["linear"],["zoom"],4,1,8,0]}});
      const nameEl=$("atlas-country-name");
      map.on("mousemove","artifice-country-fill",event=>{
