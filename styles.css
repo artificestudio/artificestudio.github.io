@@ -468,3 +468,8 @@ html,body{background:#fff}
 .home-page .hero-film-mobile{display:none}
 @media(max-width:780px){.home-page .hero-film{display:block;object-fit:cover;object-position:center center}.home-page .hero-film-mobile{display:none}}
 @media(prefers-reduced-motion:reduce){.home-page .hero-film{display:none}.home-page .hero-film-mobile{display:block;background-image:url("assets/home-preview.jpg");background-size:cover;background-position:center}}
+
+/* Balance Babel artwork against the new homepage film. */
+.home-page .hero-babel-overlay{opacity:.32}
+.home-page .hero-film{filter:saturate(.92) contrast(1.02) brightness(.94)}
+.home-page .film-shade{background:linear-gradient(to bottom,rgba(0,0,0,.12),transparent 25%,transparent 75%,rgba(0,0,0,.12))}
