@@ -55,13 +55,13 @@ function configureBlackWhite(style){
        layer.minzoom=Math.min(layer.minzoom??7,7);
        layer.maxzoom=24;
        layer.filter=["all",...(layer.filter?[layer.filter]:[]),["in",["get","class"],["literal",["residential","commercial","industrial","retail"]]]];
-       layer.paint={"fill-color":"#222222","fill-opacity":["interpolate",["linear"],["zoom"],7,0,9,.35,11,.58,13,0]};
+       layer.paint={"fill-color":"#222222","fill-opacity":["interpolate",["linear"],["zoom"],7,0,9,.30,10.5,.38,11.5,.24,12.5,.10,14,0]};
      }
-     else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.minzoom=Math.min(layer.minzoom??11,11);layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],10,0,11,.75,12,1]};}
+     else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.minzoom=Math.min(layer.minzoom??11,11);layer.paint={"fill-color":"#111111","fill-opacity":["interpolate",["linear"],["zoom"],10,0,11,.20,12,.55,13,.85,14,1]};}
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="line"){
      if(water)layer.paint={"line-color":"#cecece","line-width":.7,"line-opacity":1};
-     else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],10,0,11,.7,12,1]};}
+     else if(building){layer.layout={...(layer.layout||{}),visibility:"visible"};layer.paint={"line-color":"#111111","line-width":.35,"line-opacity":["interpolate",["linear"],["zoom"],10,0,11,.12,12,.40,13,.75,14,1]};}
      else if(terrain)layer.paint={"line-color":"#e5e5e5","line-width":.5,"line-opacity":["interpolate",["linear"],["zoom"],9,0,12,.65]};
      else layer.layout={...(layer.layout||{}),visibility:"none"};
    }else if(layer.type==="symbol"){
