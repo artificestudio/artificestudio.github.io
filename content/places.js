@@ -158,6 +158,10 @@ export const seedPlaces = [
   },
   {
     id: "la-vache-noire",
+    architect: "Groupe-6 (lead architect); T+T (collaborating architect)",
+    constructionCompany: "Eiffage Construction (named in client/development team; exact construction contract to verify)",
+    ownership: "Private (commercial complex; rooftop park publicly accessible)",
+    attributionSources: ["https://groupe-6.com/projet/la-vache-noire/"],
     images: [
       { src: "assets/places/la-vache-noire/01.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
       { src: "assets/places/la-vache-noire/02.JPG", caption: "La Vache Noire", alt: "Photograph of La Vache Noire" },
@@ -185,6 +189,9 @@ export const seedPlaces = [
   },
   {
     id: "belle-epine",
+    architect: "Henri Colboc (original design; secondary attribution)",
+    ownership: "Private (SECAR; Klépierre holds a documented minority stake and manages the centre)",
+    attributionSources: ["https://www.klepierre.com/files/2e9279d7/klepierre_deu_2019_uk.pdf","https://www.klepierre.com/en/our-malls/belle-epine","https://fr.wikipedia.org/wiki/Belle_%C3%89pine"],
     images: [
       { src: "assets/places/belle-epine/01.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
       { src: "assets/places/belle-epine/02.jpeg", caption: "Belle Épine", alt: "Photograph of Belle Épine" },
@@ -491,6 +498,9 @@ export const seedPlaces = [
   // ADDITIONAL ARTIFICE RESEARCH PLACES (already on the Atlas; preserved)
   {
     id: "dongtan",
+    ownership: "Public / private (public-sector land development and infrastructure; privately developed residential and commercial parcels)",
+    attributionSources: ["https://www.archdaily.com/198593/transit-oriented-city-%E2%80%93-dongtan-central-business-master-plan-ojanen-chiou-architects-swa-group"],
+    attributionNote: "Ojanen Chiou Architects and SWA Group designed a 157-hectare central business masterplan proposal, not the entirety of Dongtan; no single architect or contractor applies to the new town.",
     name: "Dongtan New Town", city: "Hwaseong", country: "South Korea",
     coordinates: [127.071, 37.206],
     category: "new-town", tags: ["masterplanning", "consumerism", "residential"],
@@ -506,6 +516,8 @@ export const seedPlaces = [
   },
   {
     id: "nakano-broadway",
+    ownership: "Private (individual shop and residential units; not a single mall landlord)",
+    attributionSources: ["https://www.taaf.or.jp/tokyo_collection/100views/detail/4-1.html","https://en.wikipedia.org/wiki/Nakano_Broadway"],
     name: "Nakano Broadway", city: "Tokyo", country: "Japan",
     coordinates: [139.6658, 35.7092],
     category: "mixed-use-complex", tags: ["retail", "subculture"],
@@ -578,6 +590,8 @@ export const seedPlaces = [
   },
   {
     id: "euljiro-underground",
+    ownership: "Public (Seoul Metropolitan Government; managed by Seoul Facilities Corporation)",
+    attributionSources: ["https://english.seoul.go.kr/underground-landscape-seoul-depicts-everyday-life-underground-shopping-centers/"],
     images: [
       { src: "assets/places/euljiro-underground/01.JPG", caption: "Euljiro Underground Shopping Centre", alt: "Photograph of Euljiro Underground Shopping Centre" },
       { src: "assets/places/euljiro-underground/02.JPG", caption: "Euljiro Underground Shopping Centre", alt: "Photograph of Euljiro Underground Shopping Centre" },
@@ -744,6 +758,8 @@ export const seedPlaces = [
   },
   {
     id: "decks-tokyo-beach",
+    constructionCompany: "Yoshikawa Construction (2003 membrane-structure works only; original building contractor not verified)",
+    attributionSources: ["https://www.taiyokogyo.co.jp/en/works/53206/"],
     images: [
       { src: "assets/places/decks-tokyo-beach/1.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
       { src: "assets/places/decks-tokyo-beach/02.jpeg", caption: "DECKS Tokyo Beach", alt: "Photograph of DECKS Tokyo Beach" },
