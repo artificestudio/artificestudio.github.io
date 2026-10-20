@@ -194,7 +194,7 @@ function renderFilters(){
  }
  tagControls.replaceChildren();
  const tags=[...new Set(places.flatMap(p=>Array.isArray(p.tags)?p.tags:[]))].sort();
- for(const tag of tags)tagControls.append(makeChip("#"+tagLabel(tag),activeTags.includes(tag),()=>{
+ for(const tag of tags)tagControls.append(makeChip(tagLabel(tag),activeTags.includes(tag),()=>{
    activeTags=activeTags.includes(tag)?activeTags.filter(t=>t!==tag):[...activeTags,tag];syncFilters();
  }));
  clearFilters.hidden=activeCategory==="all"&&!activeTags.length&&!searchTerm;
@@ -218,7 +218,10 @@ function renderList(){
    const n=document.createElement("span");n.textContent=p.name+", "+p.city+", "+p.country;
    const typ=document.createElement("span");typ.className="atlas-entry-type";typ.textContent=categoryLabel(p.category);
    const y=document.createElement("small");y.textContent=(p.year||"date unknown")+(p.coordinates?"":" / LOCATION TO VERIFY");
-   b.append(n,typ,y);b.onclick=()=>openPlace(p);list.append(b);
+   const metadata=document.createElement("span");metadata.className="atlas-entry-metadata";
+   const detail=(label,value)=>{const line=document.createElement("span");line.textContent=label+": "+(value||"Not documented");return line;};
+   metadata.append(detail("Architect",p.architect),detail("Construction",p.constructionCompany),detail("Ownership",p.ownership));
+   b.append(n,typ,y,metadata);b.onclick=()=>openPlace(p);list.append(b);
  }
  $("atlas-count").textContent=String(places.length).padStart(2,"0");
 }
