@@ -25,11 +25,7 @@ function renderIndex() {
     figure.className = "clean-project-figure";
     const cover = project.images?.[0];
     if (cover) {
-      const img = document.createElement("img");
-      img.src = cover.src;
-      img.alt = cover.alt || project.title;
-      img.loading = index === 0 ? "eager" : "lazy";
-      figure.append(img);
+      if (cover.type === "video") { const video = document.createElement("video"); video.src = cover.src; video.muted = true; video.playsInline = true; video.preload = "metadata"; video.setAttribute("aria-label", project.title); figure.append(video); } else { const img = document.createElement("img"); img.src = cover.src; img.alt = cover.alt || project.title; img.loading = index === 0 ? "eager" : "lazy"; figure.append(img); }
     }
 
     const meta = document.createElement("p");
@@ -38,7 +34,7 @@ function renderIndex() {
     number.className = "clean-project-entry-number";
     number.textContent = twoDigits(index + 1);
     const location = document.createElement("span");
-    location.textContent = project.city + ", " + project.country;
+    location.textContent = project.category ? project.category : project.city + ", " + project.country;
     const years = document.createElement("span");
     years.textContent = project.years || "";
     meta.append(number, location, years);
@@ -88,6 +84,7 @@ function renderDetail(project) {
 
   const gallery = Array.isArray(project.images) ? project.images : [];
   const image = document.getElementById("project-image");
+  const video = document.getElementById("project-video");
   const caption = document.getElementById("project-caption");
   const count = document.getElementById("project-image-count");
   const stage = document.getElementById("project-stage");
@@ -102,10 +99,10 @@ function renderDetail(project) {
     button.type = "button";
     button.className = "clean-document-tile";
     button.setAttribute("aria-label", "View document " + (index + 1) + ": " + (item.caption || project.title));
-    const img = document.createElement("img");
-    img.loading = "lazy";
+    const img = item.type === "video" ? document.createElement("video") : document.createElement("img");
+    img.preload = item.type === "video" ? "metadata" : undefined;
+    if(item.type === "video"){img.muted=true;img.playsInline=true;}else{img.loading="lazy";img.alt="";}
     img.src = item.src;
-    img.alt = "";
     const note = document.createElement("span");
     note.textContent = twoDigits(index + 1) + "  " + (item.caption || "");
     button.append(img, note);
@@ -123,15 +120,18 @@ function renderDetail(project) {
     if (!gallery.length) return;
     current = (current + offset + gallery.length) % gallery.length;
     const item = gallery[current];
-    image.src = item.src;
-    image.alt = item.alt || item.caption || project.title;
+    const isVideo = item.type === "video";
+    video.pause();
+    video.hidden = !isVideo;
+    image.hidden = isVideo;
+    if(isVideo){video.src=item.src;video.load();}else{image.src=item.src;image.alt=item.alt || item.caption || project.title;}
     caption.textContent = item.caption || "";
     count.textContent = twoDigits(current + 1) + " of " + twoDigits(gallery.length);
     thumbnails.forEach((button, index) => button.setAttribute("aria-pressed", String(index === current)));
   }
   prev.addEventListener("click", () => show(-1));
   next.addEventListener("click", () => show(1));
-  stage.addEventListener("click", () => show(1));
+  stage.addEventListener("click", event => { if(event.target.closest("video"))return; show(1); });
   stage.addEventListener("keydown", event => {
     if (event.key === "ArrowLeft") { event.preventDefault(); show(-1); }
     if (event.key === "ArrowRight" || event.key === "Enter" || event.key === " ") {
