@@ -506,3 +506,9 @@ html,body{background:#fff}
 .about-poem-page .about-definition-label{font-size:.75em;margin-top:2.7rem!important;letter-spacing:.02em}
 .about-poem-page .about-definition-original{font-size:clamp(1.25rem,1.8vw,1.8rem);line-height:1.28;max-width:47rem}
 @media(max-width:780px){.about-poem-page .about-definition{width:100%;margin:0 0 4rem}.about-poem-page .about-definition-original{font-size:1.25rem}}
+
+/* Homepage media: do not reveal a hidden video or obsolete poster on phones. */
+@media (max-width:780px){
+  .home-page .hero-film{display:none!important}
+  .home-page .hero-film-mobile{display:block!important;background-image:url("assets/home-film-mobile.webp");background-size:cover;background-position:center}
+}
